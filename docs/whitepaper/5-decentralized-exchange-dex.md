@@ -1,4 +1,4 @@
-# 5. Decentralized Exchange \(DEX\)
+# 5. Decentralized Exchange (DEX)
 
 ## **5.1. Decentralization, privacy, and censorship**
 

@@ -1,4 +1,4 @@
-# 4. Decentralized Finance \(DeFi\)
+# 4. Decentralized Finance (DeFi)
 
 ## 4.1. Script-based smart contracts and Turing incompleteness
 
@@ -48,7 +48,7 @@ Some of these frauds might be prevented if the MLS-01 token representing the sec
 
 ## 4.3. ACL rules for securities
 
-[//]: # (![]&#40;../.gitbook/assets/frame-69.png&#41;)
+[//]: # (![]&#40;/static/images/frame-69.png&#41;)
 
 Access-Control-List \(ACL\) acts as a filter dedicated to limit the transferability property of a token. By default, any address can transfer and use the token without any limitations unless the token creator defined some ACL upon its launch. Among the rules defined, there is also the possibility \(or impossibility\) to change those rules in the future once the token is live on the mainnet.
 
@@ -94,7 +94,7 @@ The user may also publicly sign up for different services with different public 
 
 
 
-## 4.5. Programmable Pools \(dividends, taxation\)
+## 4.5. Programmable Pools (dividends, taxation)
 
 There are occasions when using script-based transactions can cause more network pollution, for example, when moving small amounts that are not consolidated in a single account, as it happens on account-based systems \(i.e., Ethereum\). For this reason, Mintlayer allows users to switch from UTXO to an account base with programmable pools.
 
