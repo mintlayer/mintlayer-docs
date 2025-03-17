@@ -1,4 +1,6 @@
-# Token Generation Documentation
+# Token Generation
+
+Guide to Issuing, Minting, and Sending Tokens
 
 ## Prerequisites
 
@@ -62,6 +64,13 @@ The current fee for issuing a new token is **100 Coins**. Ensure your wallet has
 ## Metadata URI
 
 The `<METADATA_URI>` argument must point to a JSON file uploaded to IPFS (InterPlanetary File System). This JSON file contains detailed metadata about the token. Below is the structure and description of the fields in this file:
+
+:::tip
+**Uploading Metadata to IPFS** 
+
+For a quick and easy way to upload your token metadata JSON file to IPFS, use https://web3.storage/. Simply sign up, upload your file via their web interface or API, and retrieve the IPFS URI (e.g., ipfs://\<hash\>) to use in the \<METADATA_URI\> argument.
+:::
+
 
 ### JSON Metadata Structure
 
