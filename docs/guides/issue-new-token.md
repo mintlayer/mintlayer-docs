@@ -4,8 +4,8 @@
 
 To generate a new token using the `token-issue-new` command, ensure the following prerequisites are met:
 
-1. **Running Wallet**: You must have the `wallet-cli` tool installed and configured. Ensure your wallet is active and funded with at least **100 Coins** for the issuance fee, plus additional transaction fees.
-2. **Running Node**: You need a synchronized blockchain node running via the `node-daemon`. This node must be operational and connected to the network.
+1. **Running Node**: You need a synchronized blockchain node running via the `node-daemon`. This node must be operational and connected to the network.
+2. **Running Wallet**: You must have the `wallet-cli` tool installed and configured. Ensure your wallet is active and funded with at least **100 Coins** for the issuance fee, plus additional transaction fees.
 
 ## Overview
 
