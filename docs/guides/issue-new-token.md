@@ -59,6 +59,16 @@ A new token has been issued with ID: tmltk1jzgup9....ah0pjffwhpqgsvmuq in tx: f5
 
 ### Token Issuance Fee
 
+:::info
+
+Tip: Understanding **"Coin"**
+
+In this documentation, "Coin" refers to the main cryptocurrency of the network. Depending on your specific network, this could be **ML** or **TML**. Verify your network’s main coin when funding your wallet for fees.
+
+You can get free testnet coins from the [Mintlayer Faucet](https://faucet.mintlayer.org/).
+
+:::
+
 The current fee for issuing a new token is **100 Coins**. Ensure your wallet has sufficient funds to cover this fee.
 
 ## Metadata URI
