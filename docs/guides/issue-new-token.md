@@ -195,4 +195,28 @@ To mint 500,000 tokens to an address:
 token-mint tmltk1jzgup9....ah0pjffwhpqgsvmuq tmt1qyj...dulgmxyx 500000
 ```
 
-Now you receive the newly minted tokens at the specified address.
+## Sending Tokens
+
+Once tokens are minted, you may want to send them to another address. Note that the `address-send` command is **not suitable** for sending tokens. Instead, use the `token-send` command specifically designed for this purpose.
+
+### Send Command Syntax
+
+```bash
+token-send <TOKEN_ID> <ADDRESS> <AMOUNT>
+```
+
+#### Required Arguments
+
+| Argument     | Description                                                                 |
+|--------------|-----------------------------------------------------------------------------|
+| `<TOKEN_ID>` | The token ID of the tokens to be sent (e.g., `tmltk1jzgup9....ah0pjffwhpqgsvmuq`). |
+| `<ADDRESS>`  | The destination address receiving the tokens (e.g., `tmt1qyj...dulgmxyx`). |
+| `<AMOUNT>`   | The amount of tokens to be sent (e.g., `500`).                              |
+
+#### Example Send Command
+
+To send 500 tokens to an address:
+
+```bash
+token-send tmltk1jzgup9....ah0pjffwhpqgsvmuq tmt1qyj...dulgmxyx 500
+```
