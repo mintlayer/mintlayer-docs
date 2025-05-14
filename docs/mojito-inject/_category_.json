@@ -1,0 +1,10 @@
+{
+  "label": "Mojito Inject",
+  "position": 1,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "title": "Mojito Inject",
+    "description": "Browser-injected wallet provider for Mojito. Use it to connect your dApp to the user's Mojito wallet via the browser extension."
+  }
+}
