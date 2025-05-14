@@ -14,7 +14,7 @@ Mojito inject API is available in extension versions 1.4.0 and above.
 ```ts
 const version = await window.mojito.version;
 console.log('Mojito version:', version);
-// shoudl be 1.4.0 or higher
+// should be 1.4.0 or higher
 ```
 
 Check for a proper version
