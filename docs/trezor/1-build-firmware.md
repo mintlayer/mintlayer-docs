@@ -1,20 +1,19 @@
 # Trezor Firmware
 
-:::info  No GUI (yet)
+:::info GUI and CLI Support Status
 
-This firmware and build process is fully CLI-based.  
-There is currently **no graphical interface** for managing the Mintlayer Trezor firmware.
+There is no support for this in **Trezor Suite**, and **Mojito** also does not support it yet, although it is currently **in development**.
 
-A GUI is in development, but **not yet available**.
+Support is available in **wallet-cli** and **node-gui**, but at the time of writing, these changes have not yet been released, so you will need to build the applications from the latest master branch manually.
 
 :::
 
-:::warning ️ Risk of Device Damage
+:::warning The following steps are intended for advanced users
 
-The steps below are intended for advanced users. Flashing unofficial firmware **may permanently damage your Trezor device** or void its warranty.
+Flashing unofficial firmware **may render your Trezor device unusable** until it is successfully recovered.
 
-Only proceed if you fully understand each step and accept the risks. Do **not** run these commands on a production or primary hardware wallet unless you are absolutely sure of what you are doing.
-
+Proceed **only if you fully understand each step** and accept the associated risks.
+Do **not** attempt this on your primary or production hardware wallet unless you are absolutely certain of what you’re doing.
 :::
 
 ## Building Mintlayer Trezor Firmware
@@ -36,11 +35,11 @@ curl -sSL https://install.python-poetry.org | python3 -  # Install Poetry, a dep
 
 poetry install  # Install Python dependencies listed in pyproject.toml
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install Rust toolchain via rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install Rust
 
 rustup default nightly  # Set the nightly version of Rust as the default toolchain
 
-rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu  # Add Rust toolchain
+rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu  # Add Rust source code and the required toolchain
 
 sudo apt install -y build-essential  # Install essential tools for building software (e.g., gcc, make)
 
