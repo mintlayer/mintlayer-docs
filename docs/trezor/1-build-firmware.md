@@ -34,7 +34,7 @@ git checkout mintlayer-master  # Switch to the Mintlayer-specific firmware branc
 
 curl -sSL https://install.python-poetry.org | python3 -  # Install Poetry, a dependency manager for Python
 
-poetry intall  # (typo) Install Python dependencies listed in pyproject.toml (should be `poetry install`)
+poetry install  # Install Python dependencies listed in pyproject.toml
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install Rust toolchain via rustup
 
