@@ -40,7 +40,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install Rust t
 
 rustup default nightly  # Set the nightly version of Rust as the default toolchain
 
-rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu  # Add Rust source code (needed for cross-compilation)
+rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu  # Add Rust toolchain
 
 sudo apt install -y build-essential  # Install essential tools for building software (e.g., gcc, make)
 
