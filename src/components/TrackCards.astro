@@ -1,0 +1,130 @@
+---
+const base = import.meta.env.BASE_URL;
+const tracks = [
+  {
+    color: '#a5ff11',
+    title: 'Build',
+    desc: 'Connect dApps to Mojito, use the JavaScript SDK, and integrate Mintlayer MCP.',
+    links: [
+      { text: 'Mojito Inject', href: `${base}mojito-inject/getting-started/` },
+      { text: 'JS SDK', href: `${base}javascript-sdk/getting-started/` },
+      { text: 'MCP', href: `${base}mcp/getting-started/` },
+    ],
+  },
+  {
+    color: '#38bdf8',
+    title: 'Guides',
+    desc: 'Issue tokens, bridge assets to Ethereum, and work with Trezor firmware.',
+    links: [
+      { text: 'Issue Token', href: `${base}guides/issue-new-token/` },
+      { text: 'Bridge API', href: `${base}bridge/` },
+      { text: 'Trezor', href: `${base}trezor/1-build-firmware/` },
+    ],
+  },
+];
+---
+
+<div class="tracks">
+  {tracks.map((t, i) => (
+    <div class="track" style={`--c: ${t.color}; animation-delay: ${i * 60}ms`}>
+      <div class="track-top">
+        <span class="track-dot" style={`background: ${t.color}`}></span>
+        <h3 class="track-title">{t.title}</h3>
+      </div>
+      <p class="track-desc">{t.desc}</p>
+      <div class="track-links">
+        {t.links.map((l) => (
+          <a href={l.href} class="track-link">{l.text} →</a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .tracks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    animation: fade-up 0.35s 0.15s ease both;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .track {
+    padding: 1rem 1.1rem;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    background: #111113;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .track::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--c), transparent 70%);
+    opacity: 0.6;
+  }
+
+  .track:hover {
+    border-color: #3f3f46;
+    transform: translateY(-1px);
+  }
+
+  .track-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .track-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .track-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #e4e4e7;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .track-desc {
+    font-size: 0.775rem;
+    color: #52525b;
+    line-height: 1.55;
+    margin: 0 0 0.85rem;
+  }
+
+  .track-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .track-link {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--c);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.12s ease;
+  }
+  .track-link:hover { opacity: 1; text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .tracks { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,643 @@
+/**
+ * Mintlayer Docs — Design System
+ * (ported from the Starlight documentation theme)
+ * Tokens: #09090b bg, #18181b sidebar, #27272a surface, #3f3f46 border
+ * Accent: #a5ff11 (lime). Text on lime must always be #09090b (dark).
+ * Typography: DM Sans (UI) + JetBrains Mono (code)
+ */
+
+/* ═══════════════════════════════════════════
+   TOKENS
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* Accent */
+  --sl-color-accent-low:  #1a2210;
+  --sl-color-accent:      #a5ff11;
+  --sl-color-accent-high: #a5ff11; /* keep same — Starlight uses accent-high for button bg */
+  --sl-color-text-accent: #b8ff44;
+
+  --cal-accent:      #a5ff11;
+  --cal-accent-dim:  rgba(165, 255, 17, 0.07);
+  --cal-accent-glow: rgba(165, 255, 17, 0.18);
+
+  /* Surfaces */
+  --sl-color-bg:          #09090b;
+  --sl-color-bg-nav:      rgba(9, 9, 11, 0.9);
+  --sl-color-bg-sidebar:  #111113;
+  --sl-color-black:       #09090b; /* used by Starlight as text on accent buttons — must stay dark */
+
+  /* Text */
+  --sl-color-white:  #fafafa;
+  --sl-color-gray-1: #e4e4e7;
+  --sl-color-gray-2: #a1a1aa;
+  --sl-color-gray-3: #71717a;
+  --sl-color-gray-4: #52525b;
+  --sl-color-gray-5: #3f3f46;
+  --sl-color-gray-6: #18181b;
+
+  /* Borders */
+  --sl-color-hairline-light: #27272a;
+  --sl-color-hairline-shade: rgba(0, 0, 0, 0.6);
+  --sl-color-backdrop-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Typography */
+  --sl-font:      'DM Sans', 'Inter', var(--sl-font-system);
+  --sl-font-mono: 'JetBrains Mono', var(--sl-font-system-mono);
+
+  /* Sizing */
+  --sl-content-width:    48rem;
+  --sl-sidebar-width:    230px;
+  --sl-nav-height:       3.25rem;
+
+  /* Text sizes */
+  --sl-text-xs:   0.6875rem;
+  --sl-text-sm:   0.75rem;
+  --sl-text-base: 0.875rem;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low:  #edffd0;
+  --sl-color-accent:      #5a8f00;
+  --sl-color-accent-high: #5a8f00;
+  --sl-color-text-accent: #4a7600;
+
+  --cal-accent:      #5a8f00;
+  --cal-accent-dim:  rgba(90, 143, 0, 0.07);
+  --cal-accent-glow: rgba(90, 143, 0, 0.15);
+
+  --sl-color-bg:         #fafafa;
+  --sl-color-bg-nav:     rgba(250, 250, 250, 0.92);
+  --sl-color-bg-sidebar: #f4f4f5;
+  --sl-color-black:      #ffffff;
+
+  --sl-color-white:  #09090b;
+  --sl-color-gray-1: #18181b;
+  --sl-color-gray-2: #3f3f46;
+  --sl-color-gray-3: #71717a;
+  --sl-color-gray-4: #a1a1aa;
+  --sl-color-gray-5: #d4d4d8;
+  --sl-color-gray-6: #f4f4f5;
+
+  --sl-color-hairline-light: #e4e4e7;
+  --sl-color-hairline-shade: rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   FORCE DARK — hide theme toggle entirely
+   ═══════════════════════════════════════════ */
+
+starlight-theme-select,
+starlight-theme-select * {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-size: 0.875rem;
+  background: var(--sl-color-bg);
+}
+
+:focus-visible {
+  outline: 1.5px solid rgba(165, 255, 17, 0.45);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER / NAVBAR
+   ═══════════════════════════════════════════ */
+
+header.header {
+  height: var(--sl-nav-height) !important;
+  border-bottom: 1px solid var(--sl-color-hairline-light) !important;
+  background: var(--sl-color-bg-nav) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: none !important;
+}
+
+/* Site title */
+.site-title {
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--sl-color-white) !important;
+  gap: 0.4rem !important;
+}
+
+/* Header right icons — smaller */
+.social-icons a,
+starlight-theme-select button {
+  font-size: 0.75rem !important;
+  opacity: 0.65;
+  transition: opacity 0.12s ease;
+}
+.social-icons a:hover,
+starlight-theme-select button:hover { opacity: 1; }
+
+/* Search bar compact */
+site-search button {
+  font-size: 0.75rem !important;
+  padding: 0 0.6rem !important;
+  height: 1.9rem !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  background: var(--sl-color-gray-6) !important;
+  color: var(--sl-color-gray-3) !important;
+}
+
+/* ═══════════════════════════════════════════
+   SIDEBAR
+   ═══════════════════════════════════════════ */
+
+.sidebar-pane {
+  border-inline-end: 1px solid var(--sl-color-hairline-light) !important;
+  background: var(--sl-color-bg-sidebar) !important;
+  backdrop-filter: none !important;
+  width: var(--sl-sidebar-width) !important;
+}
+
+.sidebar-content {
+  padding: 0.75rem 0 !important;
+}
+
+/* Section group labels */
+.group-label span,
+.sidebar-group-header {
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--sl-color-gray-3) !important;
+  padding: 0.9rem 1rem 0.3rem !important;
+}
+
+/* All sidebar links */
+.sidebar-content a {
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  color: var(--sl-color-gray-2) !important;
+  padding: 0.3rem 1rem !important;
+  border-radius: 0 !important;
+  line-height: 1.35 !important;
+  transition: color 0.1s ease, background 0.1s ease !important;
+  text-decoration: none !important;
+}
+
+.sidebar-content a:hover {
+  color: var(--sl-color-white) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Active page */
+.sidebar-content a[aria-current='page'] {
+  color: var(--cal-accent) !important;
+  background: var(--cal-accent-dim) !important;
+  font-weight: 500 !important;
+  position: relative;
+}
+
+.sidebar-content a[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 2px;
+  background: var(--cal-accent);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Nested (sub) links */
+.sidebar-content a.small {
+  padding-left: 1.75rem !important;
+  font-size: 0.775rem !important;
+  color: var(--sl-color-gray-3) !important;
+}
+.sidebar-content a.small:hover { color: var(--sl-color-gray-2) !important; }
+.sidebar-content a.small[aria-current='page'] { color: var(--cal-accent) !important; }
+
+/* Details/summary collapsible groups */
+.sidebar-content details summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--sl-color-gray-3) !important;
+  padding: 0.9rem 1rem 0.3rem !important;
+}
+.sidebar-content details summary::marker,
+.sidebar-content details summary::-webkit-details-marker { display: none; }
+
+/* ═══════════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════════ */
+
+.main-frame { background: var(--sl-color-bg); }
+
+.content-panel {
+  padding-inline: 2rem !important;
+  padding-block: 2rem !important;
+}
+
+/* Page entry animation */
+.sl-markdown-content {
+  animation: cal-in 0.3s ease both;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--sl-color-gray-1);
+}
+
+@keyframes cal-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Headings */
+.sl-markdown-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--sl-color-white);
+  margin-bottom: 0.5rem;
+}
+.sl-markdown-content h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--sl-color-white);
+  border-top: 1px solid var(--sl-color-hairline-light);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+.sl-markdown-content h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--sl-color-white);
+}
+.sl-markdown-content h4 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Heading permalink (anchor) icon. The reduced heading sizes above shrink the
+   heading text, but the heading wrapper keeps Starlight's larger default
+   font-size — and the anchor icon is sized in `em` off that wrapper, so it
+   rendered oversized next to the smaller heading. Pin it in `rem` so it stays
+   proportional across all heading levels. */
+.sl-markdown-content .sl-heading-wrapper {
+  --sl-anchor-icon-size: 0.85rem;
+}
+
+/* Links */
+.sl-markdown-content a {
+  color: var(--sl-color-text-accent);
+  text-decoration: none;
+}
+.sl-markdown-content a:hover {
+  color: var(--cal-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Any link/button with lime background must have dark text — no exceptions */
+.sl-markdown-content a[class*="btn-primary"],
+a[class*="btn-primary"],
+.sl-markdown-content a[data-variant="primary"],
+a[data-variant="primary"],
+.sl-link-button[data-variant="primary"] {
+  color: #09090b !important;
+}
+.sl-markdown-content a[class*="btn-primary"]:hover,
+a[class*="btn-primary"]:hover,
+.sl-markdown-content a[data-variant="primary"]:hover,
+a[data-variant="primary"]:hover,
+.sl-link-button[data-variant="primary"]:hover {
+  color: #09090b !important;
+  text-decoration: none !important;
+}
+
+/* Code */
+.sl-markdown-content :not(pre) > code {
+  font-size: 0.8em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-hairline-light);
+  color: var(--sl-color-gray-1);
+}
+
+.sl-markdown-content pre {
+  font-size: 0.8125rem;
+  border-radius: 8px;
+  border: 1px solid var(--sl-color-hairline-light);
+  background: var(--sl-color-gray-6) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.1rem;
+}
+
+/* Blockquote */
+.sl-markdown-content blockquote {
+  border-inline-start: 2px solid var(--cal-accent);
+  background: var(--cal-accent-dim);
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-2);
+}
+
+/* Tables */
+.sl-markdown-content table {
+  font-size: 0.8125rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+.sl-markdown-content th {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-3);
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.sl-markdown-content td {
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+  padding: 0.5rem 0.75rem;
+  color: var(--sl-color-gray-2);
+}
+
+/* ═══════════════════════════════════════════
+   STARLIGHT CARDS
+   ═══════════════════════════════════════════ */
+
+.card {
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  border-radius: 8px !important;
+  background: var(--sl-color-gray-6) !important;
+  box-shadow: none !important;
+  padding: 1rem !important;
+  transition: border-color 0.15s ease, transform 0.15s ease !important;
+}
+.card:hover {
+  border-color: var(--sl-color-gray-4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+.card .sl-flex { gap: 0.4rem !important; }
+.card p { font-size: 0.8125rem !important; color: var(--sl-color-gray-2) !important; }
+.card .title { font-size: 0.875rem !important; font-weight: 600 !important; color: var(--sl-color-white) !important; }
+.card .card-icon { font-size: 1rem !important; }
+
+/* Card stagger */
+.sl-markdown-content .card { animation: cal-card-in 0.35s ease both; }
+.sl-markdown-content .card:nth-child(1) { animation-delay: 0ms; }
+.sl-markdown-content .card:nth-child(2) { animation-delay: 50ms; }
+.sl-markdown-content .card:nth-child(3) { animation-delay: 100ms; }
+.sl-markdown-content .card:nth-child(4) { animation-delay: 150ms; }
+
+@keyframes cal-card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   STARLIGHT LINK BUTTONS
+   Lime bg → must have dark text. No white on lime.
+   ═══════════════════════════════════════════ */
+
+.sl-link-button {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: 6px !important;
+  transition: all 0.12s ease !important;
+}
+
+.sl-link-button[data-variant='primary'],
+a.sl-link-button[data-variant='primary'],
+.sl-link-button[data-variant='primary'] *,
+a.sl-link-button[data-variant='primary'] * {
+  background: var(--cal-accent) !important;
+  color: #09090b !important;
+  border-color: var(--cal-accent) !important;
+}
+.sl-link-button[data-variant='primary']:hover,
+a.sl-link-button[data-variant='primary']:hover {
+  background: #baff35 !important;
+  color: #09090b !important;
+  text-decoration: none !important;
+}
+
+/* Global rule: anything with a lime/accent background must have dark text */
+[style*="background: #a5ff11"],
+[style*="background:#a5ff11"],
+[style*="background-color: #a5ff11"],
+[style*="background-color:#a5ff11"],
+.bg-accent,
+[data-variant='primary'] {
+  color: #09090b !important;
+}
+
+.sl-link-button[data-variant='secondary'],
+a.sl-link-button[data-variant='secondary'] {
+  background: transparent !important;
+  color: var(--sl-color-gray-2) !important;
+  border: 1px solid var(--sl-color-hairline-light) !important;
+}
+.sl-link-button[data-variant='secondary']:hover {
+  border-color: var(--sl-color-gray-4) !important;
+  color: var(--sl-color-white) !important;
+  text-decoration: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   STARLIGHT ASIDES / CALLOUTS
+   ═══════════════════════════════════════════ */
+
+.starlight-aside {
+  border-radius: 6px !important;
+  border-width: 1px !important;
+  font-size: 0.8125rem !important;
+  padding: 0.75rem 1rem !important;
+}
+
+/* ═══════════════════════════════════════════
+   STARLIGHT STEPS
+   ═══════════════════════════════════════════ */
+
+.sl-steps > li {
+  font-size: 0.875rem !important;
+  padding-inline-start: 2rem !important;
+}
+.sl-steps > li::before {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  background: var(--cal-accent) !important;
+  color: #09090b !important;
+  border: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   STARLIGHT TABS
+   ═══════════════════════════════════════════ */
+
+starlight-tabs {
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+starlight-tabs [role='tablist'] {
+  background: var(--sl-color-gray-6) !important;
+  border-bottom: 1px solid var(--sl-color-hairline-light) !important;
+  gap: 0 !important;
+  padding: 0 0.5rem !important;
+}
+starlight-tabs [role='tab'] {
+  font-size: 0.775rem !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 0.75rem !important;
+  color: var(--sl-color-gray-3) !important;
+}
+starlight-tabs [role='tab'][aria-selected='true'] {
+  color: var(--sl-color-white) !important;
+  border-bottom-color: var(--cal-accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   RIGHT SIDEBAR (TOC)
+   ═══════════════════════════════════════════ */
+
+.right-sidebar {
+  border-inline-start: 1px solid var(--sl-color-hairline-light) !important;
+}
+
+starlight-toc .sidebar-pane { background: transparent !important; border: none !important; }
+
+starlight-toc a {
+  font-size: 0.75rem !important;
+  color: var(--sl-color-gray-3) !important;
+  line-height: 1.4 !important;
+  padding: 0.2rem 0 !important;
+}
+starlight-toc a:hover { color: var(--sl-color-gray-1) !important; text-decoration: none !important; }
+starlight-toc a[aria-current='true'] { color: var(--cal-accent) !important; font-weight: 500 !important; }
+
+.right-sidebar-panel .section-header {
+  font-size: 0.6rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: var(--sl-color-gray-3) !important;
+  font-weight: 700 !important;
+}
+
+/* ═══════════════════════════════════════════
+   PAGEFIND SEARCH
+   ═══════════════════════════════════════════ */
+
+.pagefind-ui {
+  --pagefind-ui-scale: 0.85;
+  --pagefind-ui-background: var(--sl-color-gray-6);
+  --pagefind-ui-border: var(--sl-color-hairline-light);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 6px;
+  --pagefind-ui-text: var(--sl-color-gray-2);
+  --pagefind-ui-primary: var(--cal-accent);
+}
+
+/* ═══════════════════════════════════════════
+   MERMAID DIAGRAMS
+   ═══════════════════════════════════════════ */
+
+.mermaid-wrapper,
+pre.mermaid {
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* ═══════════════════════════════════════════
+   HERO PAGE BACKGROUND
+   ═══════════════════════════════════════════ */
+
+body {
+  background: var(--sl-color-bg);
+}
+
+/* Home page: HomeHero provides the H1 — hide Starlight's duplicate title */
+main:has(.hero) .content-title {
+  display: none !important;
+}
+
+/* Subtle top glow only visible near header */
+.main-pane::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 300px;
+  background: radial-gradient(ellipse 60% 100% at 50% -30%, rgba(165, 255, 17, 0.04), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 72rem) {
+  .content-panel { padding-inline: 1.25rem !important; }
+}
+
+@media (max-width: 50rem) {
+  .sl-markdown-content h1 { font-size: 1.3rem; }
+  .sl-markdown-content h2 { font-size: 1rem; }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATED DIAGRAM ENGINE (Figure / SeqDiagram / ArchStack)
+   ═══════════════════════════════════════════ */
+
+/* Light theme: keep the diagram Replay control legible. */
+:root[data-theme='light'] .replay-btn {
+  background: #f4f4f5; color: #52525b; border-color: #d4d4d8;
+}
+
+.diagram-container { overflow-x: auto; margin: 1.25rem 0; }
+.diagram-container svg { border-radius: 10px; max-height: 75vh; }
+.diagram-container.seq svg { min-width: 700px; }
+.seq-step { opacity: 0; }
+.diagram-container.animating .seq-step {
+  animation: stepIn .4s ease-out forwards;
+  animation-delay: calc(var(--step-i) * .35s);
+}
+@keyframes stepIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+.diagram-tools { display: flex; justify-content: flex-end; margin-bottom: .5rem; }
+.replay-btn {
+  padding: 6px 16px; border: 1px solid var(--sl-color-gray-5);
+  background: var(--sl-color-gray-6); color: var(--sl-color-gray-2);
+  font-family: var(--sl-font-mono); font-size: .74rem; border-radius: 8px; cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.replay-btn:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+@media (prefers-reduced-motion: reduce) {
+  .seq-step { opacity: 1; }
+  .diagram-container.animating .seq-step { animation: none; }
+}
