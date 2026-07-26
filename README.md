@@ -1,41 +1,32 @@
-# Website
+# Mintlayer Docs
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Official documentation for [Mintlayer](https://www.mintlayer.org), built with [Astro Starlight](https://starlight.astro.build).
 
-### Installation
+## Local development
 
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
+```bash
+npm install
+npm run dev        # http://localhost:4321/
+npm run build      # production build to ./dist
+npm run preview    # preview production build
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+## Project structure
 
 ```
-$ yarn build
+src/
+├── assets/          # logo and images
+├── components/      # custom Astro components (hero, cards)
+├── content/docs/    # documentation pages (.md / .mdx)
+└── styles/          # design system CSS
+astro.config.mjs     # Starlight config and sidebar
+public/              # static assets
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Contents
 
-### Deployment
+- **Build** — Mojito Inject, JavaScript SDK, MCP
+- **Guides** — token issuance, bridge API, Trezor firmware
+- **Whitepaper** — architecture, wallet, tokenization, DeFi, DEX, tokenomics
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+> If you deploy to GitHub Pages under a project path, set `base: '/mintlayer-docs/'` in `astro.config.mjs`.
