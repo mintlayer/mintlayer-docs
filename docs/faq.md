@@ -49,7 +49,7 @@ To participate as a block signer you must stake at least 0.01% of the total toke
 
 ## How do staking rounds and lock-ups work?
 
-Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are locked across three rounds: the auction round (when you apply), the active round (when you participate), and a lock-in round afterwards. Plan liquidity accordingly; verify round timing against the network you operate on, as parameters can change between releases. See the [whitepaper chapter 6](whitepaper/6-token-and-public-sale.md) for the full timeline.
+Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are locked across three rounds: the auction round (when you apply), the active round (when you participate), and a lock-in round afterwards. Plan liquidity accordingly; verify round timing against the network you operate on, as parameters can change between releases. See the [whitepaper chapter 6](whitepaper/7-token-and-public-sale.md) for the full timeline.
 
 ## How do I move tokens between Mintlayer and Ethereum?
 
