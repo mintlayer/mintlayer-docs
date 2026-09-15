@@ -27,7 +27,7 @@ flowchart LR
     ND <-->|"syncs + validates"| NET
 ```
 
-In the table above, "Needs the other" cuts both ways for the wallet: `wallet-cli` either runs its wallet RPC server **embedded** (the default, talking to the node directly), or acts as a **client of a separate `wallet-rpc-daemon`** when you point it at one (the recommended setup for [staking in the background](install/install-from-docker.md#staking)).
+In the Node vs. wallet comparison, "Needs the other" cuts both ways for the wallet: `wallet-cli` either runs its wallet RPC server **embedded** (the default, talking to the node directly), or acts as a **client of a separate `wallet-rpc-daemon`** when you point it at one (the recommended setup for [staking in the background](install/install-from-docker.md#staking)).
 
 | | **Node** | **Wallet** |
 | --- | -------- | ---------- |

@@ -2,6 +2,13 @@
 title: "unlockprivatekeys"
 sidebar_position: 118
 ---
+:::note[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-unlock-private-keys`](wallet-unlock-private-keys-command-guide.md).
+
+:::
+
+
 
 The `unlockprivatekeys` command is used to unlock the encrypted private keys of the currently opened wallet in Mintlayer.
 

@@ -2,6 +2,13 @@
 title: "abandontransaction"
 sidebar_position: 1
 ---
+:::note[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`transaction-abandon`](transaction-abandon-command-guide.md).
+
+:::
+
+
 
 The `abandontransaction` command allows you to abandon an unconfirmed transaction within your Mintlayer wallet. By doing so, the inputs consumed by the abandoned transaction are made available for reuse in subsequent transactions.
 

@@ -20,7 +20,7 @@ staking-create-pool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> <DECOM
 
 ## Arguments
 
-- **`<AMOUNT>`**: The amount to pledge to the pool. There is a minimum (40,000 TML). This amount and all staking rewards **cannot be withdrawn without decommissioning the pool**. To withdraw rewards without decommissioning, consider creating a pool and delegating to yourself, delegators have no withdrawal restrictions.
+- **`<AMOUNT>`**: The amount to pledge to the pool. There is a minimum (40,000 TML). This amount and all staking rewards **cannot be withdrawn without decommissioning the pool**. To earn and withdraw rewards without decommissioning, delegate to your own pool: delegated funds can be withdrawn with `delegation-withdraw`, subject to a lock period before they become spendable.
 
 - **`<COST_PER_BLOCK>`**: A fixed amount in coins subtracted from each block reward and handed to the pool operator before applying the margin ratio.
 

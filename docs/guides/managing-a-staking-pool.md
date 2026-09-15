@@ -9,7 +9,9 @@ This guide walks through the full lifecycle of a Mintlayer staking pool, from in
 
 - A running, synced `node-daemon`
 - `wallet-cli` connected to the node
-- A wallet with at least 40,000 TML for the pledge (plus a small amount for transaction fees)
+- A wallet with the minimum pledge: 40,000 TML on testnet (equivalent to 40,000 ML on mainnet), plus a small amount for transaction fees.
+
+> Examples below use **testnet** values (TML tokens). On mainnet the amounts are in ML; the commands are identical apart from the network selected when starting `wallet-cli`.
 
 ## Concepts
 
@@ -63,7 +65,7 @@ The wallet automatically generates a VRF key for the pool. You only need to supp
 
 After the transaction is confirmed, use `staking-list-pools` to find your pool id.
 
-### Step 4: Verify the pool is visible
+### Step 3: Verify the pool is visible
 
 ```
 staking-list-pools
@@ -102,6 +104,8 @@ To avoid having to manually run `staking-start` every time the wallet restarts, 
 ```
 wallet-cli mainnet --start-staking-for-account 0
 ```
+
+(For testnet staking, use `wallet-cli testnet --start-staking-for-account 0`.)
 
 Replace `0` with your account index if you are using a non-default account. This is the recommended setup for unattended staking nodes.
 

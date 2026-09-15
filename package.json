@@ -18,7 +18,7 @@
   "dependencies": {
     "@docusaurus/core": "3.7.0",
     "@docusaurus/preset-classic": "3.7.0",
-    "@docusaurus/theme-mermaid": "^3.7.0",
+    "@docusaurus/theme-mermaid": "3.7.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "docusaurus-plugin-llms": "^0.6.0",
@@ -46,5 +46,14 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.1.1",
+    "minimatch": "^9.0.7",
+    "image-size": "^2.0.4",
+    "uuid": "^11.1.1",
+    "yaml": "^2.8.3",
+    "webpack": "^5.111.0",
+    "webpackbar": "^7.0.0"
   }
 }
