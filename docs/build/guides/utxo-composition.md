@@ -6,7 +6,7 @@ sidebar_position: 9
 
 # Composing UTXOs: Updating an Order
 
-Mintlayer is a UTXO chain: **there is no mutable state**. A DEX order is an unspent output, and every protocol object behaves the same way — so "updating" an order means spending it and re-creating it *in the same transaction*. This atomic spend-and-recreate pattern is the essence of UTXO composition.
+Mintlayer is a UTXO chain: **there is no mutable state**. A DEX order is an unspent output, and every protocol object behaves the same way, so "updating" an order means spending it and re-creating it *in the same transaction*. This atomic spend-and-recreate pattern is the essence of UTXO composition.
 
 ## The pattern
 
@@ -25,7 +25,7 @@ flowchart LR
 
 Two consequences worth internalizing:
 
-- The **new order gets a new ID** (IDs are derived from inputs — see [predicting IDs](custom-transactions.md#predicting-ids)). Publish the new ID and retire the old one.
+- The **new order gets a new ID** (IDs are derived from inputs, see [predicting IDs](custom-transactions.md#predicting-ids)). Publish the new ID and retire the old one.
 - If the transaction fails or is dropped, nothing changed: the old order is still live and its nonce unspent.
 
 ## The ingredients
@@ -37,7 +37,7 @@ Two consequences worth internalizing:
 | Surplus / change outputs | `EncodeOutputTransfer` / `EncodeOutputTokenTransfer` | Old balance minus new give amount |
 | Fee input | `EncodeInputForUtxo` | A coin UTXO you own |
 | Witness for the conclude input | `EncodeWitness` with `TxAdditionalInfo` | Order balances from the indexer |
-| Witness for the coin input | `EncodeWitness` | — |
+| Witness for the coin input | `EncodeWitness` | n/a |
 
 ## Fetch the order state
 
@@ -93,7 +93,7 @@ Token inputs (e.g. a UTXO holding the additional 50 tokens) encode with `EncodeI
 
 ## Sign it
 
-The conclude input's sighash requires the order's balances via `TxAdditionalInfo` — this is the part that differs from a plain transfer:
+The conclude input's sighash requires the order's balances via `TxAdditionalInfo`: this is the part that differs from a plain transfer:
 
 ```go
 additionalInfo := mintlayer.TxAdditionalInfo{
@@ -139,14 +139,14 @@ newOrderID, err := c.GetOrderId(append(concludeInput, feeInput...), mintlayer.Ma
 
 The conclude-then-recreate transaction is one instance of a general tool. With the same encoders you can:
 
-- **Cancel an order** — conclude input, no create-order output; the balance flows to change outputs.
-- **Self-fill and requote** — conclude input + `FillOrder`-style split: partially fill your own order and re-create a smaller one. (A pure fill by a taker uses `EncodeInputForFillOrder` and needs **no signature** for that input — `EncodeWitnessNoSignature`.)
-- **Freeze before restructuring** — `EncodeInputForFreezeOrder` stops takers while you prepare the replacement transaction.
-- **Chain protocol objects** — the same spend-and-recreate logic composes delegations (withdraw input + `EncodeOutputDelegateStaking` output) and any future output type.
+- **Cancel an order**: conclude input, no create-order output; the balance flows to change outputs.
+- **Self-fill and requote**: conclude input + `FillOrder`-style split: partially fill your own order and re-create a smaller one. (A pure fill by a taker uses `EncodeInputForFillOrder` and needs **no signature** for that input, `EncodeWitnessNoSignature`.)
+- **Freeze before restructuring**: `EncodeInputForFreezeOrder` stops takers while you prepare the replacement transaction.
+- **Chain protocol objects**: the same spend-and-recreate logic composes delegations (withdraw input + `EncodeOutputDelegateStaking` output) and any future output type.
 
 :::note
 
-Exactly which balances must be re-assigned to which outputs is enforced by consensus, not by the encoders — the runtime tells you *if* a transaction is invalid, the indexer tells you *what* the balances are, and the composition is yours to design.
+Exactly which balances must be re-assigned to which outputs is enforced by consensus, not by the encoders, the runtime tells you *if* a transaction is invalid, the indexer tells you *what* the balances are, and the composition is yours to design.
 
 :::
 

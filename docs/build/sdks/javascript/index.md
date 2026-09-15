@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # JavaScript SDK
 
-The `@mintlayer/sdk` package is the JavaScript/TypeScript SDK for Mintlayer. It provides a typed `Client` class that builds and signs transactions through a pluggable account provider — by default the [Mojito Wallet](../../../wallet/mojito-wallet.md) browser extension, or standalone key-based providers for Node.js scripts, bots, and tests.
+The `@mintlayer/sdk` package is the JavaScript/TypeScript SDK for Mintlayer. It provides a typed `Client` class that builds and signs transactions through a pluggable account provider, by default the [Mojito Wallet](../../../wallet/mojito-wallet.md) browser extension, or standalone key-based providers for Node.js scripts, bots, and tests.
 
 ```bash
 npm install @mintlayer/sdk

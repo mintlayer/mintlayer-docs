@@ -27,7 +27,7 @@ The quickest way to a full working stack: node, wallet daemon, and web interface
 
 ### 2. [Install from binaries](install-from-binaries.md)
 
-Pre-built executables for Linux, macOS, and Windows, downloaded from the [official download page](https://www.mintlayer.org/download/). On Linux, from version 1.4.1 the `deb` and `rpm` artifacts are proper native packages with systemd units, a `mintlayer` system user, and man pages — see [Native Linux packages](install-from-binaries.md#native-linux-packages-debrpm).
+Pre-built executables for Linux, macOS, and Windows, downloaded from the [official download page](https://www.mintlayer.org/download/). On Linux, from version 1.4.1 the `deb` and `rpm` artifacts are proper native packages with systemd units, a `mintlayer` system user, and man pages; see [Native Linux packages](install-from-binaries.md#native-linux-packages-debrpm).
 
 ### 3. [Install from Docker](install-from-docker.md)
 

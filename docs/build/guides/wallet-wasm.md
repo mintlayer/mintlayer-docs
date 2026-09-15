@@ -1,12 +1,12 @@
 ---
 title: "Wallet & Signing (WASM)"
-description: "Generate a Mintlayer wallet and sign transactions and messages with the Go SDK's embedded WASM runtime — no wallet daemon, full custody."
+description: "Generate a Mintlayer wallet and sign transactions and messages with the Go SDK's embedded WASM runtime: no wallet daemon, full custody."
 sidebar_position: 7
 ---
 
 # Wallet & Signing (WASM)
 
-The Go SDK embeds the same WASM cryptography runtime that the wallets use ([wazero](https://wazero.io/), no CGO). With it you can generate and restore wallets, derive addresses, and sign transactions entirely in your own process — there is no wallet daemon holding your keys.
+The Go SDK embeds the same WASM cryptography runtime that the wallets use ([wazero](https://wazero.io/), no CGO). With it you can generate and restore wallets, derive addresses, and sign transactions entirely in your own process, there is no wallet daemon holding your keys.
 
 This guide covers the wallet side; building arbitrary transactions is covered in [Forging custom transactions](custom-transactions.md) and the [Building Transactions](../sdks/go/transactions.md) reference.
 
@@ -24,7 +24,7 @@ if err != nil {
 defer c.Close()
 ```
 
-Initialization compiles the embedded WASM module (~400 ms) — do it once per process.
+Initialization compiles the embedded WASM module (~400 ms); do it once per process.
 
 ## Generating a wallet
 
@@ -90,7 +90,7 @@ addr, err    := c.PubkeyToPubkeyHashAddress(pubKey, mintlayer.Testnet)
 
 ### Watch-only wallets
 
-From an extended private key you can export the extended public key and derive **addresses without any private key** — useful for monitoring services:
+From an extended private key you can export the extended public key and derive **addresses without any private key**: useful for monitoring services:
 
 ```go
 accountXPub, err := c.ExtendedPublicKeyFromExtendedPrivateKey(accountKey)
@@ -135,7 +135,7 @@ txID, err := c.GetTransactionID(signedTx, true)
 json, err := c.DecodeSignedTransactionToJS(signedTx, mintlayer.Mainnet)
 ```
 
-Broadcast via the indexer (`SubmitTransaction`) or the node (`P2PSubmitTransaction`) — see step 8 of the [reference](../sdks/go/transactions.md#step-8-assemble-and-submit).
+Broadcast via the indexer (`SubmitTransaction`) or the node (`P2PSubmitTransaction`); see step 8 of the [reference](../sdks/go/transactions.md#step-8-assemble-and-submit).
 
 Special inputs use dedicated witnesses: `EncodeWitnessNoSignature` (fill-order inputs need no signature), `EncodeWitnessHTLCSpend` and `EncodeWitnessHTLCRefundSingleSig` (HTLC inputs).
 
@@ -151,7 +151,7 @@ signature, err := c.SignChallenge(spendKey, []byte("login-nonce-1234"))
 ok, err := c.VerifyChallenge(addr, mintlayer.Mainnet, signature, []byte("login-nonce-1234"))
 ```
 
-`VerifyChallenge` checks the signature against the bech32m address. For spending-authorization messages (transaction intents), use `SignMessageForSpending` / `VerifySignatureForSpending` instead — see [Transaction intents](custom-transactions.md#transaction-intents).
+`VerifyChallenge` checks the signature against the bech32m address. For spending-authorization messages (transaction intents), use `SignMessageForSpending` / `VerifySignatureForSpending` instead; see [Transaction intents](custom-transactions.md#transaction-intents).
 
 ## Cheat sheet
 

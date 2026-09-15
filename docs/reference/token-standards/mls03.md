@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # MLS-03: NFT Metadata
 
-MLS-03 is Mintlayer's non-fungible token standard. Its metadata documents extend the [common top-level fields](index.md#common-top-level-fields) plus a set of NFT-only base fields, and use `type_metadata` to describe the kind of asset — from artwork to event tickets to on-chain legal notices.
+MLS-03 is Mintlayer's non-fungible token standard. Its metadata documents extend the [common top-level fields](index.md#common-top-level-fields) plus a set of NFT-only base fields, and use `type_metadata` to describe the kind of asset, from artwork to event tickets to on-chain legal notices.
 
 Full schemas and example files: [mintlayer/token-standards/mls03](https://github.com/mintlayer/token-standards/tree/main/mls03).
 
@@ -35,14 +35,14 @@ Full schemas and example files: [mintlayer/token-standards/mls03](https://github
 | `loyalty_points` | Loyalty program points batch with expiry and redemption terms |
 | `club_card` | Membership card with tier, benefits, and access rules |
 | `video` | Video NFT with production metadata and licensing rights |
-| `notification_legal` | On-chain legal notice — court summons, regulatory service of process |
+| `notification_legal` | On-chain legal notice, court summons, regulatory service of process |
 | `ticket` | Event access with seat, validity window, and resale rules |
 | `music` | Audio NFT with master rights, royalty share, and physical companion |
 | `credential` | Soulbound academic or professional qualification |
 | `domain` | On-chain domain name with multi-chain resolution records |
 | `supply_chain` | Physical product provenance record with stage-by-stage audit trail |
-| `pet_passport` | Animal health and travel document — vaccinations, microchip, vet records |
-| `shariah_certificate` | On-chain Shariah compliance certificate — institutional, product, fund, or transaction scope |
+| `pet_passport` | Animal health and travel document, vaccinations, microchip, vet records |
+| `shariah_certificate` | On-chain Shariah compliance certificate, institutional, product, fund, or transaction scope |
 
 ## `type_metadata` highlights
 
@@ -102,8 +102,8 @@ Only the key fields are listed here; the repository contains the complete field 
 
 ### `rwa` (unique real-world assets)
 
-Property and other unique assets: legal ownership records, jurisdiction and regulatory classification, transfer restrictions, valuation method, and `documents[]` with integrity hashes — see the [rwa-property example](https://github.com/mintlayer/token-standards/blob/main/mls03/rwa-property.json).
+Property and other unique assets: legal ownership records, jurisdiction and regulatory classification, transfer restrictions, valuation method, and `documents[]` with integrity hashes, see the [rwa-property example](https://github.com/mintlayer/token-standards/blob/main/mls03/rwa-property.json).
 
 ## Issuing an MLS-03 NFT
 
-On-chain issuance (metadata URI, media hash) is covered in [Issue an NFT (SDK)](../../build/guides/issue-nft.md) and the [wallet-cli NFT guide](../../wallet/guides/issuing-and-managing-an-nft.md). Remember: MLS-03 metadata is immutable once issued — plan the document before you mint.
+On-chain issuance (metadata URI, media hash) is covered in [Issue an NFT (SDK)](../../build/guides/issue-nft.md) and the [wallet-cli NFT guide](../../wallet/guides/issuing-and-managing-an-nft.md). Remember: MLS-03 metadata is immutable once issued; plan the document before you mint.

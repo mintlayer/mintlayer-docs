@@ -1,6 +1,6 @@
 ---
 title: "Trading with Orders (SDK)"
-description: "Create, fill, and conclude on-chain orders with the JavaScript and Go SDKs — the SDK equivalent of the wallet-cli orders guide."
+description: "Create, fill, and conclude on-chain orders with the JavaScript and Go SDKs, the SDK equivalent of the wallet-cli orders guide."
 sidebar_position: 5
 ---
 
@@ -32,7 +32,7 @@ const signedTx = await client.createOrder({
 });
 ```
 
-**Go** (wasm encoders — the wallet sub-client has no high-level order methods):
+**Go** (wasm encoders, the wallet sub-client has no high-level order methods):
 
 ```go
 import mintlayer "github.com/mintlayer/go-sdk/wasm"
@@ -76,7 +76,7 @@ order, err := idx.GetOrder(ctx, orderID)
 fmt.Printf("ask: %v  give: %v\n", order.AskBalance, order.GiveBalance)
 ```
 
-The node RPC also exposes `OrderInfo` and `OrdersInfoByCurrencies` — see [Go SDK: Node](../sdks/go/node.md#token-and-order-info).
+The node RPC also exposes `OrderInfo` and `OrdersInfoByCurrencies`; see [Go SDK: Node](../sdks/go/node.md#token-and-order-info).
 
 ## Filling an order
 

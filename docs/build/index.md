@@ -15,7 +15,7 @@ For ports, RPC authentication, WebSocket subscriptions, regtest, and the WASM wr
 ## Integrate a wallet into your dApp
 
 - **[Mojito Inject](mojito-inject.md)**, the Mojito browser extension injects a `window.mojito` provider, similar to MetaMask's `window.ethereum`. Request accounts, sign, and send transactions directly from your frontend.
-- **[JavaScript SDK](sdks/javascript/index.md)**, a typed `Client` for the Mojito wallet extension — plus standalone key/mnemonic providers and a headless `WalletState` engine for scripts and bots.
+- **[JavaScript SDK](sdks/javascript/index.md)**, a typed `Client` for the Mojito wallet extension, plus standalone key/mnemonic providers and a headless `WalletState` engine for scripts and bots.
 
 ## Use a full SDK
 

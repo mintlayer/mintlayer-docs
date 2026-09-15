@@ -1,6 +1,6 @@
 ---
 title: "Issue an NFT (SDK)"
-description: "Issue and transfer MLS-03 NFTs with the JavaScript and Go SDKs — the SDK equivalent of the wallet-cli NFT guide."
+description: "Issue and transfer MLS-03 NFTs with the JavaScript and Go SDKs, the SDK equivalent of the wallet-cli NFT guide."
 sidebar_position: 3
 ---
 
@@ -10,7 +10,7 @@ The SDK equivalent of [Issuing and managing an NFT](../../wallet/guides/issuing-
 
 :::note[Immutable by design]
 
-NFT metadata is **set at issuance and cannot be changed** — there is no equivalent of `changeMetadataUri` for NFTs. Compute and record the media hash before issuing: Mintlayer does not prescribe an algorithm, use a standard one (e.g. SHA-256) and record which one you used.
+NFT metadata is **set at issuance and cannot be changed**: there is no equivalent of `changeMetadataUri` for NFTs. Compute and record the media hash before issuing: Mintlayer does not prescribe an algorithm, use a standard one (e.g. SHA-256) and record which one you used.
 
 :::
 
@@ -56,7 +56,7 @@ result, err := wc.IssueNFT(ctx, wallet.IssueNFTParams{
 fmt.Printf("nft id: %s\n", result.TokenID)
 ```
 
-Each issuance transaction creates exactly one NFT — there is no mint step afterwards.
+Each issuance transaction creates exactly one NFT, there is no mint step afterwards.
 
 ## Transferring
 
@@ -66,7 +66,7 @@ Each issuance transaction creates exactly one NFT — there is no mint step afte
 await client.transferNft({ to: 'tmt1q...', token_id: 'tmltk1...' });
 ```
 
-**Go**: an NFT transfer is a token transfer of the NFT id — use the wallet transaction APIs (see [Go SDK: Wallet](../sdks/go/wallet.md)) or the `wasm` output encoders.
+**Go**: an NFT transfer is a token transfer of the NFT id; use the wallet transaction APIs (see [Go SDK: Wallet](../sdks/go/wallet.md)) or the `wasm` output encoders.
 
 ## Reading NFT state
 
@@ -85,4 +85,4 @@ fmt.Printf("owner: %s  name: %s\n", nft.Owner, nft.Metadata.Name)
 
 ## Metadata standard
 
-For the JSON document at the metadata URI (media details, editions, licensing, collections), follow the MLS-03 schema in [Token Metadata Standards](../../reference/token-standards/mls03.md) — it includes ready-made templates for art, gaming, tickets, credentials, and more.
+For the JSON document at the metadata URI (media details, editions, licensing, collections), follow the MLS-03 schema in [Token Metadata Standards](../../reference/token-standards/mls03.md), it includes ready-made templates for art, gaming, tickets, credentials, and more.

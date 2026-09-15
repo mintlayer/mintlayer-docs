@@ -8,9 +8,9 @@ sidebar_position: 4
 
 The SDK offers three layers for working with transactions, from most to least convenient:
 
-1. **One-call methods** — `client.transfer(...)`, `client.issueToken(...)`, and friends: build, sign, and return the signed transaction.
-2. **Manual building** — the `buildX(...)` variants and `buildTransaction({ type, params })` return an unsigned `Transaction` you can inspect, sign yourself, and broadcast explicitly.
-3. **Low-level signing** — the `Signer` class signs transactions with explicit private keys, independent of any wallet.
+1. **One-call methods**: `client.transfer(...)`, `client.issueToken(...)`, and friends: build, sign, and return the signed transaction.
+2. **Manual building**: the `buildX(...)` variants and `buildTransaction({ type, params })` return an unsigned `Transaction` you can inspect, sign yourself, and broadcast explicitly.
+3. **Low-level signing**: the `Signer` class signs transactions with explicit private keys, independent of any wallet.
 
 ## One-call methods
 
@@ -93,7 +93,7 @@ const signedTx = await client.signTransaction(tx); // signed transaction hex
 
 ### Signing with the Signer class
 
-Since SDK version 1.0.17 the `Signer` class signs transactions locally with explicit private keys — useful with the standalone [account providers](account-providers.md) or on its own:
+Since SDK version 1.0.17 the `Signer` class signs transactions locally with explicit private keys, useful with the standalone [account providers](account-providers.md) or on its own:
 
 ```ts
 import { Signer } from '@mintlayer/sdk';

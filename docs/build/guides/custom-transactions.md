@@ -6,7 +6,7 @@ sidebar_position: 8
 
 # Forging Custom Transactions (Advanced)
 
-A Mintlayer transaction is just **inputs + outputs + witnesses**. The wallet daemon assembles standard shapes for you; the WASM runtime lets you forge any valid combination yourself. This is the advanced guide — the basic eight-step flow is documented in [Building Transactions](../sdks/go/transactions.md). Here we focus on what you can *combine*.
+A Mintlayer transaction is just **inputs + outputs + witnesses**. The wallet daemon assembles standard shapes for you; the WASM runtime lets you forge any valid combination yourself. This is the advanced guide; the basic eight-step flow is documented in [Building Transactions](../sdks/go/transactions.md). Here we focus on what you can *combine*.
 
 ```go
 import (
@@ -28,9 +28,9 @@ defer c.Close()
 tx, err := c.EncodeTransaction(encodedInputs, encodedOutputs, 0 /* flags */)
 ```
 
-- `encodedInputs` — **concatenation** of input blobs. Most inputs are UTXO spends (`EncodeInputForUtxo`), but protocol inputs exist too: token operations (`EncodeInputForMintTokens`, `EncodeInputForUnmintTokens`, `EncodeInputForFreezeToken`, …), delegation withdrawals, and order operations. All concatenate the same way.
-- `encodedOutputs` — concatenation of output blobs. Any mix of transfers, burns, issuances, data deposits, HTLCs, order creations, and pool operations.
-- `flags` — `0` for standard transactions.
+- `encodedInputs`: **concatenation** of input blobs. Most inputs are UTXO spends (`EncodeInputForUtxo`), but protocol inputs exist too: token operations (`EncodeInputForMintTokens`, `EncodeInputForUnmintTokens`, `EncodeInputForFreezeToken`, …), delegation withdrawals, and order operations. All concatenate the same way.
+- `encodedOutputs`: concatenation of output blobs. Any mix of transfers, burns, issuances, data deposits, HTLCs, order creations, and pool operations.
+- `flags`: `0` for standard transactions.
 
 Nothing stops you from mixing output types freely in one transaction.
 
@@ -75,7 +75,7 @@ feeInput, err := c.EncodeInputForUtxo(srcID, uint32(0)) // coin UTXO covering th
 encodedInputs := append(mintInput, feeInput...)
 ```
 
-The mint's `EncodeInputForMintTokens` requires the token's current `NextNonce` from the indexer — every protocol input (freezes, authority changes, delegation withdrawals, order ops) consumes its nonce the same way.
+The mint's `EncodeInputForMintTokens` requires the token's current `NextNonce` from the indexer: every protocol input (freezes, authority changes, delegation withdrawals, order ops) consumes its nonce the same way.
 
 ## Protocol fees
 
@@ -105,11 +105,11 @@ fee := new(big.Int).Mul(new(big.Int).SetUint64(uint64(size)), feeRateAtoms)
 fee.Div(fee, big.NewInt(1000))
 ```
 
-`destAddresses` is one owner address per input, in input order — for mixed inputs, that is the UTXO's address, or the relevant delegation/order owner for protocol inputs.
+`destAddresses` is one owner address per input, in input order; for mixed inputs, that is the UTXO's address, or the relevant delegation/order owner for protocol inputs.
 
 ## Predicting IDs
 
-Creation transactions get their IDs from their inputs, deterministically — compute them before broadcasting:
+Creation transactions get their IDs from their inputs, deterministically; compute them before broadcasting:
 
 ```go
 poolID, err := c.GetPoolId(encodedInputs, mintlayer.Mainnet)
@@ -137,7 +137,7 @@ Exchange the partially signed transaction out-of-band; the final assembler produ
 
 ## Transaction intents
 
-An intent is a **signed declaration of purpose** — what a transaction is meant to do — bound to the transaction ID but independent of its bytes. Signers can verify what they are authorizing before producing a witness:
+An intent is a **signed declaration of purpose** (what a transaction is meant to do), bound to the transaction ID but independent of its bytes. Signers can verify what they are authorizing before producing a witness:
 
 ```go
 msg, err := c.MakeTransactionIntentMessageToSign(intent, transactionID)
@@ -154,6 +154,6 @@ This is the building block for co-signers and policy engines that must approve t
 ## Sanity checks before broadcasting
 
 - Every input witness present, in input order (see [Wallet & Signing](wallet-wasm.md#signing-a-transaction)).
-- `TxAdditionalInfo` populated for any pool or order input — signing fails or produces an invalid sighash otherwise (see [the reference](../sdks/go/wasm.md#additional-info-for-signing)).
+- `TxAdditionalInfo` populated for any pool or order input, signing fails or produces an invalid sighash otherwise (see [the reference](../sdks/go/wasm.md#additional-info-for-signing)).
 - Protocol fees included as outputs; nonce values fresh from the indexer.
 - Dry-run the result: `GetTransactionID` and `DecodeSignedTransactionToJS` before `SubmitTransaction`.

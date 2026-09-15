@@ -6,7 +6,7 @@ sidebar_position: 8
 
 # Wallet State
 
-`WalletState` is a headless, storage-agnostic wallet engine. It keeps a wallet-relevant transaction log and derives from it the UTXO set, balances, and spendability — without performing any network or disk access itself. You own syncing, persistence, signing, and broadcasting; `WalletState` owns the bookkeeping.
+`WalletState` is a headless, storage-agnostic wallet engine. It keeps a wallet-relevant transaction log and derives from it the UTXO set, balances, and spendability, without performing any network or disk access itself. You own syncing, persistence, signing, and broadcasting; `WalletState` owns the bookkeeping.
 
 Use it for bots, scanners, and backend services that track accounts on their own instead of relying on the Mojito extension. A simple pairing: sync with the [API](../../../api/index.md), track state with `WalletState`, sign with the [`Signer`](transactions.md#signing-with-the-signer-class).
 
@@ -85,7 +85,7 @@ On chain rollback, orphan everything above the fork point:
 await wallet.rollbackTo({ height: 12340, blockHash: '0x...' });
 ```
 
-`reload()` re-reads all transactions from the store — call it when another process may have written to the same storage.
+`reload()` re-reads all transactions from the store; call it when another process may have written to the same storage.
 
 ## Reading state
 
@@ -116,4 +116,4 @@ Every entry in the log carries a state:
 | `rejected` | Broadcast or policy failure; inputs released, `rebuildRequired` may be set |
 | `conflicted` / `orphaned` | Lost a conflict, or orphaned by a rollback |
 
-Rejected transactions stop reserving their inputs, and anything spending a rejected output is rejected as well — so you can rebuild from valid base UTXOs.
+Rejected transactions stop reserving their inputs, and anything spending a rejected output is rejected as well, so you can rebuild from valid base UTXOs.

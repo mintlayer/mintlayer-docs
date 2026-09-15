@@ -10,7 +10,7 @@ Pre-built Mintlayer binaries are available on the official download page:
 
 [https://www.mintlayer.org/download/](https://www.mintlayer.org/download/)
 
-On Linux, from version **1.4.1** the `deb` and `rpm` artifacts are proper native packages with systemd integration — see [Native Linux packages (deb/rpm)](#native-linux-packages-debrpm) below. The `tar.gz` archives remain plain, unstripped binaries for manual installs.
+On Linux, from version **1.4.1** the `deb` and `rpm` artifacts are proper native packages with systemd integration; see [Native Linux packages (deb/rpm)](#native-linux-packages-debrpm) below. The `tar.gz` archives remain plain, unstripped binaries for manual installs.
 
 ## Choosing the right artifact
 
@@ -121,7 +121,7 @@ Each daemon ships as a hardened systemd **template unit**, one instance per chai
 | `mintlayer-api-blockchain-scanner@<chain>.service` | `ARGS` from `/etc/mintlayer/<chain>/api-blockchain-scanner.env` |
 | `mintlayer-dns-server@<chain>.service` | `ARGS` from `/etc/mintlayer/<chain>/dns-server.env` |
 
-All units run as the `mintlayer` system user with hardening enabled (`ProtectSystem=strict`, `NoNewPrivileges`, and friends). The `wallet-rpc` unit needs at least the path to a wallet file in its `ARGS` — `/var/lib/mintlayer/<chain>` is the recommended location, so the `mintlayer` user can read it.
+All units run as the `mintlayer` system user with hardening enabled (`ProtectSystem=strict`, `NoNewPrivileges`, and friends). The `wallet-rpc` unit needs at least the path to a wallet file in its `ARGS`; `/var/lib/mintlayer/<chain>` is the recommended location, so the `mintlayer` user can read it.
 
 **Preset policy**: only `mintlayer-node@mainnet.service` is enabled automatically on install. Everything else is opt-in and must be enabled explicitly by the administrator.
 

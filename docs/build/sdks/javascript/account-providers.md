@@ -17,7 +17,7 @@ interface AccountProvider {
 }
 ```
 
-`connect()` and `restore()` return the account's addresses; `request(method, params)` is the signing and query channel — for the Mojito provider it forwards to the wallet extension, which asks the user for approval.
+`connect()` and `restore()` return the account's addresses; `request(method, params)` is the signing and query channel; for the Mojito provider it forwards to the wallet extension, which asks the user for approval.
 
 ## MojitoAccountProvider (default)
 
@@ -83,7 +83,7 @@ Derivation follows the Mintlayer paths: `44'/<coin type>'/0'/0/<index>` for rece
 
 ## Custom providers
 
-Implement `AccountProvider` to plug in anything else — a hardware wallet bridge, a remote signing service, or an in-memory account for tests:
+Implement `AccountProvider` to plug in anything else, a hardware wallet bridge, a remote signing service, or an in-memory account for tests:
 
 ```ts
 import { Client, Signer, type AccountProvider } from '@mintlayer/sdk';

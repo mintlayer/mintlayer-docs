@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # SDK Client
 
-The `Client` class offers a high-level interface for interacting with the [Mojito wallet](../../../wallet/mojito-wallet.md) extension — or with any other [account provider](account-providers.md). It covers the connection lifecycle, account queries, and one method per transaction type (see [Transactions](transactions.md)).
+The `Client` class offers a high-level interface for interacting with the [Mojito wallet](../../../wallet/mojito-wallet.md) extension, or with any other [account provider](account-providers.md). It covers the connection lifecycle, account queries, and one method per transaction type (see [Transactions](transactions.md)).
 
 > 🧩 This SDK is meant to be used inside decentralized applications (dApps) that want to integrate Mintlayer features like sending transactions, minting tokens, issuing NFTs, staking, and more.
 
@@ -27,8 +27,8 @@ import { Client } from '@mintlayer/sdk';
 const client = await Client.create({
   network: 'testnet',
   autoRestore: true,
-  // accountProvider?: AccountProvider  — defaults to MojitoAccountProvider
-  // apiProvider?: ApiProvider          — defaults to MintlayerApiProvider
+  // accountProvider?: AccountProvider, defaults to MojitoAccountProvider
+  // apiProvider?: ApiProvider, defaults to MintlayerApiProvider
 });
 ```
 
@@ -86,7 +86,7 @@ Once connected, the client exposes read helpers for the connected addresses. The
 | Method | Returns |
 | ------ | ------- |
 | `getBalance()` | Base-coin balance of the connected addresses |
-| `getBalances()` | `{ coin, token: Record<tokenId, number> }` — coin and per-token balances |
+| `getBalances()` | `{ coin, token: Record<tokenId, number> }`: coin and per-token balances |
 | `getDelegations()` | Delegation details for the connected addresses |
 | `getDelegationsTotal()` | Total delegated amount |
 | `getTokensOwned()` | Token IDs owned by the connected addresses |
@@ -118,4 +118,4 @@ The endpoints mirror the public [API reference](../../../api/index.md), so self-
 
 ## Signing without a wallet
 
-Everything the `Client` does through the account provider can also be done with explicit keys via the `Signer` class — see [Transactions](transactions.md#signing-with-the-signer-class). For bots and scanners that need balances derived from chain data, see [Wallet state](wallet-state.md).
+Everything the `Client` does through the account provider can also be done with explicit keys via the `Signer` class; see [Transactions](transactions.md#signing-with-the-signer-class). For bots and scanners that need balances derived from chain data, see [Wallet state](wallet-state.md).

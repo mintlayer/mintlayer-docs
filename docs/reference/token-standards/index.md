@@ -8,8 +8,8 @@ sidebar_position: 1
 
 Mintlayer tokens carry their identity off-chain: an issuance transaction stores a **metadata URI**, and the JSON document served at that URI describes the token to wallets, explorers, and marketplaces. The [token-standards](https://github.com/mintlayer/token-standards) repository defines the recommended schemas for those documents:
 
-- **MLS-01** — fungible tokens ([mls01.md](mls01.md))
-- **MLS-03** — non-fungible tokens, NFTs ([mls03.md](mls03.md))
+- **MLS-01**: fungible tokens ([mls01.md](mls01.md))
+- **MLS-03**: non-fungible tokens, NFTs ([mls03.md](mls03.md))
 
 The repository is the canonical reference: it contains the full schema descriptions plus ready-made example files for every token type (e.g. [mls01/utility.json](https://github.com/mintlayer/token-standards/blob/main/mls01/utility.json), [mls03/art.json](https://github.com/mintlayer/token-standards/blob/main/mls03/art.json)).
 
@@ -23,8 +23,8 @@ Metadata is not validated by consensus. The chain enforces what is on-chain (tic
 
 | Token kind | Set at issuance | Changeable |
 | ---------- | --------------- | ---------- |
-| MLS-01 fungible | `metadata_uri` field of the issuance transaction | Yes, via the token authority — see [Update the metadata URI](../../wallet/guides/issue-new-token.md#update-the-metadata-uri) |
-| MLS-03 NFT | `metadata_uri` / additional metadata URI at issuance | **No** — NFT metadata is immutable once issued |
+| MLS-01 fungible | `metadata_uri` field of the issuance transaction | Yes, via the token authority; see [Update the metadata URI](../../wallet/guides/issue-new-token.md#update-the-metadata-uri) |
+| MLS-03 NFT | `metadata_uri` / additional metadata URI at issuance | **No**: NFT metadata is immutable once issued |
 
 ## Common top-level fields
 
@@ -33,14 +33,14 @@ All token metadata (both MLS-01 and MLS-03) shares these base fields:
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `schema_version` | string | Schema version, e.g. `"1.0"` |
-| `token_type` | string | Discriminator — drives the shape of `type_metadata` |
+| `token_type` | string | Discriminator, drives the shape of `type_metadata` |
 | `name` | string | Human-readable token name |
 | `symbol` | string | Ticker symbol |
 | `description` | string | Short description |
 | `logo_uri` | string | Image URI for the token logo |
 | `website` | string | Official website |
 | `social` | object | Social/community links (twitter, discord, telegram, github, whitepaper) |
-| `type_metadata` | object | Type-specific fields — shape varies by `token_type` |
+| `type_metadata` | object | Type-specific fields, shape varies by `token_type` |
 | `cross_chain` | array | Bridge/cross-chain contract addresses |
 | `market` | object | Exchange listings, launch price, data feed IDs |
 | `certifications` | array | Third-party certifications |

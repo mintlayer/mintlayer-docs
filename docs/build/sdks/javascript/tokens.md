@@ -6,7 +6,7 @@ sidebar_position: 5
 
 # Tokens
 
-Mintlayer supports on-chain fungible tokens (MLS-01) and NFTs (Data NFTs). The SDK's `Client` exposes the full lifecycle through one-call methods, each also available as a `buildX` variant — see [Transactions](transactions.md#manual-building).
+Mintlayer supports on-chain fungible tokens (MLS-01) and NFTs (Data NFTs). The SDK's `Client` exposes the full lifecycle through one-call methods, each also available as a `buildX` variant; see [Transactions](transactions.md#manual-building).
 
 ---
 
@@ -36,7 +36,7 @@ const signedTx = await client.issueToken({
 });
 ```
 
-The `authority` address becomes the token authority: the key that controls future operations (minting, freezing, authority transfer). Keep it secure — the full lifecycle walkthrough lives in [Issue a Token (SDK)](../../guides/issue-token.md), and the metadata URI should follow the [Token Metadata Standards](../../../reference/token-standards/mls01.md).
+The `authority` address becomes the token authority: the key that controls future operations (minting, freezing, authority transfer). Keep it secure; the full lifecycle walkthrough lives in [Issue a Token (SDK)](../../guides/issue-token.md), and the metadata URI should follow the [Token Metadata Standards](../../../reference/token-standards/mls01.md).
 
 ### Minting and unminting
 

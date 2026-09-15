@@ -1,12 +1,12 @@
 ---
 title: "Issue a Token (SDK)"
-description: "Issue, mint, and manage an MLS-01 fungible token with the JavaScript and Go SDKs — the SDK equivalent of the wallet-cli token guide."
+description: "Issue, mint, and manage an MLS-01 fungible token with the JavaScript and Go SDKs, the SDK equivalent of the wallet-cli token guide."
 sidebar_position: 2
 ---
 
 # Issue a Token (SDK)
 
-This guide is the SDK equivalent of [Issuing and managing a token](../../wallet/guides/issue-new-token.md) — read that page for the underlying concepts (token id, authority address, reserve vs circulating supply). Here we do the same lifecycle in code:
+This guide is the SDK equivalent of [Issuing and managing a token](../../wallet/guides/issue-new-token.md); read that page for the underlying concepts (token id, authority address, reserve vs circulating supply). Here we do the same lifecycle in code:
 
 ```mermaid
 flowchart LR

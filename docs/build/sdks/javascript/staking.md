@@ -6,9 +6,9 @@ sidebar_position: 6
 
 # Staking
 
-Staking on Mintlayer works through **delegations**: you create a delegation ID pointing at a stake pool, stake coins to it, and withdraw rewards later. The pool itself is operated by a staker — the pool-operator workflow is covered in [Staking and Delegation (SDK)](../../guides/staking.md) (Go SDK) and in the [wallet-cli staking guide](../../../wallet/guides/managing-a-staking-pool.md).
+Staking on Mintlayer works through **delegations**: you create a delegation ID pointing at a stake pool, stake coins to it, and withdraw rewards later. The pool itself is operated by a staker; the pool-operator workflow is covered in [Staking and Delegation (SDK)](../../guides/staking.md) (Go SDK) and in the [wallet-cli staking guide](../../../wallet/guides/managing-a-staking-pool.md).
 
-The SDK's `Client` covers the delegator side. Every method also has a `buildX` variant that returns an unsigned transaction — see [Transactions](transactions.md#manual-building).
+The SDK's `Client` covers the delegator side. Every method also has a `buildX` variant that returns an unsigned transaction; see [Transactions](transactions.md#manual-building).
 
 ## Creating a delegation
 

@@ -8,7 +8,7 @@ sidebar_position: 7
 
 Orders are Mintlayer's on-chain primitive for decentralized trading: one party locks an amount (`give`) and asks for another asset (`ask`) in return. Anyone can fill an order; the creator can conclude it to reclaim the balance. See [Trading with Orders (SDK)](../../guides/trading-with-orders.md) for a walkthrough, and the [wallet-cli orders guide](../../../wallet/guides/trading-with-orders.md) for the concepts.
 
-The SDK's `Client` exposes the full order lifecycle. Every method also has a `buildX` variant — see [Transactions](transactions.md#manual-building).
+The SDK's `Client` exposes the full order lifecycle. Every method also has a `buildX` variant; see [Transactions](transactions.md#manual-building).
 
 ## Creating an order
 

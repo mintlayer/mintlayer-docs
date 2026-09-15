@@ -20,9 +20,9 @@ Full schemas and example files: [mintlayer/token-standards/mls01](https://github
 | `governance` | Token conferring voting rights over a protocol |
 | `lp` | Liquidity provider token from a DEX pool |
 | `rwa` | Real-world asset token (bond, real estate, fund, stock, contract, …) |
-| `memecoin` | Community meme token — no utility, fair launch, renounced ownership |
-| `commodity` | Tokenized physical commodity — gold, silver, oil; redeemable for delivery |
-| `carbon_credit` | Fungible verified carbon offset batch — vintage, methodology, retirement flag |
+| `memecoin` | Community meme token: no utility, fair launch, renounced ownership |
+| `commodity` | Tokenized physical commodity: gold, silver, oil; redeemable for delivery |
+| `carbon_credit` | Fungible verified carbon offset batch: vintage, methodology, retirement flag |
 | `synthetic` | Tracks an external asset price via oracle; no ownership of the underlying |
 | `yield_bearing` | Lending/staking receipt token that accrues interest |
 | `index` | Market-cap-weighted basket of tokens with monthly rebalancing |
@@ -89,7 +89,7 @@ Only the highlights are listed here; the repository contains the complete field 
 | `credit.vintage_year` / `credit_type` / `category` | `avoidance` \| `removal`, e.g. `REDD+` |
 | `project` | Name, VCS/Gold Standard ID, methodology, location, SDG goals, co-benefits |
 | `registry` | Name, standard, serial range, verification body |
-| `retirement` | `retired` flag, beneficiary, reason — once retired, a credit cannot be resold |
+| `retirement` | `retired` flag, beneficiary, reason; once retired, a credit cannot be resold |
 | `bridge` | Protocol used to bring the credit on-chain (e.g. Toucan) |
 
 ### `synthetic`
@@ -180,13 +180,13 @@ The `rwa` type covers several asset classes selected by `asset_class`: `real_est
 | `transfer_restrictions` | KYC requirement, accredited-investor-only, geographic allow/blocklist, lockup |
 | `rights` | Yield (fixed/variable), voting, redemption terms |
 | `valuation` | Method, last value, frequency |
-| `documents[]` | `{ type, label, url, hash, date }` — the hash allows integrity verification |
+| `documents[]` | `{ type, label, url, hash, date }`: the hash allows integrity verification |
 
 Class-specific highlights:
 
-- **Fund** (`asset_class: "fund"`) — `fund.type` (`private_credit`, `private_equity`, `venture_capital`, `hedge_fund`, `money_market`, `real_estate_fund`), vintage/fund life, manager (AUM, regulatory status), terms (commitments, `nav_per_token`, fees, hurdle, carried interest), liquidity (closed/open end, lock-up, distributions).
-- **Stock** (`asset_class: "equity"`) — company, ticker, exchange, ISIN/CUSIP, `tokens_per_share`, `rights.dividends`, `rights.voting` (typically `false` with a proxy-voting note), corporate actions, valuation price-feed URI.
-- **Contract** (`asset_class: "receivable"`) — `contract.type` (`royalty_stream`, `lease`, `invoice`, `forward`, `service_agreement`), counterparties (obligor, originator, SPV), cashflows (face value, payment frequency/waterfall, royalty rate), `risk_factors[]`, `valuation.method: "dcf"`.
+- **Fund** (`asset_class: "fund"`), `fund.type` (`private_credit`, `private_equity`, `venture_capital`, `hedge_fund`, `money_market`, `real_estate_fund`), vintage/fund life, manager (AUM, regulatory status), terms (commitments, `nav_per_token`, fees, hurdle, carried interest), liquidity (closed/open end, lock-up, distributions).
+- **Stock** (`asset_class: "equity"`), company, ticker, exchange, ISIN/CUSIP, `tokens_per_share`, `rights.dividends`, `rights.voting` (typically `false` with a proxy-voting note), corporate actions, valuation price-feed URI.
+- **Contract** (`asset_class: "receivable"`), `contract.type` (`royalty_stream`, `lease`, `invoice`, `forward`, `service_agreement`), counterparties (obligor, originator, SPV), cashflows (face value, payment frequency/waterfall, royalty rate), `risk_factors[]`, `valuation.method: "dcf"`.
 
 ## Issuing an MLS-01 token
 

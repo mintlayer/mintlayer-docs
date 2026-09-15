@@ -1,6 +1,6 @@
 ---
 title: "Staking and Delegation (SDK)"
-description: "Run a staking pool or delegate to one with the JavaScript and Go SDKs — the SDK equivalent of the wallet-cli staking guide."
+description: "Run a staking pool or delegate to one with the JavaScript and Go SDKs, the SDK equivalent of the wallet-cli staking guide."
 sidebar_position: 4
 ---
 
@@ -138,4 +138,4 @@ fmt.Printf("pool: %s  balance: %s  nonce: %d\n", delegation.PoolID, delegation.B
 
 ## Manual transaction building
 
-Both SDKs can build delegation transactions without the wallet daemon: the JS SDK `buildDelegationCreate` / `buildDelegationStake` / `buildDelegationWithdraw` methods ([Transactions](../sdks/javascript/transactions.md#manual-building)), and the Go `wasm` encoders (`EncodeOutputCreateDelegation`, `EncodeOutputDelegateStaking`, `EncodeInputForWithdrawFromDelegation`) — see [Go SDK: Staking](../sdks/go/staking.md) for the full low-level flow including nonce handling.
+Both SDKs can build delegation transactions without the wallet daemon: the JS SDK `buildDelegationCreate` / `buildDelegationStake` / `buildDelegationWithdraw` methods ([Transactions](../sdks/javascript/transactions.md#manual-building)), and the Go `wasm` encoders (`EncodeOutputCreateDelegation`, `EncodeOutputDelegateStaking`, `EncodeInputForWithdrawFromDelegation`), see [Go SDK: Staking](../sdks/go/staking.md) for the full low-level flow including nonce handling.

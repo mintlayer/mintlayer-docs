@@ -1,12 +1,12 @@
 ---
 title: "Atomic Swap (SDK)"
-description: "Build the Mintlayer side of a Bitcoin atomic swap with HTLCs using the JavaScript and Go SDKs — the SDK equivalent of the wallet-cli swap guide."
+description: "Build the Mintlayer side of a Bitcoin atomic swap with HTLCs using the JavaScript and Go SDKs, the SDK equivalent of the wallet-cli swap guide."
 sidebar_position: 6
 ---
 
 # Atomic Swap (SDK)
 
-The SDK equivalent of [Atomic Swap with Bitcoin (HTLC)](../../wallet/guides/atomic-swap-with-bitcoin.md). Read that guide for the full protocol — roles, the secret/hash flow, and [timelock planning](../../wallet/guides/atomic-swap-with-bitcoin.md#timelock-planning) (the Bitcoin timelock must be shorter than the Mintlayer one). This page shows how to build the **Mintlayer side** in code.
+The SDK equivalent of [Atomic Swap with Bitcoin (HTLC)](../../wallet/guides/atomic-swap-with-bitcoin.md). Read that guide for the full protocol: roles, the secret/hash flow, and [timelock planning](../../wallet/guides/atomic-swap-with-bitcoin.md#timelock-planning) (the Bitcoin timelock must be shorter than the Mintlayer one). This page shows how to build the **Mintlayer side** in code.
 
 ```mermaid
 sequenceDiagram
@@ -53,7 +53,7 @@ await client.broadcastTx(signedTx);
 
 ### 2. Alice claims Bob's BTC (on Bitcoin)
 
-Alice spends Bob's Bitcoin HTLC by revealing the secret — this happens on the Bitcoin side with your Bitcoin tooling and is unchanged by the SDK.
+Alice spends Bob's Bitcoin HTLC by revealing the secret; this happens on the Bitcoin side with your Bitcoin tooling and is unchanged by the SDK.
 
 ### 3. Bob extracts the secret and claims the ML
 
