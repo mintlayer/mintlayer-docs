@@ -20,6 +20,14 @@ Where a workflow has no SDK equivalent (yet), the table says so and points at th
 | Manage a multisig address | — CLI only | ❌ | ❌ |
 | Migrate ERC-20 ML to mainnet | — portal only | n/a | n/a |
 
+WASM-specific deep dives (Go SDK, full custody, no wallet daemon):
+
+| Guide | Contents |
+| ----- | -------- |
+| [Wallet & signing](wallet-wasm.md) | Generate/restore wallets, derive addresses, sign transactions and messages |
+| [Forging custom transactions](custom-transactions.md) | Mixed inputs/outputs, protocol fees, fee estimation, multi-party signing, intents |
+| [Composing UTXOs](utxo-composition.md) | Update an order atomically: conclude-order input + create-order output |
+
 For the CLI version of any workflow, follow the link in the [Wallet guides](/docs/category/guides); every page here also links back to its CLI counterpart for the protocol-level explanation and concepts.
 
 ## Prerequisites
