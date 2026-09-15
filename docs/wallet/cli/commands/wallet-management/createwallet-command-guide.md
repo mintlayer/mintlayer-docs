@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "`createwallet` Command Guide"
 sidebar_position: 24
 ---

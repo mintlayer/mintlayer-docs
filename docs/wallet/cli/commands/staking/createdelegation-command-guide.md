@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "createdelegation"
 sidebar_position: 21
 ---

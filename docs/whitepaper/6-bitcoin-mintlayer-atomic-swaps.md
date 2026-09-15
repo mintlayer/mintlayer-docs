@@ -60,7 +60,6 @@ This ensures that if the initiator reveals the preimage on Bitcoin, the responde
 Below is the **actual script** used for Mintlayer ↔ Bitcoin swaps. It employs **OP_HASH160** for the hash path and **OP_CHECKSEQUENCEVERIFY (CSV)** for the refund path. This ensures compatibility with Mintlayer’s `HtlcSecretHash` (RIPEMD160(SHA‑256(secret))).
 
 ```text
-
 OP_IF
   OP_HASH160
   <secretHash>
@@ -74,7 +73,6 @@ OP_ELSE
 OP_ENDIF
 OP_CHECKSIG
 ```
-
 
 ### 6.7.1. Semantics
 
@@ -92,18 +90,14 @@ OP_CHECKSIG
 *Hash‑path spend (receiver claims before timelock):*
 
 ```text
-
 <sig_by_receiver> <preimage_x> 1 <redeem_script>
 ```
-
 
 *Refund path (sender after timelock):*
 
 ```text
-
 <sig_by_sender> 0 <redeem_script>
 ```
-
 
 ### 6.7.3. Notes
 

@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "showseedphrase"
 sidebar_position: 77
 ---

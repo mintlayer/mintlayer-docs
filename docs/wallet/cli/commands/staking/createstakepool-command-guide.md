@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "createstakepool"
 sidebar_position: 23
 ---

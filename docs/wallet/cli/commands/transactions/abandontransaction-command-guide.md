@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "abandontransaction"
 sidebar_position: 1
 ---

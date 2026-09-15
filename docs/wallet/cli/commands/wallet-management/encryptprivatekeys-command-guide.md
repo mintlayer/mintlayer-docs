@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "encryptprivatekeys"
 sidebar_position: 29
 ---

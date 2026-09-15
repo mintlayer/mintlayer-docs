@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "`sendfromdelegationtoaddress` Command Manual"
 sidebar_position: 75
 ---

@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "newpublickey"
 sidebar_position: 38
 ---

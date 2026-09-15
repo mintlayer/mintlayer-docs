@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "selectaccount"
 sidebar_position: 74
 ---

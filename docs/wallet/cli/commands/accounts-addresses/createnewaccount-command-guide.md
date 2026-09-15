@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "createnewaccount"
 sidebar_position: 22
 ---

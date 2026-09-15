@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "removeprivatekeysencryption"
 sidebar_position: 71
 ---

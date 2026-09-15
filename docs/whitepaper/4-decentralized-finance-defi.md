@@ -32,15 +32,13 @@ The token can also represent an asset in the issuer's custody, such as real esta
 Mintlayer's architecture offers various tools for developing decentralized finance. Mintlayer's tokenization system is far simpler than the solutions found in other projects. The MLS-01 standard, which exists to fill the same fungible token niche as ERC-20, is far simpler than its predecessor. In order to release a token on Mintlayer, one doesn't need to write a smart contract in a language like Solidity but can create a transaction with a few data fields filled, and once the transaction is sent, the token exists. This works as a token on Mintlayer and is no more than some extra information in the UTXO header. If you have 100 ML, which is the fee to create a token, then you can create a token with essentially no technical know-how.
 
 ```
-
-pub struct TokenIssuance \{
+pub struct TokenIssuance {
     pub token_ticker: Vec<u8>,
     pub amount_to_issue: Amount,
     pub number_of_decimals: u8,
     pub metadata_uri: Vec<u8>,
-\}
+}
 ```
-
 
 The structure defining a basic MLS-01 token on Mintlayer can be seen above. This represents the minimum set of information required to issue the token. 
 
@@ -50,8 +48,11 @@ In addition to MLS-01, Mintlayer has NFT tokens in the form of the MLS-03 standa
 
 ## 4.3. ACL rules for securities
 
-> NOTE: This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
-> \{.is-danger\}
+:::danger[NOTE]
+
+This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
+
+:::
 
 Access control lists, often called whitelists, act as a filter to limit a token's transferability. By default, any address can transfer and use the token without any limitations unless the token creator defined some ACL upon its creation or added one at a later date. The token owner is able to update the ACL, at will, in the future to ensure the whitelist is always up-to-date.
 
@@ -66,8 +67,7 @@ It is possible to get similar behavior to an ACL without having to use one forma
 MLS01, MLS03 and other features like Multisig are smart-contract natively available on Mintlayer. They are controllable as Output types, see the following table:
 
 ```rust
-
-pub enum TxOutput \{
+pub enum TxOutput {
     Transfer(OutputValue, Destination),
     LockThenTransfer(OutputValue, Destination, OutputTimeLock),
     Burn(OutputValue),
@@ -78,93 +78,72 @@ pub enum TxOutput \{
     IssueFungibleToken(Box<TokenIssuance>),
     IssueNft(TokenId, Box<NftIssuance>, Destination),
     DataDeposit(Vec<u8>),
-\}
+}
 ```
-
 In the future, we plan to introduce multiple output types to Mintlayer. For instance, features like Atomic Swaps and HTLC (Hashed Timelock Contracts) will be added as distinct types of Outputs.
 
 ### 4.4.1 Transfer
 ```rust
-
     Transfer(OutputValue, Destination),
 ```
-
 The 'Transfer' output is utilized to create a simple payment transaction. 
 
 ### 4.4.2 LockThenTransfer
 ```rust
-
   LockThenTransfer(OutputValue, Destination, OutputTimeLock),
 ```
-
 This smart contract is designed to send tokens to a specific destination. The recipient at the specified destination cannot spend the output before a certain time, which is defined in `OutputTimeLock`.
 
 
 ### 4.4.3 Burn
 ```rust
-
     Burn(OutputValue)
 ```
-
 This smart contract is used to destroy the output, effectively decreasing the supply of the token.
 
 ### 4.4.4 CreateStakePool
 
 ```rust     
-
 CreateStakePool(PoolId, Box<StakePoolData>)
 ```
-
 
 `CreateStakePool` generates a staking pool. This function is used by the wallet to inform the network that a pledge is being committed to a staking pool. Once this is done, the software can then start generating blocks.
 
 ### 4.4.5 ProduceBlockFromStake
 ```rust
-
     ProduceBlockFromStake(Destination, PoolId)
 ```
-
 This output is utilized specifically for decommissioning a staking pool, enabling the movement of funds out of the pool.
 
 ### 4.4.6 CreateDelegationId
 ```rust
-
 CreateDelegationId(Destination, PoolId)
 ```
-
 This output is utilized to generate a delegation. Funds can subsequently be transferred to and from this delegation for participation in a staking pool.
 
 ### 4.4.7 DelegateStaking
 ```rust
-
     DelegateStaking(Amount, DelegationId)
 ```
-
 Used to send a certain amount of ML tokens to a delegation. 
 
 ### 4.4.8 IssueFungibleToken
 ```rust
-
 IssueFungibleToken(Box<TokenIssuance>)
 ```
-
 This output is used to create a new fungible token. For more details, refer to [Chapter 3.1: Fungible Tokens (MLS01)](3-tokenization-standard.md#31-fungible-tokens-mls01).
 The cost of issuance is specified in the chain configuration constant `FUNGIBLE_TOKEN_MIN_ISSUANCE_FEE`.
 
 ### 4.4.9 IssueNft
 ```rust
-
   IssueNft(TokenId, Box<NftIssuance>, Destination)
 ```
-
 This output is utilized to create a new non-fungible token (NFT). For more details, please see [Chapter 3.1: Non-Fungible Tokens (MLS03)](3-tokenization-standard.md#32-non-fungible-tokens-nft-mls03). The cost of issuance is specified in the chain configuration constant `NFT_MIN_ISSUANCE_FEE`.
 
 ### 4.4.10 DataDeposit
 ```rust
-
 DataDeposit(Vec<u8>)
 ```
-
 In Mintlayer, the equivalent function to Bitcoin's `OP_RETURN` is used to store arbitrary data. The maximum size for this data is defined by the `DATA_DEPOSIT_MAX_SIZE` chain config constant. Additionally, the cost for data storage is set by the `DATA_DEPOSIT_MIN_FEE`.
 
 

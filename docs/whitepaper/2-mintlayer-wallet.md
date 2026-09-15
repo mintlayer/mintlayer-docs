@@ -7,7 +7,7 @@ sidebar_position: 2
 Mintlayer comes with several wallets, each implemented for different purposes.
 
 ## 2.1 Mojito
-[![mojito Wallet](/img/whitepaper/wallets.webp)\{:width="226" style="display: block; margin: 0 auto 40px; "\}](https://www.mintlayer.org/en/mojito-wallet)\{:target="_blank"\}
+[![mojito Wallet](/img/whitepaper/wallets.webp)](https://www.mintlayer.org/en/mojito-wallet)\{:target="_blank"\}
 
 Mojito is a Bitcoin wallet that also supports the Mintlayer network. It is available for Android, Apple iPhone, as well as a browser extension for Chrome, Firefox, and Edge.
 

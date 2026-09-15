@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "newaddress"
 sidebar_position: 37
 ---
