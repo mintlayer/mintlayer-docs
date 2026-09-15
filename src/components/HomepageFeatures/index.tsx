@@ -173,7 +173,7 @@ const SectionList: SectionCard[] = [
   {
     title: 'JavaScript SDK',
     description: 'Build dApps on Mintlayer with the official JavaScript SDK.',
-    to: '/docs/build/sdks/javascript/getting-started',
+    to: '/docs/build/sdks/javascript',
     icon: Icons.js,
   },
   {
