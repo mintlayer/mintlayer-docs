@@ -1,6 +1,6 @@
 ---
 title: "DNS Server"
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 The `dns-server` is a DNS seed server that helps new nodes discover peers on the Mintlayer network. It crawls the network and publishes reachable node addresses via DNS.

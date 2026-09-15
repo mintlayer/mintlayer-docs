@@ -12,3 +12,7 @@
 # Legacy consensus paper PDFs -> Pulsar paper on arXiv
 /docs/consensus-paper.pdf https://arxiv.org/abs/2411.14245 301
 /docs/DSA-consensus-paper-draft.pdf https://arxiv.org/abs/2411.14245 301
+
+# Chainstate DB dumper and DNS server moved under the command-line reference
+/docs/reference/chainstate-db-dumper /docs/reference/cli/chainstate-db-dumper 301
+/docs/reference/dns-server /docs/reference/cli/dns-server 301

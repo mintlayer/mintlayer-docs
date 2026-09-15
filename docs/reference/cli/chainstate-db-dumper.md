@@ -1,6 +1,6 @@
 ---
 title: "Chainstate DB Dumper"
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 The `chainstate-db-dumper` reads the Mintlayer chainstate LMDB database and exports block information to a CSV file. It is a developer/diagnostic tool.
