@@ -20,9 +20,9 @@ The long-term security of the Mintlayer chain is guaranteed by a checkpoint syst
 
 ## 1.2. Participation in the network
 
-In order to become a “participant” for the round, it is necessary to stake MLT tokens \([see §6](6-token-and-public-sale.md#6-1-1-staking)\). Anyone staking at least 0,01% of the total token supply has a chance to be selected by the algorithm. The 0,01% accounts for 40,000 MLT tokens upon the mainnet launch.
+In order to become a “participant” for the round, it is necessary to stake MLT tokens \([see §6](6-token-and-public-sale.md#611-staking)\). Anyone staking at least 0,01% of the total token supply has a chance to be selected by the algorithm. The 0,01% accounts for 40,000 MLT tokens upon the mainnet launch.
 
-There are 1008 member slots available, but a single user can be rewarded with more than one slot \([see the DSA Consensus Paper §4-5](https://www.mintlayer.org/docs/consensus-paper.pdf)\).
+There are 1008 member slots available per round \(a network parameter, not a protocol constant\), but a single user can be rewarded with more than one slot \(see the Pulsar Consensus paper v0.1, §5.3 "Slot leader selection", \([Afach, Marsh and Rubboli, 2024](https://arxiv.org/pdf/2411.14245v1)\)\).
 
 MLT tokens must be staked two rounds before the desired participation round \(active round\). Tokens will be locked for the entire duration of 3 rounds \(auction round, active round, and lock-in round\).
 
@@ -60,7 +60,7 @@ With the purpose of long-term sustainability, the block size limit is set to 1 M
 2. To decrease the initial blockchain download time \(IBD\) for users willing to run a node with a fast-sync mode.
 3. To discard \(prune\) the blockchain before a certain block height so that the space required on disk remains minimal.
 
-Anyone can create a “marker” on the Bitcoin blockchain in a Bitcoin transaction by using a specific OP\_RETURN. The participant of the Mintlayer network can include that marker in a Mintlayer block, creating a checkpoint request. The checkpoint is consolidated and locally enforced by the nodes once the participants have validated enough Mintlayer blocks on top of that checkpoint request \([see the Consensus paper §11-12](https://www.mintlayer.org/docs/consensus-paper.pdf)\).
+Anyone can create a “marker” on the Bitcoin blockchain in a Bitcoin transaction by using a specific OP\_RETURN. The participant of the Mintlayer network can include that marker in a Mintlayer block, creating a checkpoint request. The checkpoint is consolidated and locally enforced by the nodes once the participants have validated enough Mintlayer blocks on top of that checkpoint request \(see the Pulsar Consensus paper v0.1, §5.4.2 "Checkpointing", \([Afach, Marsh and Rubboli, 2024](https://arxiv.org/pdf/2411.14245v1)\)\).
 
 Creating a checkpoint on the Bitcoin blockchain means to notarize or “snapshot” the status of Mintlayer so that the Bitcoin proof-of-work secures it. Anyone running a node with a fast-sync mode can download the blockchain starting from the latest checkpoint instead of downloading the whole blockchain. In the case of full-synch from the genesis block, it is always possible to prune the entire blockchain up to the checkpoint, saving most of the space otherwise required.
 
@@ -72,7 +72,7 @@ While checkpoints allow for shrinking the blockchain’s, the utreexo technology
 
 In the cryptocurrency ecosystem, the blockchains supporting multiple tokens \(such as Ethereum\) force users to pay transaction fees in the native blockchain currency \(e.g., ETH\). The impossibility of transferring a token without having a “gas” bank in the native cryptocurrency creates entry barriers and introduces friction in user experience, preventing a broader network effect.
 
-Mintlayer has no base currency to pay transaction fees. Instead, users can pay in any MLS-01 or MLS-02 \([see §3.2.5](3-tokenization-standard.md#3-2-5-gas-free-economy).\) cryptocurrency they choose as long as the network participants are willing to accept it. Every block proposer can signal the list of tokens accepted in the block - the free market dictates its rules.
+Mintlayer has no base currency to pay transaction fees. Instead, users can pay in any MLS-01 or MLS-02 \([see §3.2.5](3-tokenization-standard.md#325-gas-free-economy).\) cryptocurrency they choose as long as the network participants are willing to accept it. Every block proposer can signal the list of tokens accepted in the block - the free market dictates its rules.
 
 Because transactions do not necessarily pay fees in a determined gas token, it is possible to make transfers without owning more cryptocurrencies, or without storing and spending a gas bank in a token which is different from the ones transferred, which implies higher transaction costs and pollution for the network \(UTXO dust\).
 

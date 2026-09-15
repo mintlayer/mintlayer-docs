@@ -6,7 +6,7 @@ The MLT token serves a utility purpose in the ecosystem. 400,000,000 MLT tokens 
 
 ### 6.1.1. Staking
 
-The main token use case is the Mintlayer [Dynamic Slot Allotment Mechanism](https://www.mintlayer.org/docs/DSA-consensus-paper-draft.pdf): the blocksigners are users who “legitimize” the blocks created by signing them. They alternate in the creation of new blocks according to a selection algorithm.
+The main token use case is staking in the Mintlayer implementation of the [Pulsar consensus protocol](https://arxiv.org/abs/2411.14245): the blocksigners \(slot leaders\) are users who “legitimize” the blocks created by signing them. They alternate in the creation of new blocks according to a selection algorithm.
 
 The blocksigner group is dynamic: for participating in the auction, it is necessary to stake the MLT token. Every user can apply for the blocksigner role as long as they stake enough MLT Tokens (40,000 tokens, equal to 0.01% of the initial total token supply).
 

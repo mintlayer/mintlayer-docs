@@ -1,0 +1,25 @@
+---
+title: "unlockprivatekeys"
+sidebar_position: 118
+---
+
+The `unlockprivatekeys` command is used to unlock the encrypted private keys of the currently opened wallet in Mintlayer.
+
+## Usage
+
+```
+unlockprivatekeys <PASSWORD>
+```
+
+### Arguments
+
+- `<PASSWORD>`: The password used to encrypt the private keys.
+
+### Options
+
+- `-h, --help`: Displays the help message for the `unlockprivatekeys` command.
+
+## Important Notes
+
+- Ensure you provide the correct password. 
+- Once the private keys are unlocked, you can perform transactions or other operations that require access to these keys.

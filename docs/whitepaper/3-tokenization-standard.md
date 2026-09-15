@@ -7,10 +7,10 @@ When an MLS-01 token is created, the issuer specifies the following rules:&#x20;
 * A maximum total token supply (if there is a cap).&#x20;
 * The amount of token that is issued, including the address or addresses where they are held (usually the creation address) and the inflation scheme that shall follow.&#x20;
 * Who or what can generate new tokens: i.e., a private key, a multi-signature, or other scripts.
-* Which are Access-Control-List rules (see [§3.2.1.](3-tokenization-standard.md#3-2-1-access-control-list-conditions), [§4.3.](4-decentralized-finance-defi.md#4-3-acl-rules-for-securities)), if any.&#x20;
+* Which are Access-Control-List rules (see [§3.2.1.](3-tokenization-standard.md#321-access-control-list-conditions), [§4.3.](4-decentralized-finance-defi.md#43-acl-rules-for-securities)), if any.&#x20;
 * If the ACL rules are permanent or can be updated. In the latter case, what are the conditions for an update as well (script, keys).&#x20;
 * If the total supply/inflation scheme is permanent or can be updated (if that is the case, what are the conditions for an update).&#x20;
-* If the transactions with that token pay an additional fee to the network fee (which is paid to the blockmaker creating Mintlayer blocks) and the way it is collected ([see programmable pools §4.5.](4-decentralized-finance-defi.md#4-5-programmable-pools-dividends-taxation)).
+* If the transactions with that token pay an additional fee to the network fee (which is paid to the blockmaker creating Mintlayer blocks) and the way it is collected ([see programmable pools §4.5.](4-decentralized-finance-defi.md#45-programmable-pools-dividends-taxation)).
 
 If the token has the confidential transaction feature enabled, it is labeled as MLS-02, while non-fungible tokens are labeled as MLS-03.
 
@@ -22,7 +22,7 @@ Mintlayer uses the Bitcoin UTXO structure instead of the account base models of 
 
 1. It is compatible with technologies already implemented in Bitcoin, such as the atomic swap and Lightning Network.
 2. It is more privacy-oriented because a single wallet usually utilizes multiple addresses, making it difficult and sometimes impossible to distinguish which ones belong to the same user.&#x20;
-3. Payments can be batched together (aggregated) in a single transaction, saving a considerable amount of the space otherwise required for making a single transaction per payment. The transaction batching practice has a particular focus in Mintlayer’s value proposition, as described later ([see §3.2.3.](3-tokenization-standard.md#3-2-3-peer-to-peer-batching)). The aggregation can be made by a single service/exchange transferring multiple transactions in a limited timeframe (i.e., the withdrawal requests of exchange/services users), as well as through a peer-to-peer network among independent users. This method is currently implemented with coinjoin in bitcoin wallets like Wasabi.&#x20;
+3. Payments can be batched together (aggregated) in a single transaction, saving a considerable amount of the space otherwise required for making a single transaction per payment. The transaction batching practice has a particular focus in Mintlayer’s value proposition, as described later ([see §3.2.3.](3-tokenization-standard.md#323-peer-to-peer-batching)). The aggregation can be made by a single service/exchange transferring multiple transactions in a limited timeframe (i.e., the withdrawal requests of exchange/services users), as well as through a peer-to-peer network among independent users. This method is currently implemented with coinjoin in bitcoin wallets like Wasabi.&#x20;
 
 
 
@@ -34,7 +34,7 @@ The MLS-01 tokens and MLT are transferred solely on the Mintlayer sidechain with
 
 ### 3.2.1. Access-Control-List conditions
 
-Access-Control-Lists (ACLs) are particular limitations that can be enforced on transactions of a specific cryptocurrency. ACLs help to issue or update security tokens in compliance with company policies or other legal requirements ([see §4.2.](4-decentralized-finance-defi.md#4-2-security-tokens-and-stablecoins)) similar to how it is done on Ethereum’s ERC-20: receiving addresses can be whitelisted or blacklisted. However, the applications may be broader: they can involve conditions on how utility tokens can be spent or determine how non-fungible the token is. For example, make it impossible to transfer a certain amount of tokens per transaction under a minimum or maximum threshold or enforce a time lock that limits the token's transferability at a particular time.
+Access-Control-Lists (ACLs) are particular limitations that can be enforced on transactions of a specific cryptocurrency. ACLs help to issue or update security tokens in compliance with company policies or other legal requirements ([see §4.2.](4-decentralized-finance-defi.md#42-security-tokens-and-stablecoins)) similar to how it is done on Ethereum’s ERC-20: receiving addresses can be whitelisted or blacklisted. However, the applications may be broader: they can involve conditions on how utility tokens can be spent or determine how non-fungible the token is. For example, make it impossible to transfer a certain amount of tokens per transaction under a minimum or maximum threshold or enforce a time lock that limits the token's transferability at a particular time.
 
 **ACL conditions can be implemented on MLS-01 tokens**, and the token issuer can update these conditions merely by creating a new transaction on Mintlayer that contains the updated set of rules. Such centralized governance of the ACL rules is possible only if it is applicable, depending on the set of rules originating from the token’s creation: to update the ACL, it might be necessary to execute a particular script or sign a transaction with a particular set of keys (such as n of m multi-sig).
 
@@ -48,7 +48,7 @@ Lightning network is enabled for all tokens managed by the Mintlayer wallet. Sin
 
 It is expected that most of the security tokens exchanged on the Mintlayer network will not use Lightning Network due to the difficulties in developing a well-distributed network of channels for tokens with a low transaction frequency and less liquidity than those meant for monetary use.
 
-Despite that, Lightning Network does have a great chance of success as a use case for Tether transactions and other stablecoins, especially since they are frequently transferred between custodial services/exchanges that have greater chances to create well-balanced channels. In this regard, it is worthwhile to note that the DEX will also integrate Lightning Network ([see §5.7.](5-decentralized-exchange-dex.md#5-7-lightning-network-dex)).
+Despite that, Lightning Network does have a great chance of success as a use case for Tether transactions and other stablecoins, especially since they are frequently transferred between custodial services/exchanges that have greater chances to create well-balanced channels. In this regard, it is worthwhile to note that the DEX will also integrate Lightning Network ([see §5.7.](5-decentralized-exchange-dex.md#57-lightning-network-dex)).
 
 
 
@@ -125,7 +125,7 @@ Blockmakers can also signal if they will accept a new token in the next blocks t
 
 ## 3.3. Confidential Transactions (MLS-02)
 
-A token can be issued on the network by implementing Bullet-proof Confidential transactions with ring signatures[($$^8$$)](3-tokenization-standard.md#footnotes), which is the feature for the tokenization standard: MLS-02. The issuance of tokens that enables confidential transactions is a guarantee of privacy and anonymity. However, it is discouraged unless there is a real need for privacy since it comes with a tradeoff: CTs take more space (higher fees), require more resources for the verification, and cannot be batched in transactions with multiple payments. Thanks to the peg-in mechanism, it is possible to issue a confidential version of other cryptocurrencies (pegged on Mintlayer, [see §3.4.](3-tokenization-standard.md#3-4-wrapped-tokens-and-peg-in-federation)), such as m-BTC or m-Ether, to transfer already existing cryptocurrencies with higher anonymity.
+A token can be issued on the network by implementing Bullet-proof Confidential transactions with ring signatures[($$^8$$)](3-tokenization-standard.md#footnotes), which is the feature for the tokenization standard: MLS-02. The issuance of tokens that enables confidential transactions is a guarantee of privacy and anonymity. However, it is discouraged unless there is a real need for privacy since it comes with a tradeoff: CTs take more space (higher fees), require more resources for the verification, and cannot be batched in transactions with multiple payments. Thanks to the peg-in mechanism, it is possible to issue a confidential version of other cryptocurrencies (pegged on Mintlayer, [see §3.4.](3-tokenization-standard.md#34-wrapped-tokens-and-peg-in-federation)), such as m-BTC or m-Ether, to transfer already existing cryptocurrencies with higher anonymity.
 
 It is worthwhile to note that, even if a token is issued without implementing the CT method, Mintlayer’s UTXO model grants some level of confidentiality:&#x20;
 
@@ -137,7 +137,7 @@ It is worthwhile to note that, even if a token is issued without implementing th
 
 ## 3.4. Wrapped tokens and Peg-in federation
 
-It is possible to use the Mintlayer blockchain as a second layer for other blockchains like Bitcoin or Ethereum. Central entities can wrap tokens on Mintlayer: they lock-in funds on the main blockchain, which creates a corresponding amount of MLS-01 or MLS-02 tokens. Independent oracles can prove the existence of the corresponding amount of locked tokens on the main blockchain. In this way, it is possible to create confidential tokens on Mintlayer([§3.3.](3-tokenization-standard.md#3-3-confidential-transactions-mls-02)), such as m-BTC or m-ETH.
+It is possible to use the Mintlayer blockchain as a second layer for other blockchains like Bitcoin or Ethereum. Central entities can wrap tokens on Mintlayer: they lock-in funds on the main blockchain, which creates a corresponding amount of MLS-01 or MLS-02 tokens. Independent oracles can prove the existence of the corresponding amount of locked tokens on the main blockchain. In this way, it is possible to create confidential tokens on Mintlayer([§3.3.](3-tokenization-standard.md#33-confidential-transactions-mls-02)), such as m-BTC or m-ETH.
 
 It is also possible to implement Strong Federations (like Liquid[$$^9$$](3-tokenization-standard.md#footnotes)) to issue wrapped tokens and confidential assets. The federation cyclically renews the lock time (nLockTime on Bitcoin) of the transaction, freezing the funds in the multi-signature UTXO and creating the corresponding token on Mintlayer. It is always possible the peg-out of the token: in that case, the Mintlayer tokens are burned, while the original cryptocurrency is unlocked on the main network and available to the original owner.
 
@@ -149,3 +149,5 @@ Developers are free to use a combination of ACL, programmable pools, and oracles
 
 
 
+
+## Footnotes
