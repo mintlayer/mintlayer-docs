@@ -1,7 +1,14 @@
 ---
 title: "Migrate Token To Mainnet"
+description: "Migrate your ERC20 ML tokens to Mintlayer Mainnet coins via the Migration Portal, open until November 1, 2026."
 sidebar_position: 7
 ---
+
+:::warning[Deprecated]
+
+**The original ERC20 $ML token will be deprecated.** Migrate your tokens to Mintlayer Mainnet coins via the [Migration Portal](https://token.mintlayer.org/migration), open until **November 1, 2026**. After that date the migration closes and ERC20 $ML tokens can no longer be converted.
+
+:::
 
 This guide will walk you through the process of migrating your ML tokens from the Ethereum/ERC20 network to the Mintlayer network. Please read each step carefully, as this process is irreversible and out of our control.
 
