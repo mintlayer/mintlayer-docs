@@ -3,7 +3,7 @@ deprecated: true
 title: "`sendfromdelegationtoaddress` Command Manual"
 sidebar_position: 75
 ---
-:::warning[Removed command]
+:::danger[Removed command]
 
 This command is no longer available in current wallet-cli versions. use [`delegation-withdraw`](delegation-withdraw-command-guide.md) instead.
 

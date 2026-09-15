@@ -3,7 +3,7 @@ deprecated: true
 title: "lockprivatekeys"
 sidebar_position: 36
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`wallet-lock-private-keys`](wallet-lock-private-keys-command-guide.md).
 

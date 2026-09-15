@@ -3,7 +3,7 @@ deprecated: true
 title: "showreceiveaddresses"
 sidebar_position: 76
 ---
-:::warning[Removed command]
+:::danger[Removed command]
 
 This command is no longer available in current wallet-cli versions. use [`address-show`](address-show-command-guide.md) instead.
 

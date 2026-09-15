@@ -3,7 +3,7 @@ deprecated: true
 title: "newaddress"
 sidebar_position: 37
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`address-new`](address-new-command-guide.md).
 

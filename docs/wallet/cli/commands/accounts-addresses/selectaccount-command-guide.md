@@ -3,7 +3,7 @@ deprecated: true
 title: "selectaccount"
 sidebar_position: 74
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`account-select`](account-select-command-guide.md).
 

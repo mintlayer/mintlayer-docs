@@ -30,9 +30,19 @@ function collectDeprecatedIds(dir: string): Set<string> {
 
 const deprecatedIds = collectDeprecatedIds(DOC_ROOT);
 
+function filterDeprecated(items) {
+  return items
+    .filter((item) => !(item.type === 'doc' && deprecatedIds.has(item.id)))
+    .map((item) =>
+      item.type === 'category' && Array.isArray(item.items)
+        ? {...item, items: filterDeprecated(item.items)}
+        : item,
+    )
+    .filter((item) => !(item.type === 'category' && item.items && item.items.length === 0));
+}
+
 async function sidebarItemsGenerator({...generatorArgs}) {
-  const items = await generatorArgs.defaultSidebarItemsGenerator(generatorArgs);
-  return items.filter((item) => !(item.type === 'doc' && deprecatedIds.has(item.id)));
+  return filterDeprecated(await generatorArgs.defaultSidebarItemsGenerator(generatorArgs));
 }
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';

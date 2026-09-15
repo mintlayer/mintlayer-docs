@@ -3,7 +3,7 @@ deprecated: true
 title: "openwallet"
 sidebar_position: 63
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`wallet-open`](wallet-open-command-guide.md).
 

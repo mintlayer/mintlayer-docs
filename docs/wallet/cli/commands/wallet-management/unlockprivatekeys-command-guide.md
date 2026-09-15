@@ -3,7 +3,7 @@ deprecated: true
 title: "unlockprivatekeys"
 sidebar_position: 118
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`wallet-unlock-private-keys`](wallet-unlock-private-keys-command-guide.md).
 
