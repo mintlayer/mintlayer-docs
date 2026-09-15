@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "removeprivatekeysencryption"
 sidebar_position: 71
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-disable-private-keys-encryption`](wallet-disable-private-keys-encryption-command-guide.md).
+
+:::
+
+
 
 The `removeprivatekeysencryption` command is used to remove any existing encryption from the private keys of the currently opened wallet in Mintlayer. The wallet is expected to be unlocked before using this command.
 

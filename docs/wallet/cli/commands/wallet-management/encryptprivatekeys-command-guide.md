@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "encryptprivatekeys"
 sidebar_position: 29
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-encrypt-private-keys`](wallet-encrypt-private-keys-command-guide.md).
+
+:::
+
+
 
 The `encryptprivatekeys` command is used to encrypt the private keys of the currently opened wallet in Mintlayer. The wallet is expected to be unlocked before using this command.
 

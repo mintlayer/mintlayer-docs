@@ -1,81 +1,157 @@
-# 1. Blockchain architecture
+---
+title: "Blockchain architecture"
+description: "Mintlayer whitepaper chapter: Blockchain architecture."
+sidebar_position: 1
+---
 
-## 1.1. Consensus on top of Bitcoin
+## 1.1 Introduction
 
+Mintlayer is a Proof of Stake blockchain designed to act as a sidechain to the Bitcoin network. In Mintlayer terms, a sidechain is a chain that is directly interoperable with another blockchain; there is no master/slave relationship as some others define it. Mintlayer represents the simplest way to do DeFi-related activities in an interoperable way with Bitcoin. There is no need to use a wrapped version of Bitcoin or use Solidity or any other smart contract language to create a token. 
 
+As a UTXO-based blockchain, just like Bitcoin, a token on Mintlayer is simply extra data embedded into a UTXO. This means creating a token is as simple as creating a transaction with some additional information. The simplicity of the tokenization model, the direct access to Bitcoin, and the liquidity of the Bitcoin network will pave the way for the future of DeFi. One clear example of where all of these things come together is the idea of tokenization of real-world assets. 
 
-![](https://lh6.googleusercontent.com/1ffvgXb4ZPWGcSUEo42tzpzMXBcIV9rIGdx-79hxy8zo6dSPNTXiRwytCuirPvycqDfH8FseFclEGE7h_wijUxgbO1y6cK6wuhtxmA1sYSJ-l6I6LzAGnAfMgZFc7tb-OQVU4Vxt)
+## 1.2 Participation
 
-Mintlayer blockchain is anchored to Bitcoin: every Mintlayer block has a reference to a Bitcoin block. In each Mintlayer round, lasting 1008 Bitcoin blocks, the participants are selected among the stakers to collaborate on creating the chain’s blocks.
+Mintlayer is a Proof of Stake blockchain, meaning that to participate in the system's consensus, one must lock tokens. To increase network participation, Mintlayer uses a Proof of Stake protocol based on pools, allowing those without the 40,000 ML required to run a pool to delegate to an existing pool to help secure the network and earn rewards for doing so. 
 
-A user who decides to actively participate in the network consensus needs to run a node and stake enough MLT tokens to pass a minimum threshold. Each round, an election is automatically enforced by the algorithm, where the user may be chosen as a “participant”. The higher the token stake, the higher the chances are to be selected.
+## 1.3 Blocks
 
-The selection mechanism uses hashes of the Bitcoin blocks as a randomization source to ensure an unbiased selection of the participants and randomly establish the order they will follow in the creation and validation of blocks.
+A Mintlayer block is produced every 120s on average and is limited to 1MB, although it can be smaller. Each block has a version, the only implemented version at this stage is V1:
 
-At a specific time in each round, every participant is requested to build and propagate a block for which all the transaction fees will be collected.
+```rust
+pub struct BlockV1 {
+    pub(super) header: SignedBlockHeader,
+    pub(super) body: BlockBody,
+}
+```
 
-The long-term security of the Mintlayer chain is guaranteed by a checkpoint system on the Bitcoin blockchain.
+where `SignedBlockHeader` looks like :
 
+```rust
 
+pub struct SignedBlockHeader {
+    block_header: BlockHeader,
+    signature_data: BlockHeaderSignature,
+}
+pub struct BlockHeader {
+    pub(super) version: VersionTag<1>,
+    pub(super) prev_block_id: Id<GenBlock>,
+    pub(super) tx_merkle_root: H256,
+    pub(super) witness_merkle_root: H256,
+    pub(super) timestamp: BlockTimestamp,
+    pub(super) consensus_data: ConsensusData,
+}
+```
+And `BlockBody` looks like this:
+```rust
+pub struct BlockBody {
+    pub(super) reward: BlockReward,
+    pub(super) transactions: Vec<SignedTransaction>,
+}
+```
+`BlockReward` is the reward for the staking pool to participate in the consensus. The rest of the block is filled with transactions. 
 
-## 1.2. Participation in the network
+## 1.4 Transactions
 
-In order to become a “participant” for the round, it is necessary to stake MLT tokens \([see §6](6-token-and-public-sale.md#611-staking)\). Anyone staking at least 0,01% of the total token supply has a chance to be selected by the algorithm. The 0,01% accounts for 40,000 MLT tokens upon the mainnet launch.
+A transaction on Mintlayer is a defined like this:
 
-There are 1008 member slots available per round \(a network parameter, not a protocol constant\), but a single user can be rewarded with more than one slot \(see the Pulsar Consensus paper v0.1, §5.3 "Slot leader selection", \([Afach, Marsh and Rubboli, 2024](https://arxiv.org/pdf/2411.14245v1)\)\).
+```rust
+pub struct TransactionV1 {
+    version: VersionTag<1>,
+    flags: u128,
+    inputs: Vec<TxInput>,
+    outputs: Vec<TxOutput>,
+}
+```
 
-MLT tokens must be staked two rounds before the desired participation round \(active round\). Tokens will be locked for the entire duration of 3 rounds \(auction round, active round, and lock-in round\).
-
-* _Setup round_ \(round x-2\): the user who wants to apply as a participant in round x must stake MLT tokens in one block of the round x-2. Tokens are not locked during this round.
-* _Auction round_ \(round x-1\): the hash of the first Bitcoin block of the round x-1 is used as a source of entropy to determine the participants for the active round x. The participants are only selected from those who \(a\) have staked tokens in one block of the round x-2 and \(b\) did not move those coins at stake up until the beginning of the round x-1. Since the first block of the auction round, the funds staked by the selected users as participants are locked-in.
-* _Active round_ \(round x\): the participants selected in the auction round x-1 generate and countersign blocks.
-* _Lock-in round_ \(round x+1\): the participants of round x cannot move the locked-in tokens during the auction round.
-
-
-The extended timeframe during which the coins of the participants are locked in \(about 3 weeks\) discourages users that obtained a significant number of slots from any malicious behavior or any attack attempts, considering that they will be committed with a high stake in the chain and will not be able to move the MLT tokens for a long period.
-
-If a participant decides to renew his lock-in, the same stake used to participate in the previous auction round is also used to participate in the next round, thus effectively eliminating the need to wait for several rounds to pass to participate again. This implies that the validator holding a fixed share of the network stake can maintain approximately the same amount of slots for each round.
-
-Once a round is determined, each participant knows the number of blocks they will be able to create and at what block height they will be issued. Thus, users conducting a large number of transactions in the network would benefit from being in the participant’s position as it grants them the possibility to include their own transactions in the blocks that they create while paying zero-fees for it. Therefore, those users would be economically incentivized to become MLT token holders and participants of the network.
-
-
-
-## 1.3. Block frequency and size limit
-
-**Block generation frequency on Mintlayer is dynamic:** each block proposer is given a timeframe during which there is a high probability of getting the block countersigned by other participants. That time frame spans between 1 and 2 minutes.
-
-In case the Mintlayer mempool is empty of transactions, the block proposers have incentives to wait up to 2 minutes before creating and broadcasting the block in hopes to collect more fees from incoming transactions. If the blockchain is congested, the block proposers might be willing to create blocks faster, depending on their considerations on how the fee market will react and whether the network will benefit from a higher block issuing frequency.
-
-Hypothetically, if there are no transactions to be validated, the participant who is expected to create the block in that timeframe has no incentives for doing so, and neither do other participants in that round have any reason to replace him in the block generation. Such a system discourages network pollution with empty blocks, especially when the blockchain has just been launched.
-
-With the purpose of long-term sustainability, the block size limit is set to 1 MB so that, in theory, the blockchain size could not get larger than 525 GB per year even when fully saturated and with its block frequency at the peak. Furthermore, the pruning system, which is based on checkpoints, and the utreexo technology, which is used to reduce the size of the UTXO, dramatically reduce hardware storage requirements. Thanks to these optimizations, it will always be possible to run a full node on an average personal computer, fostering a more decentralized network.
-
-
-
-## 1.4. Checkpoint system
-
-**The checkpoint system serves three purposes:**
-
-1. To increase the security of the network, preventing long-range attacks.
-2. To decrease the initial blockchain download time \(IBD\) for users willing to run a node with a fast-sync mode.
-3. To discard \(prune\) the blockchain before a certain block height so that the space required on disk remains minimal.
-
-Anyone can create a “marker” on the Bitcoin blockchain in a Bitcoin transaction by using a specific OP\_RETURN. The participant of the Mintlayer network can include that marker in a Mintlayer block, creating a checkpoint request. The checkpoint is consolidated and locally enforced by the nodes once the participants have validated enough Mintlayer blocks on top of that checkpoint request \(see the Pulsar Consensus paper v0.1, §5.4.2 "Checkpointing", \([Afach, Marsh and Rubboli, 2024](https://arxiv.org/pdf/2411.14245v1)\)\).
-
-Creating a checkpoint on the Bitcoin blockchain means to notarize or “snapshot” the status of Mintlayer so that the Bitcoin proof-of-work secures it. Anyone running a node with a fast-sync mode can download the blockchain starting from the latest checkpoint instead of downloading the whole blockchain. In the case of full-synch from the genesis block, it is always possible to prune the entire blockchain up to the checkpoint, saving most of the space otherwise required.
-
-While checkpoints allow for shrinking the blockchain’s, the utreexo technology shrinks the size of the UTXO set, which is merkelized and reduced down to about 1 KB instead of several Gigabytes.
-
-
-
-## 1.5. Token inclusivity
-
-In the cryptocurrency ecosystem, the blockchains supporting multiple tokens \(such as Ethereum\) force users to pay transaction fees in the native blockchain currency \(e.g., ETH\). The impossibility of transferring a token without having a “gas” bank in the native cryptocurrency creates entry barriers and introduces friction in user experience, preventing a broader network effect.
-
-Mintlayer has no base currency to pay transaction fees. Instead, users can pay in any MLS-01 or MLS-02 \([see §3.2.5](3-tokenization-standard.md#325-gas-free-economy).\) cryptocurrency they choose as long as the network participants are willing to accept it. Every block proposer can signal the list of tokens accepted in the block - the free market dictates its rules.
-
-Because transactions do not necessarily pay fees in a determined gas token, it is possible to make transfers without owning more cryptocurrencies, or without storing and spending a gas bank in a token which is different from the ones transferred, which implies higher transaction costs and pollution for the network \(UTXO dust\).
+The essence of that are the vectors of `TxInput` and `TxOutput`. An Input is a reference to a previous unspent output (UTXO) or an account:
+```rust
+pub enum TxInput {
+    Utxo(UtxoOutPoint),
+    AccountCommand(AccountNonce, AccountCommand),
+}
+```
+In Mintlayer, accounts are utilized to distribute rewards from staking pools. The rationale behind using accounts in this specific context is to avoid the creation of an excessive number of outputs in the system. Excessive outputs could lead to increased memory usage for the nodes and result in significantly large transactions. This is because the vector of inputs could become very large when spending rewards from the pools.
 
 
+## 1.5 Signatures
+
+Mintlayer employs the elliptic curve `secp256k1` for digital signatures, following a precedent set by Bitcoin. This choice provides a robust foundation for security and compatibility. In addition, Mintlayer integrates Schnorr signatures, leveraging their linearity and other beneficial properties that enhance privacy and efficiency.
+
+The implementation of Schnorr signatures in Mintlayer is sourced from the highly-regarded Rust library also named `secp256k1` (documented [here](https://docs.rs/secp256k1/latest/secp256k1/)). 
+
+For digest creation, Mintlayer uses the `Blake2b` cryptographic hash function.
+
+In the process, a 512-bit hash is computed using `Blake2b`. To fit within the constraints of our signature scheme and to maintain optimal security, we extract the first half of this hash for use in signature generation. This approach ensures both efficiency and security in our digital signature process.
+
+### Segregated Witness 
+
+Mintlayer adopts a concept similar to "segregated witness" for managing signatures within transactions. 
+
+In this system, signatures are not embedded directly within the transaction data. Instead, they are stored separately in a vector following the transaction. 
 
 
+## 1.6 Consensus
+
+Mintlayer has a novel Proof of Stake consensus protocol intended to improve upon other existing protocols when viewed as a Bitcoin sidechain. As we've already said, Mintlayer aims to produce a block every 120s, and we use verifiable random functions ( *Micali, S., Rabin, M., and Vadhan, S. (1999). Verifiable random functions. 40th Annual Symposium on Foundations of Computer Science. pp. 120-130, doi: 10.1109/SFFCS.1999.814584* ) to do so. A pool is eligible to produce a block when the random number it produces via the VRF is below a threshold, made up of a network threshold updated to keep the block production rate as close to every 120s as possible and the stake of the pool, which ensures the block production rate is proportional to the size of the pool.
+
+Mintlayer uses a unique chain selection rule to pick the canonical chain. Rather than looking at the length of a chain or the amount of work or stake required to build a given chain, Mintlayer uses the idea of chain density. That is to say that the chain with the densest set of filled slots is the chain that will be selected. 
+
+### Nash Equilibrium and Staking Pools
+
+There are security arguments using Nash Equilibrium on why we want to use the final supply as the total, and not the total stake in all pools. This is because the total stake changes over time, and the Nash Equilibrium is a dynamic equilibrium, not a static one. The final supply is the total amount of coins that will ever exist, and hence is a static value. This way, stakers can make decisions based on the final supply, and not have to worry about the total stake changing over time. Hence, the incentive structure is more stable.
+
+$$\frac{\sigma + s \cdot a \cdot \left( \frac{\sigma - s \cdot \left( \frac{z - \sigma}{z} \right)}{z} \right)}{a + 1} \Rightarrow \sigma - \frac{a}{a + 1} \cdot \left( \frac{\sigma z^2 - s (z \sigma - s (z - \sigma))}{z^2} \right)$$
+
+
+### Key Parameters
+
+- $$z = \frac{1}{k}$$: The size of the saturated pool
+- **Saturated pool**: A pool is saturated if its stake $$pledge + delegated$$ is equal to the size given by $$z = \frac{1}{k}$$. A pool that has reached saturation will not have additional rewards if the total stake is increased. This is to prevent pools from growing too large.
+- $$a$$: The pledge influence parameter. When $$a=0$$, the pledge has no additional effect other than proportional to the stake. While $$a$$ increases, the pledge has more effect on the effective pool balance, and hence increases the reward more compared to delegation. The parameter $$a$$ can be controlled to incentivize pools to pledge more.
+- $$s$$: The pool's pledge amount
+- $$\sigma$$: The pool's stake pledge + delegated
+
+### Formula Explanation
+
+The formula is rewritten as $$\sigma - \text{something}$$ to represent the result as $$\sigma$$ minus some adjustment. Also, it makes it more suitable for integer arithmetic because there is a single division at the end.
+
+Note: The second term is always positive, so the result is always $$\sigma$$ minus some adjustment.
+
+### Considerations for Maximizing Gains
+
+As a function of the total stake $$\sigma = \text{pledge} + \text{delegations}$$, the pool's effective balance is a concave down parabola. The maximum point is very close to $$\sigma = \frac{s}{2}$$ if $$\sigma \ll z$$. Meaning: pledge = delegations maximizes the effective balance. The true peak can be calculated by calculating the derivative of the function and equating it to zero. The result there is $$s_{\text{max}} = \frac{z \cdot \sigma}{2 \cdot (z-\sigma)}$$, where $$s_{\text{max}}$$ is the pledge that maximizes the effective balance. In that equation, we can see if $$\sigma \ll z$$, then it simplifies to $$s_{\text{max}} = \frac{\sigma}{2}$$.
+
+## 1.7 Checkpointing and finality
+
+Alongside the chain selection rule Mintlayer, there are two other features that ensure the security of the chain. These are checkpoints and finality. Checkpoints are hardcoded into the protocol to ensure that long-range attacks are infeasible and to simplify the process of syncing from the genesis block. In Mintlayer, a block is finalized after 1000 blocks, this is a tradeoff to ensure the security of the network and the practicality of being a Bitcoin sidechain, given Bitcoin can reorganize to an arbitrary depth.
+
+## 1.7 Token usage
+
+In the cryptocurrency ecosystem, the blockchains supporting multiple tokens \(such as Ethereum\) force users to pay transaction fees in the native blockchain currency \(e.g., ETH\). The impossibility of transferring a token without having a "gas" bank in the native cryptocurrency creates entry barriers and introduces friction in user experience, preventing a broader network effect.
+
+Mintlayer does not force the use of ML for paying transaction fees. Instead, users can pay in ML or any MLS-01 token they choose if the network participants are willing to accept it. Every block proposer can signal the list of tokens accepted in a block - the free market dictates its rules.
+
+:::danger[NOTE]
+
+This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
+
+:::
+
+
+## 1.9 Bitcoin links
+
+The primary link between Mintlayer and Bitcoin is through the atomic swap[^3] system, which allows assets on both chains to be swapped directly without the need for an intermediary of any sort. Mintlayer intends to incorporate Bitcoin into its consensus system in the future, but this is an active area of research right now, so the exact form this will take is to be decided. 
+
+:::danger[NOTE]
+
+This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
+
+:::
+
+
+---
+
+*[Next: Mintlayer Wallet](2-mintlayer-wallet.md)*
+
+The consensus protocol, its slot-based block production, and its checkpoint mechanics are formally described in the [Pulsar consensus paper](https://arxiv.org/abs/2411.14245) (Afach, Marsh and Rubboli).

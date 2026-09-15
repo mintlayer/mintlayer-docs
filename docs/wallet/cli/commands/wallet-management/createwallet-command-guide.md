@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "`createwallet` Command Guide"
 sidebar_position: 24
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-create`](wallet-create-command-guide.md).
+
+:::
+
+
 
 The `createwallet` command is used to create a new wallet in Mintlayer.
 

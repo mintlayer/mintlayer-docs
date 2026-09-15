@@ -68,16 +68,16 @@ Over WebSocket, method calls work the same way, plus you can **subscribe to even
 {"jsonrpc": "2.0", "method": "chainstate_subscribe_to_events", "params": [], "id": 1}
 ```
 
-The full method list (~60 methods across the `node`, `chainstate`, `mempool`, `p2p`, and `blockprod` modules) is in the [node RPC reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC.md), with per-command guides under [Node Commands](../getting-started/index.md).
+The full method list (~60 methods across the `node`, `chainstate`, `mempool`, `p2p`, and `blockprod` modules) is in the [node RPC reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC.md), with per-command guides under [Node Commands](../wallet/cli/commands.md) (the wallet-cli `node-*` commands).
 
 ## Connecting to the wallet RPC
 
-Start the daemon with an open wallet file and explicit credentials:
+Start the daemon with an open wallet file and explicit credentials (bind to localhost unless the daemon must be reachable from other machines):
 
 ```bash
 wallet-rpc-daemon mainnet \
   --wallet-file /home/mintlayer/my_wallet \
-  --rpc-bind-address 0.0.0.0:3034 \
+  --rpc-bind-address 127.0.0.1:3034 \
   --rpc-username developer --rpc-password <secret>
 ```
 
@@ -87,7 +87,8 @@ Then call it like any JSON-RPC 2.0 endpoint:
 curl -H 'Content-Type: application/json' \
   -H 'Authorization: Basic...' \
   -d '{"jsonrpc": "2.0", "id": 1, "method": "account_balance", "params": {"account": 0, "utxo_states": ["Confirmed"]}}' \
-  http://developer:<secret>@127.0.0.1:3034
+  --user 'developer:CHANGE_ME' \
+  http://127.0.0.1:3034
 ```
 
 WebSocket on the same port adds wallet event subscriptions:
@@ -106,7 +107,7 @@ The API web server answers REST queries from the PostgreSQL database populated b
 curl http://127.0.0.1:3000/api/v2/chain/tip
 ```
 
-It covers blocks, transactions, tokens, addresses, pool and order data, see the [API server](../getting-started/index.md) documentation for the endpoint catalog and the [Docker Compose stack](../getting-started/install/install-from-docker.md#running-the-api-server-stack) to run it locally.
+It covers blocks, transactions, tokens, addresses, pool and order data, see the [API server](../api/index.md) documentation for the endpoint catalog and the [Docker Compose stack](../getting-started/install/install-from-docker.md#running-the-api-server-stack) to run it locally.
 
 ## WASM wrappers
 

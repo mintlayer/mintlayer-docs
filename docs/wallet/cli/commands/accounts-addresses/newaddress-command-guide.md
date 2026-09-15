@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "newaddress"
 sidebar_position: 37
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`address-new`](address-new-command-guide.md).
+
+:::
+
+
 
 The `newaddress` command is used to generate a new, unused address within the currently selected account in your Mintlayer wallet.
 

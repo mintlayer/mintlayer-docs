@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "createdelegation"
 sidebar_position: 21
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`delegation-create`](delegation-create-command-guide.md).
+
+:::
+
+
 
 
 The `createdelegation` command allows you to create a delegation to a specific staking pool in Mintlayer. This is useful for users who want to delegate their tokens to a staking pool without actually running a node themselves.

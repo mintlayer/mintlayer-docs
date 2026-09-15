@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "selectaccount"
 sidebar_position: 74
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`account-select`](account-select-command-guide.md).
+
+:::
+
+
 
 The `selectaccount` command allows you to switch between different accounts within your Mintlayer wallet. By selecting an account, you set it as the active account for subsequent transactions and operations.
 

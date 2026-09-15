@@ -18,8 +18,17 @@
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .buttons .button {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+  }
 }
 
 .mcpBanner {

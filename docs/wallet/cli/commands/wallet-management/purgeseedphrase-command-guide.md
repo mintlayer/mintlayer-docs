@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "purgeseedphrase"
 sidebar_position: 70
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-purge-seed-phrase`](wallet-purge-seed-phrase-command-guide.md).
+
+:::
+
+
 
 The `purgeseedphrase` command is used to delete the seed phrase from the currently loaded wallet in Mintlayer, but only if it has been saved within the wallet.
 

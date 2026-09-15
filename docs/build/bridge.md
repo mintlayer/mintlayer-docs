@@ -87,7 +87,7 @@ Rules:
 
 ### Deposit intents (m2e)
 
-In the Mintlayer-to-Ethereum direction the receiver address cannot be embedded in the transaction itself, so each deposit is paired with a signed intent. Two ways to produce it:
+In the Mintlayer-to-Ethereum direction the receiver address cannot be embedded in the transaction itself, so each deposit is paired with a signed intent. The intent message is the plain receiver address; it is signed with the same keys that sign the transaction inputs, and the resulting signature blob is what goes into the request's `intent` field. Two ways to produce it:
 
 - `wallet-cli`: the `token-make-tx-to-send-with-intent` command creates the transaction and the intent together (mainly for testing).
 - [WASM bindings](sdks/go/wasm.md): call `make_transaction_intent_message_to_sign`, sign the message with `sign_challenge` using the keys of all input destinations, then `encode_signed_transaction_intent`.
@@ -104,15 +104,27 @@ Bridge request statuses: `pending`, `processed_by_master`, `completed`, `failed`
 
 ## Fees
 
-`GET /api/v1/fees` returns, per token, the fee applied to each bridge request:
+`GET /api/v1/fees` returns, per token, the fees applied in each direction:
 
 ```json
 {
-  "FOO": { "fixed_fee": "0.5", "percentage_fee": "0.1" }
+  "FOO": {
+    "to_ml":  { "fixed_fee": "0.5", "percentage_fee": "0.1%" },
+    "to_eth": { "fixed_fee": "0.5", "percentage_fee": "0.1%" }
+  }
 }
 ```
 
-The fixed part is applied first, then the percentage; the result is reflected in `amount_after_fees` on the bridge request.
+- `fixed_fee` is subtracted from the request amount first.
+- `percentage_fee` is a percentage string; the remainder after the fixed fee is multiplied by `(1 - percentage_fee / 100)`.
+
+Example: a 100.00 request with `fixed_fee = "0.5"` and `percentage_fee = "0.1%"` yields `amount_after_fees = (100.00 - 0.5) x 0.999 = 99.4005`. The final value is reflected in `amount_after_fees` on the bridge request.
+
+## Custody and failure handling
+
+- Deposits and withdrawals are released by bridge operators through multi-signature custody: a 2-of-2 multisignature Mintlayer address (e2m) and a 2-of-2 Safe contract (m2e). Requests are processed once the operators co-sign.
+- A request whose deposit is never confirmed is marked `failed`; requests that cannot be processed automatically are marked `manual` and handled by the bridge operators.
+- If a withdrawal transaction is not mined in time, the operators re-submit it. Track all of this through the [status endpoints and WebSocket events](#tracking-requests).
 
 ## Related documentation
 

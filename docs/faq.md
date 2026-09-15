@@ -8,7 +8,7 @@ sidebar_position: 10
 
 ## How do I obtain testnet ML (TML)?
 
-Use the [Mintlayer faucet](https://faucet.mintlayer.org): enter your testnet address (starts with `tmt1`) and request tokens. The faucet distributes up to 200 TML per day.
+Use the [Mintlayer faucet](https://faucet.mintlayer.org): enter your testnet address (starts with `tmt1`) and request tokens. The faucet distributes up to 200 TML per day. TML is the testnet token; mainnet coins are called ML.
 
 Notes:
 
@@ -31,9 +31,9 @@ For exchanges and services: query the [fee rate endpoint](api/endpoints/feerate.
 
 ## What is finality? When is a transaction final?
 
-Mintlayer is a proof-of-stake chain (the [Pulsar consensus protocol](https://arxiv.org/abs/2411.14245)): block signers are selected per slot, and the chain-selection rule prefers the chain with the densest history.
+Mintlayer is a proof-of-stake chain (the [Pulsar consensus protocol](https://arxiv.org/abs/2411.14245)): block signers are selected per slot, and the chain-selection rule prefers the chain with the densest history. The summary below reflects the design documents; verify exact behavior against the release your node runs.
 
-Finality is **checkpoint-based rather than purely probabilistic**: Mintlayer blocks reference Bitcoin blocks, and once enough blocks are validated on top of a checkpoint request, the checkpoint is consolidated and locally enforced by nodes. After that point the history below the checkpoint cannot be reorganized.
+Finality is **checkpoint-based rather than purely probabilistic**: Mintlayer blocks reference Bitcoin blocks, and once enough blocks are validated on top of a checkpoint request, the checkpoint is consolidated and locally enforced by nodes. After that point the history below the checkpoint is treated as final by the node. This is an area under active development, so confirm current enforcement behavior against your node release before relying on it for high-value operations.
 
 Practical guidance:
 
@@ -45,11 +45,11 @@ See the [whitepaper chapter on architecture](whitepaper/1-blockchain-architectur
 
 ## How much MLT do I need to stake?
 
-To participate as a block signer you must stake at least 0.01% of the total token supply, which was 40,000 MLT at mainnet launch. A single staker can be rewarded with more than one slot per round. See [participation in the network](whitepaper/1-blockchain-architecture.md) and the [staking pool guide](guides/managing-a-staking-pool.md).
+To participate as a block signer you must stake at least 0.01% of the total token supply, which was 40,000 ML at mainnet launch (40,000 TML on testnet). A single staker can be rewarded with more than one slot per round. See [participation in the network](whitepaper/1-blockchain-architecture.md) and the [staking pool guide](guides/managing-a-staking-pool.md).
 
 ## How do staking rounds and lock-ups work?
 
-Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are locked across three rounds: the auction round (when you apply), the active round (when you participate), and a lock-in round afterwards. Plan liquidity accordingly. See the [whitepaper chapter 6](whitepaper/6-token-and-public-sale.md) for the full timeline.
+Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are locked across three rounds: the auction round (when you apply), the active round (when you participate), and a lock-in round afterwards. Plan liquidity accordingly; verify round timing against the network you operate on, as parameters can change between releases. See the [whitepaper chapter 6](whitepaper/7-token-and-public-sale.md) for the full timeline.
 
 ## How do I move tokens between Mintlayer and Ethereum?
 

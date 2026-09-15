@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "showreceiveaddresses"
 sidebar_position: 76
 ---
+:::danger[Removed command]
+
+This command is no longer available in current wallet-cli versions. use [`address-show`](address-show-command-guide.md) instead.
+
+:::
+
+
 
 The `showreceiveaddresses` command allows you to view all the receive addresses along with their usage state in your Mintlayer wallet. It helps you to identify which addresses have been used in transactions that are recorded on the blockchain.
 

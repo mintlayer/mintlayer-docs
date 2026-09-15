@@ -8,7 +8,7 @@
  * Mintlayer brand palette, aligned with www.mintlayer.org:
  *   mint        #37db8c   (primary brand green)
  *   mint light  #69ee96   (dominant accent on www)
- *   lime        #baff84   (secondary accent on www)
+ *   lime        #baff84   (secondary accent)
  *   lime pale   #e3ffc7   (pale lime tint)
  *   dark bg     #061d18   (dark green-tinted background)
  *   dim text    #859391   (gray-green)
@@ -23,13 +23,18 @@
   --ml-dim: #859391;
   --ml-purple: #a383ff;
 
-  --ifm-color-primary: #12915f;
-  --ifm-color-primary-dark: #108054;
-  --ifm-color-primary-darker: #0e744b;
-  --ifm-color-primary-darkest: #0b5f3d;
-  --ifm-color-primary-light: #27a56f;
-  --ifm-color-primary-lighter: #43b97f;
-  --ifm-color-primary-lightest: #6fd0a0;
+  /* Brand green as primary (buttons, badges, active states) */
+  --ifm-color-primary: #37db8c;
+  --ifm-color-primary-dark: #2fc97e;
+  --ifm-color-primary-darker: #2ab873;
+  --ifm-color-primary-darkest: #24995f;
+  --ifm-color-primary-light: #69ee96;
+  --ifm-color-primary-lighter: #8df2ac;
+  --ifm-color-primary-lightest: #baff84;
+
+  /* Body links need more contrast than raw brand mint on white */
+  --ifm-link-color: #0e8a56;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -44,4 +49,94 @@
   --ifm-color-primary-lighter: #baff84;
   --ifm-color-primary-lightest: #e3ffc7;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Hero band: dark green like www.mintlayer.org, with brand accents */
+.hero--primary {
+  background: radial-gradient(120% 160% at 85% 120%, #1d5c45 0%, #0c352a 50%, #061d18 100%);
+  color: #fff;
+}
+
+.hero--primary .hero__title {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.hero--primary .hero__subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero--primary .button--secondary {
+  --ifm-button-color: var(--ml-dark);
+  background: var(--ml-mint);
+  border-color: var(--ml-mint);
+  font-weight: 700;
+}
+
+.hero--primary .button--secondary:hover {
+  background: var(--ml-mint-light);
+  border-color: var(--ml-mint-light);
+  color: var(--ml-dark);
+}
+
+.hero--primary .button--outline.button--secondary {
+  --ifm-button-color: #fff;
+  color: #fff;
+  background: rgba(55, 219, 140, 0.1);
+  border-color: rgba(55, 219, 140, 0.45);
+}
+
+.hero--primary .button--outline.button--secondary:hover {
+  --ifm-button-color: var(--ml-mint-light);
+  color: var(--ml-mint-light);
+  background: rgba(55, 219, 140, 0.22);
+  border-color: var(--ml-mint);
+}
+
+.hero--primary .button--outline.button--secondary:hover {
+  background: rgba(55, 219, 140, 0.22);
+  color: var(--ml-mint-light);
+  border-color: var(--ml-mint);
+}
+
+/* Hero buttons wrap instead of overflowing on narrow screens */
+.hero--primary .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.hero--primary .buttons .button {
+  margin-right: 0;
+}
+
+/* "Documentation" must fit on phones */
+@media (max-width: 768px) {
+  .hero--primary .hero__title {
+    font-size: 2.2rem;
+  }
+
+  .hero--primary .hero__subtitle {
+    font-size: 1.05rem;
+  }
+
+  .hero--primary .buttons .button {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero--primary .hero__title {
+    font-size: 1.9rem;
+  }
+}
+
+/* Wide tables scroll instead of breaking the layout on phones */
+.markdown table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
 }

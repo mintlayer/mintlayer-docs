@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "createnewaccount"
 sidebar_position: 22
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`account-create`](account-create-command-guide.md).
+
+:::
+
+
 
 The `createnewaccount` command is used to create a new account within your existing Mintlayer wallet.
 

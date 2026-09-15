@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "closewallet"
 sidebar_position: 19
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`wallet-close`](wallet-close-command-guide.md).
+
+:::
+
+
 
 The `closewallet` command is used to close the currently opened wallet in Mintlayer.
 

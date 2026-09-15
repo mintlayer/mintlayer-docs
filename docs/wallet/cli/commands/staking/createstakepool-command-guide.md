@@ -1,7 +1,15 @@
 ---
+deprecated: true
 title: "createstakepool"
 sidebar_position: 23
 ---
+:::danger[Deprecated command name]
+
+This page documents a legacy command name. In current wallet versions the command is called [`staking-create-pool`](staking-create-pool-command-guide.md).
+
+:::
+
+
 
 This command is used to create a new stake pool.
 
