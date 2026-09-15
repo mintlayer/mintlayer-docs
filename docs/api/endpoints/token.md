@@ -47,7 +47,7 @@ curl https://api-server.mintlayer.org/api/v2/token/mmltk1q43gmfrsau2lnev65d56a4w
 
 - `metadata_uri` is returned hex-encoded; decode it for the URI string (typically `ipfs://...`).
 - `authority` is the address holding the token authority key (freeze/mint/unmint/change-authority rights).
-- See the [token guide](../../guides/issue-new-token.md) for the token lifecycle operations these fields reflect.
+- See the [token guide](../../wallet/guides/issue-new-token.md) for the token lifecycle operations these fields reflect.
 
 ## GET /token/\{id\}/transactions
 

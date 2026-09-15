@@ -283,6 +283,6 @@ await rpc('delegation_stake', {
 
 ## Related Pages
 
-- [Guide: Managing a Staking Pool](../../guides/managing-a-staking-pool.md)
+- [Guide: Managing a Staking Pool](../../wallet/guides/managing-a-staking-pool.md)
 - [Wallet RPC: Transactions](transactions.md)
 - [Wallet RPC: Overview](overview.md)

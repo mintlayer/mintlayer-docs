@@ -206,12 +206,12 @@ standalone-address-label-rename <multisig_address>
 
 ## Related Pages
 
-- [`standalone-add-multisig`](../wallet/cli/commands/standalone/standalone-add-multisig-command-guide.md)
-- [`standalone-multisig-utxos`](../wallet/cli/commands/standalone/standalone-multisig-utxos-command-guide.md)
-- [`standalone-address-show`](../wallet/cli/commands/standalone/standalone-address-show-command-guide.md)
-- [`standalone-address-details`](../wallet/cli/commands/standalone/standalone-address-details-command-guide.md)
-- [`standalone-address-label-rename`](../wallet/cli/commands/standalone/standalone-address-label-rename-command-guide.md)
-- [`address-reveal-public-key-as-hex`](../wallet/cli/commands/accounts-addresses/address-reveal-public-key-as-hex-command-guide.md)
-- [`transaction-compose`](../wallet/cli/commands/transactions/transaction-compose-command-guide.md)
-- [`account-sign-raw-transaction`](../wallet/cli/commands/accounts-addresses/account-sign-raw-transaction-command-guide.md)
-- [`node-submit-transaction`](../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)
+- [`standalone-add-multisig`](../../wallet/cli/commands/standalone/standalone-add-multisig-command-guide.md)
+- [`standalone-multisig-utxos`](../../wallet/cli/commands/standalone/standalone-multisig-utxos-command-guide.md)
+- [`standalone-address-show`](../../wallet/cli/commands/standalone/standalone-address-show-command-guide.md)
+- [`standalone-address-details`](../../wallet/cli/commands/standalone/standalone-address-details-command-guide.md)
+- [`standalone-address-label-rename`](../../wallet/cli/commands/standalone/standalone-address-label-rename-command-guide.md)
+- [`address-reveal-public-key-as-hex`](../../wallet/cli/commands/accounts-addresses/address-reveal-public-key-as-hex-command-guide.md)
+- [`transaction-compose`](../../wallet/cli/commands/transactions/transaction-compose-command-guide.md)
+- [`account-sign-raw-transaction`](../../wallet/cli/commands/accounts-addresses/account-sign-raw-transaction-command-guide.md)
+- [`node-submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)

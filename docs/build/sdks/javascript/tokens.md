@@ -36,7 +36,7 @@ const signedTx = await client.issueToken({
 });
 ```
 
-The `authority` address becomes the token authority: the key that controls future operations (minting, freezing, authority transfer). Keep it secure — see the [token issuance guide](../../../guides/issue-new-token.md) for the underlying concepts.
+The `authority` address becomes the token authority: the key that controls future operations (minting, freezing, authority transfer). Keep it secure — the full lifecycle walkthrough lives in [Issue a Token (SDK)](../../guides/issue-token.md), and the metadata URI should follow the [Token Metadata Standards](../../../reference/token-standards/mls01.md).
 
 ### Minting and unminting
 
@@ -121,7 +121,7 @@ const signedTx = await client.issueNft({
 });
 ```
 
-The metadata fields follow the [Data NFT standard](../../../reference/block-and-transaction-serialization.md); see the [NFT guide](../../../guides/issuing-and-managing-an-nft.md) for a full walkthrough with the wallet CLI.
+The metadata fields follow the [Data NFT standard](../../../reference/block-and-transaction-serialization.md); see [Issue an NFT (SDK)](../../guides/issue-nft.md) for a walkthrough and the [MLS-03 metadata schema](../../../reference/token-standards/mls03.md) for the off-chain metadata.
 
 ### Transferring an NFT
 

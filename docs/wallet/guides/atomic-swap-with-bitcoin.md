@@ -237,8 +237,8 @@ If Alice never reveals the secret (never claims Bob's BTC), Bob waits for his 24
 
 ## Related Pages
 
-- [`htlc-create-transaction`](../wallet/cli/commands/htlc/htlc-create-transaction-command-guide.md)
-- [`htlc-generate-secret`](../wallet/cli/commands/htlc/htlc-generate-secret-command-guide.md)
-- [`htlc-calc-secret-hash`](../wallet/cli/commands/htlc/htlc-calc-secret-hash-command-guide.md)
-- [`utxo-spend`](../wallet/cli/commands/transactions/utxo-spend-command-guide.md)
-- [`node-submit-transaction`](../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)
+- [`htlc-create-transaction`](../../wallet/cli/commands/htlc/htlc-create-transaction-command-guide.md)
+- [`htlc-generate-secret`](../../wallet/cli/commands/htlc/htlc-generate-secret-command-guide.md)
+- [`htlc-calc-secret-hash`](../../wallet/cli/commands/htlc/htlc-calc-secret-hash-command-guide.md)
+- [`utxo-spend`](../../wallet/cli/commands/transactions/utxo-spend-command-guide.md)
+- [`node-submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)

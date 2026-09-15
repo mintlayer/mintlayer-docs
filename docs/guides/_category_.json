@@ -1,8 +1,0 @@
-{
-  "label": "Guides",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "description": "Step-by-step Mintlayer guides: issue tokens and NFTs, run a staking pool, trade with orders, manage multisig, and atomic swaps with Bitcoin."
-  }
-}

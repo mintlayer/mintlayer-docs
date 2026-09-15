@@ -6,7 +6,7 @@ sidebar_position: 10
 
 # Order endpoints
 
-Mintlayer's DEX is an on-chain order book: an order locks one currency and asks for another. See [Trading with Orders](../../guides/trading-with-orders.md) for the lifecycle.
+Mintlayer's DEX is an on-chain order book: an order locks one currency and asks for another. See [Trading with Orders](../../wallet/guides/trading-with-orders.md) for the lifecycle.
 
 ## GET /order
 

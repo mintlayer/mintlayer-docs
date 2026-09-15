@@ -267,11 +267,11 @@ The staker address must be a public key address (not a public key hash address).
 ## Related Pages
 
 - Staking Overview
-- [`staking-create-pool`](../wallet/cli/commands/staking/staking-create-pool-command-guide.md)
-- [`staking-decommission-pool`](../wallet/cli/commands/staking/staking-decommission-pool-command-guide.md)
-- [`staking-decommission-pool-request`](../wallet/cli/commands/staking/staking-decommission-pool-request-command-guide.md)
-- [`delegation-create`](../wallet/cli/commands/staking/delegation-create-command-guide.md)
-- [`delegation-stake`](../wallet/cli/commands/staking/delegation-stake-command-guide.md)
-- [`delegation-withdraw`](../wallet/cli/commands/staking/delegation-withdraw-command-guide.md)
-- [`staking-sweep-delegation`](../wallet/cli/commands/staking/staking-sweep-delegation-command-guide.md)
-- [Wallet CLI Options](../wallet/cli/index.md)
+- [`staking-create-pool`](../../wallet/cli/commands/staking/staking-create-pool-command-guide.md)
+- [`staking-decommission-pool`](../../wallet/cli/commands/staking/staking-decommission-pool-command-guide.md)
+- [`staking-decommission-pool-request`](../../wallet/cli/commands/staking/staking-decommission-pool-request-command-guide.md)
+- [`delegation-create`](../../wallet/cli/commands/staking/delegation-create-command-guide.md)
+- [`delegation-stake`](../../wallet/cli/commands/staking/delegation-stake-command-guide.md)
+- [`delegation-withdraw`](../../wallet/cli/commands/staking/delegation-withdraw-command-guide.md)
+- [`staking-sweep-delegation`](../../wallet/cli/commands/staking/staking-sweep-delegation-command-guide.md)
+- [Wallet CLI Options](../../wallet/cli/index.md)

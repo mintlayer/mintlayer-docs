@@ -28,7 +28,7 @@ curl https://api-server.mintlayer.org/api/v2/delegation/mdelg1zf3l695cfaa0vldfc3
 - `spend_destination` is where withdrawn funds are sent.
 - `next_nonce` protects delegation switches against replay.
 
-Delegations are created and switched between pools through the wallet (see [delegation commands](../../wallet/cli/commands/staking/delegation-create-command-guide.md) and the [staking guide](../../guides/managing-a-staking-pool.md)).
+Delegations are created and switched between pools through the wallet (see [delegation commands](../../wallet/cli/commands/staking/delegation-create-command-guide.md) and the [staking guide](../../wallet/guides/managing-a-staking-pool.md)).
 
 ## Go SDK
 

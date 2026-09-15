@@ -204,9 +204,9 @@ Alice receives her 100 MYTKN.
 
 ## Related Pages
 
-- [`order-create`](../wallet/cli/commands/orders/order-create-command-guide.md)
-- [`order-fill`](../wallet/cli/commands/orders/order-fill-command-guide.md)
-- [`order-freeze`](../wallet/cli/commands/orders/order-freeze-command-guide.md)
-- [`order-conclude`](../wallet/cli/commands/orders/order-conclude-command-guide.md)
-- [`order-list-own`](../wallet/cli/commands/orders/order-list-own-command-guide.md)
-- [`order-list-all-active`](../wallet/cli/commands/orders/order-list-all-active-command-guide.md)
+- [`order-create`](../../wallet/cli/commands/orders/order-create-command-guide.md)
+- [`order-fill`](../../wallet/cli/commands/orders/order-fill-command-guide.md)
+- [`order-freeze`](../../wallet/cli/commands/orders/order-freeze-command-guide.md)
+- [`order-conclude`](../../wallet/cli/commands/orders/order-conclude-command-guide.md)
+- [`order-list-own`](../../wallet/cli/commands/orders/order-list-own-command-guide.md)
+- [`order-list-all-active`](../../wallet/cli/commands/orders/order-list-all-active-command-guide.md)

@@ -45,7 +45,7 @@ See the [whitepaper chapter on architecture](whitepaper/1-blockchain-architectur
 
 ## How much MLT do I need to stake?
 
-To participate as a block signer you must stake at least 0.01% of the total token supply, which was 40,000 ML at mainnet launch (40,000 TML on testnet). A single staker can be rewarded with more than one slot per round. See [participation in the network](whitepaper/1-blockchain-architecture.md) and the [staking pool guide](guides/managing-a-staking-pool.md).
+To participate as a block signer you must stake at least 0.01% of the total token supply, which was 40,000 ML at mainnet launch (40,000 TML on testnet). A single staker can be rewarded with more than one slot per round. See [participation in the network](whitepaper/1-blockchain-architecture.md) and the [staking pool guide](wallet/guides/managing-a-staking-pool.md).
 
 ## How do staking rounds and lock-ups work?
 

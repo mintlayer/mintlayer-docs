@@ -189,13 +189,13 @@ token-unfreeze <token_id>
 
 ## Related Pages
 
-- [`token-issue-new`](../wallet/cli/commands/tokens/token-issue-new-command-guide.md)
-- [`token-mint`](../wallet/cli/commands/tokens/token-mint-command-guide.md)
-- [`token-unmint`](../wallet/cli/commands/tokens/token-unmint-command-guide.md)
-- [`token-lock-supply`](../wallet/cli/commands/tokens/token-lock-supply-command-guide.md)
-- [`token-send`](../wallet/cli/commands/tokens/token-send-command-guide.md)
-- [`token-freeze`](../wallet/cli/commands/tokens/token-freeze-command-guide.md)
-- [`token-unfreeze`](../wallet/cli/commands/tokens/token-unfreeze-command-guide.md)
-- [`token-change-authority`](../wallet/cli/commands/tokens/token-change-authority-command-guide.md)
-- [`token-change-metadata-uri`](../wallet/cli/commands/tokens/token-change-metadata-uri-command-guide.md)
-- [`token-nft-issue-new`](../wallet/cli/commands/tokens/token-nft-issue-new-command-guide.md)
+- [`token-issue-new`](../../wallet/cli/commands/tokens/token-issue-new-command-guide.md)
+- [`token-mint`](../../wallet/cli/commands/tokens/token-mint-command-guide.md)
+- [`token-unmint`](../../wallet/cli/commands/tokens/token-unmint-command-guide.md)
+- [`token-lock-supply`](../../wallet/cli/commands/tokens/token-lock-supply-command-guide.md)
+- [`token-send`](../../wallet/cli/commands/tokens/token-send-command-guide.md)
+- [`token-freeze`](../../wallet/cli/commands/tokens/token-freeze-command-guide.md)
+- [`token-unfreeze`](../../wallet/cli/commands/tokens/token-unfreeze-command-guide.md)
+- [`token-change-authority`](../../wallet/cli/commands/tokens/token-change-authority-command-guide.md)
+- [`token-change-metadata-uri`](../../wallet/cli/commands/tokens/token-change-metadata-uri-command-guide.md)
+- [`token-nft-issue-new`](../../wallet/cli/commands/tokens/token-nft-issue-new-command-guide.md)
