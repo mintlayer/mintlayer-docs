@@ -1,0 +1,10 @@
+{
+  "label": "Endpoints",
+  "position": 2,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "API Endpoints",
+    "description": "Full reference of the Mintlayer indexer API endpoints: chain, blocks, transactions, addresses, pools, tokens, NFTs, and orders."
+  }
+}

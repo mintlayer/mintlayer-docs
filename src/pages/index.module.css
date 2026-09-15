@@ -21,3 +21,98 @@
   align-items: center;
   justify-content: center;
 }
+
+.mcpBanner {
+  padding: 3.5rem 0;
+  background: var(--ml-lime-pale, #e3ffc7);
+}
+
+[data-theme='dark'] .mcpBanner {
+  background: rgba(55, 219, 140, 0.07);
+}
+
+.mcpEyebrow {
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.mcpTitle {
+  margin-bottom: 1rem;
+}
+
+.mcpText {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mcpLink {
+  font-weight: 700;
+}
+
+.mcpBox {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem 1.25rem 1.25rem;
+  box-shadow: 0 4px 16px rgba(20, 60, 40, 0.06);
+}
+
+[data-theme='dark'] .mcpBox {
+  background: var(--ifm-background-elevated-color, #1b1b1f);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.mcpBoxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.75rem;
+}
+
+.mcpConfig {
+  margin: 0 0 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  background: var(--ifm-code-background, #f6f7f8);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.mcpEndpoint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+}
+
+.mcpEndpoint code {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.copyButton {
+  background: rgba(55, 219, 140, 0.15);
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.copyButton:hover {
+  background: rgba(55, 219, 140, 0.3);
+}

@@ -1,0 +1,22 @@
+# Hashed build assets: safe to cache forever
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Brand images and favicon: week
+/img/*
+  Cache-Control: public, max-age=604800
+
+# Agent-facing files: refresh hourly
+/llms.txt
+  Cache-Control: public, max-age=3600
+/llms-full.txt
+  Cache-Control: public, max-age=3600
+# Per-page markdown mirrors
+/docs/*.md
+  Cache-Control: public, max-age=3600
+
+# Basic security headers for everything
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY

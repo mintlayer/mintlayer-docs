@@ -6,14 +6,14 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Mintlayer',
-  tagline: 'A blockchain platform for the future of finance',
+  tagline: 'Run a node, operate a wallet, issue tokens, and build dApps on the Mintlayer blockchain',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://docs.mintlayer.org',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/mintlayer-docs/',
+  // Set the /<baseUrl>/ pathname under which the site is served.
+  // The site is served from the domain root (docs.mintlayer.org).
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -64,13 +64,53 @@ const config: Config = {
     ],
   ],
 
+  themes: ['@docusaurus/theme-mermaid'],
+
+  markdown: {
+    mermaid: true,
+  },
+
+    headTags: [
+      {
+        tagName: 'link',
+        attributes: {
+          rel: 'apple-touch-icon',
+          href: '/img/apple-touch-icon.png',
+          sizes: '180x180',
+        },
+      },
+    ],
+
+  plugins: [
+    [
+      'docusaurus-plugin-llms',
+      {
+        // Agent-facing entrypoints at the site root: llms.txt (index),
+        // llms-full.txt (full docs in one file) and a .md file per page.
+        generateMarkdownFiles: true,
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/social-card.png',
+    headTags: [
+      {
+        tagName: 'link',
+        attributes: {
+          rel: 'apple-touch-icon',
+          href: '/img/apple-touch-icon.png',
+          sizes: '180x180',
+        },
+      },
+    ],
     navbar: {
       title: 'Mintlayer',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Mintlayer logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -78,7 +118,22 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
+        },
+        {
+          label: 'Installation',
+          to: '/docs/getting-started/install',
+          position: 'left',
+        },
+        {
+          label: 'Guides',
+          to: '/docs/guides/issue-new-token',
+          position: 'left',
+        },
+        {
+          label: 'Whitepaper',
+          to: '/docs/whitepaper/blockchain-architecture',
+          position: 'left',
         },
         {
           href: 'https://github.com/mintlayer/mintlayer-docs',
@@ -94,8 +149,24 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Node',
+              to: '/docs/node',
+            },
+            {
+              label: 'Wallet CLI',
+              to: '/docs/wallet/cli',
+            },
+            {
+              label: 'Wallet RPC',
+              to: '/docs/wallet/rpc',
+            },
+            {
+              label: 'API',
+              to: '/docs/api',
+            },
+            {
+              label: 'Guides',
+              to: '/docs/guides/issue-new-token',
             },
           ],
         },
@@ -109,10 +180,6 @@ const config: Config = {
             {
               label: 'Telegram',
               href: 'https://t.me/mintlayer',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/gkZ4h8McBT',
             },
             {
               label: 'X',

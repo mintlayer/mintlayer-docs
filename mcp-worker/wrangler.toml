@@ -1,0 +1,11 @@
+name = "mintlayer-docs-mcp"
+main = "src/worker.js"
+compatibility_date = "2026-01-01"
+workers_dev = false
+
+[[routes]]
+pattern = "docs.mintlayer.org/mcp*"
+zone_name = "mintlayer.org"
+
+[vars]
+DOCS_ORIGIN = "https://docs.mintlayer.org"

@@ -20,7 +20,7 @@ The potentiality and versatility of a script-based approach are well expressed i
 
 The revolutionary innovation is the possibility to combine more of these bilateral channels to create a payment route across the network. If a third node C is connected to B through a second channel, the bitcoins can flow between all the nodes A, B, and C just by updating the balances of two channels. Extending this mechanism to a vast network of channels can effectively create an off-chain peer-to-peer layer on top of Bitcoin, allowing to send and receive bitcoin without using transactions written on the blockchain.
 
-Mintlayer supports Lightning Network for all MLS-01 tokens and other HTLC script-based contracts used explicitly for the DEX, like atomic swap \([§5.2.](5-decentralized-exchange-dex.md#5-2-the-atomic-swap-dex)\) or lightning swaps \([§5.7.](5-decentralized-exchange-dex.md#5-7-lightning-network-dex)\), which are also interoperable with the Bitcoin blockchain.
+Mintlayer supports Lightning Network for all MLS-01 tokens and other HTLC script-based contracts used explicitly for the DEX, like atomic swap \([§5.2.](5-decentralized-exchange-dex.md#52-the-atomic-swap-dex)\) or lightning swaps \([§5.7.](5-decentralized-exchange-dex.md#57-lightning-network-dex)\), which are also interoperable with the Bitcoin blockchain.
 
 
 
@@ -76,7 +76,7 @@ From a technical point of view, the rules are enforced through one or a series o
 
 An additional _control_ parameter can be configured when there is a need for a particular entity to approve each transaction of the token. The entity is defined as “controller” and shall “countersign” the transaction for its validation. The difference from a simple 2/2 multi-signature is that this ACL control rule requiring the controller's signature can be combined with other ACL rules or any other desired multi-signature scheme for the UTXO. For example, the users might use a ⅗ multi-sig account to hold the tokens, which can only be transferred by providing at least 3 signatures together with the controller’s signature \(so that it effectively becomes a 4/6 scheme\) and whatever other ACL rules that are configured for that token.
 
-The controller can be the token issuer, a service, an identity provider, or more generically, an oracle. The standard identification procedure required to ask the controller for the countersignature can be performed using the DID \([§4.4.](4-decentralized-finance-defi.md#4-4-decentralized-identity-did-and-oracles)\).
+The controller can be the token issuer, a service, an identity provider, or more generically, an oracle. The standard identification procedure required to ask the controller for the countersignature can be performed using the DID \([§4.4.](4-decentralized-finance-defi.md#44-decentralized-identity-did-and-oracles)\).
 
 
 
@@ -84,7 +84,7 @@ The controller can be the token issuer, a service, an identity provider, or more
 
 The Mintlayer full node and light node provide a tool for creating a digital identity represented by a pair of keys: public and private. These keys can be used to encrypt/decrypt or sign/verify messages and verify the “decentralized identity”.
 
-The DID can be used to “sign-up” or “login” to services of an oracle or directly as data is processed by the oracles to identify a particular user for generating statistics or ranking \(i.e., for the DEX transactions\). In general, oracles empower the blockchain’s inner mechanisms with data unavailable inside the blockchain. AML/KYC oracles may certify the DID countersigning their transactions to meet ACL rules. In contrast, other oracles might help the wallets perform specific tasks, such as provide better reliability of the atomic swap allowed by the watchtowers \([§3.2.4.](3-tokenization-standard.md#3-2-4-atomic-swap)\). Observers \([§5.4.](5-decentralized-exchange-dex.md#5-4-observer-of-multiparty-swaps)\) and book aggregators \([§5.5.](5-decentralized-exchange-dex.md#5-5-book-aggregators-for-multiparty-swaps)\) in DEX help synchronize the DHT and create storage for a proper order book.
+The DID can be used to “sign-up” or “login” to services of an oracle or directly as data is processed by the oracles to identify a particular user for generating statistics or ranking \(i.e., for the DEX transactions\). In general, oracles empower the blockchain’s inner mechanisms with data unavailable inside the blockchain. AML/KYC oracles may certify the DID countersigning their transactions to meet ACL rules. In contrast, other oracles might help the wallets perform specific tasks, such as provide better reliability of the atomic swap allowed by the watchtowers \([§3.2.4.](3-tokenization-standard.md#324-atomic-swap)\). Observers \([§5.4.](5-decentralized-exchange-dex.md#54-observer-of-multiparty-swaps)\) and book aggregators \([§5.5.](5-decentralized-exchange-dex.md#55-book-aggregators-for-multiparty-swaps)\) in DEX help synchronize the DHT and create storage for a proper order book.
 
 Technically, the DID is a master public key \(also known as Account Extended Public Key[ $$^1‎^2$$](4-decentralized-finance-defi.md#footnotes)\) produced by a wallet’s built-in tool. It is possible to use DID as one of the keys derived from that master key. The master private key or the derived private keys are used to sign the message, proving the user’s identity.
 
@@ -121,3 +121,5 @@ To create a pool and execute the pool’s functionalities, it is necessary to br
 The smart contracts within a programmable pool might have Turing complete functionalities, in this case the advantages of a Turing incomplete system are not applicable.
 
 
+
+## Footnotes

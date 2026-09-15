@@ -1,11 +1,103 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 3rem 0 4rem;
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.eyebrow {
+  text-align: center;
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.cardCol {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color, #fff);
+  transition:
+    border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    box-shadow var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    transform var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 24px rgba(20, 60, 40, 0.1);
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.cardIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(55, 219, 140, 0.12);
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.9rem;
+}
+
+.cardIconWrapPurple {
+  background: rgba(163, 131, 255, 0.14);
+  color: #7c5cff;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.cardCta {
+  margin-top: auto;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.card:hover .cardCta {
+  text-decoration: underline;
+}
+
+.cardPurple h3,
+.cardPurple .cardCta {
+  color: #6b4ce6;
+}
+
+.cardPurple:hover {
+  border-color: #a383ff;
+  box-shadow: 0 8px 24px rgba(163, 131, 255, 0.18);
 }
