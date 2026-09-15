@@ -40,7 +40,7 @@ For clients without remote-MCP support, bridge it locally with `npx -y mcp-remot
 
 ## 2. Chain data server (mojito-api) {#chain-data-server}
 
-Hosted at `https://mojito-api.mintlayer.org/mcp`. Read-only queries against the Mintlayer blockchain, backed by the indexer — useful for checking balances, transactions, and blocks without running your own node. Requests are rate limited.
+Hosted at `https://mojito-api.mintlayer.org/mcp`. Read-only queries against the Mintlayer blockchain, backed by the indexer: useful for checking balances, transactions, and blocks without running your own node. Requests are rate limited.
 
 | Tool | Description |
 | ---- | ----------- |
