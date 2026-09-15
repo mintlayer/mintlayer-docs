@@ -24,12 +24,12 @@ function McpBanner() {
             </Heading>
             <p className={styles.mcpText}>
               The documentation runs a read-only{' '}
-              <Link to="/docs/build/mcp">Model Context Protocol</Link> server.
+              <Link to="/docs/build/mcp#docs-server">Model Context Protocol</Link> server.
               Point any MCP client at the endpoint and your agent can search and read every page
               with three tools: <code>list_docs</code>, <code>search_docs</code>,{' '}
               <code>get_doc_page</code>.
             </p>
-            <Link className={styles.mcpLink} to="/docs/build/mcp">
+            <Link className={styles.mcpLink} to="/docs/build/mcp#docs-server">
               Setup guide →
             </Link>
           </div>
