@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "lockprivatekeys"
 sidebar_position: 36
 ---

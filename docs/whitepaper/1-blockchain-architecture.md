@@ -19,42 +19,36 @@ Mintlayer is a Proof of Stake blockchain, meaning that to participate in the sys
 A Mintlayer block is produced every 120s on average and is limited to 1MB, although it can be smaller. Each block has a version, the only implemented version at this stage is V1:
 
 ```rust
-
-pub struct BlockV1 \{
+pub struct BlockV1 {
     pub(super) header: SignedBlockHeader,
     pub(super) body: BlockBody,
-\}
+}
 ```
-
 
 where `SignedBlockHeader` looks like :
 
 ```rust
 
-
-pub struct SignedBlockHeader \{
+pub struct SignedBlockHeader {
     block_header: BlockHeader,
     signature_data: BlockHeaderSignature,
-\}
-pub struct BlockHeader \{
+}
+pub struct BlockHeader {
     pub(super) version: VersionTag<1>,
     pub(super) prev_block_id: Id<GenBlock>,
     pub(super) tx_merkle_root: H256,
     pub(super) witness_merkle_root: H256,
     pub(super) timestamp: BlockTimestamp,
     pub(super) consensus_data: ConsensusData,
-\}
+}
 ```
-
 And `BlockBody` looks like this:
 ```rust
-
-pub struct BlockBody \{
+pub struct BlockBody {
     pub(super) reward: BlockReward,
     pub(super) transactions: Vec<SignedTransaction>,
-\}
+}
 ```
-
 `BlockReward` is the reward for the staking pool to participate in the consensus. The rest of the block is filled with transactions. 
 
 ## 1.4 Transactions
@@ -62,25 +56,21 @@ pub struct BlockBody \{
 A transaction on Mintlayer is a defined like this:
 
 ```rust
-
-pub struct TransactionV1 \{
+pub struct TransactionV1 {
     version: VersionTag<1>,
     flags: u128,
     inputs: Vec<TxInput>,
     outputs: Vec<TxOutput>,
-\}
+}
 ```
-
 
 The essence of that are the vectors of `TxInput` and `TxOutput`. An Input is a reference to a previous unspent output (UTXO) or an account:
 ```rust
-
-pub enum TxInput \{
+pub enum TxInput {
     Utxo(UtxoOutPoint),
     AccountCommand(AccountNonce, AccountCommand),
-\}
+}
 ```
-
 In Mintlayer, accounts are utilized to distribute rewards from staking pools. The rationale behind using accounts in this specific context is to avoid the creation of an excessive number of outputs in the system. Excessive outputs could lead to increased memory usage for the nodes and result in significantly large transactions. This is because the vector of inputs could become very large when spending rewards from the pools.
 
 
@@ -142,16 +132,22 @@ In the cryptocurrency ecosystem, the blockchains supporting multiple tokens \(su
 
 Mintlayer does not force the use of ML for paying transaction fees. Instead, users can pay in ML or any MLS-01 token they choose if the network participants are willing to accept it. Every block proposer can signal the list of tokens accepted in a block - the free market dictates its rules.
 
-> NOTE: This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
-> \{.is-danger\}
+:::danger[NOTE]
+
+This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
+
+:::
 
 
 ## 1.9 Bitcoin links
 
 The primary link between Mintlayer and Bitcoin is through the atomic swap[^3] system, which allows assets on both chains to be swapped directly without the need for an intermediary of any sort. Mintlayer intends to incorporate Bitcoin into its consensus system in the future, but this is an active area of research right now, so the exact form this will take is to be decided. 
 
-> NOTE: This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
-> \{.is-danger\}
+:::danger[NOTE]
+
+This feature is currently under development and will be part of a future upgrade. Please note that technical details are subject to change
+
+:::
 
 
 ---

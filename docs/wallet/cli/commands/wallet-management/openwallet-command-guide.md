@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "openwallet"
 sidebar_position: 63
 ---

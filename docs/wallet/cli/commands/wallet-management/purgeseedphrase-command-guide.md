@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "purgeseedphrase"
 sidebar_position: 70
 ---

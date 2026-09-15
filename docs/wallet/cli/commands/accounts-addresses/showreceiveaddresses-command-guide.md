@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "showreceiveaddresses"
 sidebar_position: 76
 ---

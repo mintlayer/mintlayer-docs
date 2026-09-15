@@ -1,4 +1,5 @@
 ---
+deprecated: true
 title: "closewallet"
 sidebar_position: 19
 ---

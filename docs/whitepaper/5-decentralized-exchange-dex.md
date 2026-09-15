@@ -14,22 +14,18 @@ This makes the DEX censorship-resistant, transparent and secure, while still sup
 Orders use the `CreateOrder` output type:
 
 ```rust
-
 CreateOrder(OrderData)
 ```
-
 
 With payload:
 
 ```rust
-
-struct OrderData \{
+struct OrderData {
     conclude_key: Destination,  // who can conclude the order
     ask: OutputValue,           // what is requested
     give: OutputValue,          // what is offered
-\}
+}
 ```
-
 
 At creation:
 
@@ -120,10 +116,8 @@ specifies the id of the order to freeze and is signed by `conclude_key`.
 * Settlement is deterministic: the price is fixed by the initial `(ask, give)` ratio, with proportional amounts computed as:
 
    ```
-
    (taker_receives) = (fill_ask) * (give_total) / (ask_total)
    ```
-
 
 ## 5.5. Fully On-Chain Order Book
 
