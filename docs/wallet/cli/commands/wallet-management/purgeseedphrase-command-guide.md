@@ -3,7 +3,7 @@ deprecated: true
 title: "purgeseedphrase"
 sidebar_position: 70
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`wallet-purge-seed-phrase`](wallet-purge-seed-phrase-command-guide.md).
 

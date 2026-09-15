@@ -3,7 +3,7 @@ deprecated: true
 title: "removeprivatekeysencryption"
 sidebar_position: 71
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`wallet-disable-private-keys-encryption`](wallet-disable-private-keys-encryption-command-guide.md).
 

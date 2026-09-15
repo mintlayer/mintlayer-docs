@@ -3,7 +3,7 @@ deprecated: true
 title: "createdelegation"
 sidebar_position: 21
 ---
-:::note[Deprecated command name]
+:::danger[Deprecated command name]
 
 This page documents a legacy command name. In current wallet versions the command is called [`delegation-create`](delegation-create-command-guide.md).
 
