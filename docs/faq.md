@@ -53,13 +53,15 @@ Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are 
 
 ## How long is the waiting period when I unstake?
 
-Unstaking means withdrawing coins from a delegation (`delegation-withdraw` in `wallet-cli`, `delegation_withdraw` over the [Wallet RPC](wallet/rpc/staking.md), or `delegationWithdraw` in the SDKs). The withdrawal itself goes through immediately, but the coins arrive in a time-locked output and only become **spendable after a lock period** defined by consensus rules.
+**7200 blocks, around 10 days.**
 
-There is no fixed wall-clock duration to quote: the unlock condition (a block height or timestamp) is part of your withdrawal transaction. Read it directly by inspecting the transaction (`transaction-inspect` in `wallet-cli`, or the [transaction endpoint](api/endpoints/transaction.md)) and looking at its `LockThenTransfer` output; the explorer will also show when the funds unlock.
+Unstaking means withdrawing coins from a delegation (`delegation-withdraw` in `wallet-cli`, `delegation_withdraw` over the [Wallet RPC](wallet/rpc/staking.md), or `delegationWithdraw` in the SDKs). The withdrawal itself goes through immediately, but the coins arrive in a time-locked output and only become spendable after the lock period, currently set to 7200 blocks (roughly 10 days). The exact unlock condition is part of your withdrawal transaction: inspect it (`transaction-inspect` in `wallet-cli` or the [transaction endpoint](api/endpoints/transaction.md)) and look at its `LockThenTransfer` output, or check the unlock time in the explorer.
 
-Related timelines:
+You can withdraw from a delegation directly in the [Mojito wallet](wallet/mojito-wallet.md). Dismissing (decommissioning) a pool follows the same principle and is usually done via `wallet-cli` or the node GUI.
 
-- **Pool operators**: decommissioning a pool returns the pledge after a maturity period; delegators must withdraw their funds separately.
+Other timelines to keep in mind:
+
+- **Pool operators**: decommissioning a pool returns the pledge after the same lock period; delegators must withdraw their funds separately.
 - **Round-based staking**: tokens staked for a round stay locked across the auction, active, and lock-in rounds (about one week each); see [How do staking rounds and lock-ups work?](#how-do-staking-rounds-and-lock-ups-work).
 
 As with all consensus parameters, verify against the network you run, as values can change between releases.
