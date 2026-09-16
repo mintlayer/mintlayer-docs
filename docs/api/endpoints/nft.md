@@ -40,4 +40,4 @@ To enumerate NFTs, use [`GET /token`](token.md) to list token IDs and probe them
 nft, err := client.Indexer.GetNFT(ctx, nftID)   // GET /nft/:id
 ```
 
-See the [indexer client reference](../../build/sdks/go/indexer.md) and the [NFT guide](../../wallet/guides/issuing-and-managing-an-nft.md).
+See the [indexer client reference](../../build/sdks/go/indexer.md) and the [NFT guide](../../guides/cli/issuing-and-managing-an-nft.md).

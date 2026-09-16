@@ -8,7 +8,7 @@ sidebar_position: 7
 
 The Go SDK embeds the same WASM cryptography runtime that the wallets use ([wazero](https://wazero.io/), no CGO). With it you can generate and restore wallets, derive addresses, and sign transactions entirely in your own process, there is no wallet daemon holding your keys.
 
-This guide covers the wallet side; building arbitrary transactions is covered in [Forging custom transactions](custom-transactions.md) and the [Building Transactions](../sdks/go/transactions.md) reference.
+This guide covers the wallet side; building arbitrary transactions is covered in [Forging custom transactions](custom-transactions.md) and the [Building Transactions](../../build/sdks/go/transactions.md) reference.
 
 ```go
 import (
@@ -101,7 +101,7 @@ recvPub, err := c.MakeReceivingAddressPublicKey(accountXPub, 0)
 
 ## Signing a transaction
 
-Signing follows the eight-step flow documented in [Building Transactions](../sdks/go/transactions.md): encode inputs and outputs, build the unsigned transaction, produce witness bytes per input with `EncodeWitness`, and assemble with `EncodeSignedTransaction`. Condensed:
+Signing follows the eight-step flow documented in [Building Transactions](../../build/sdks/go/transactions.md): encode inputs and outputs, build the unsigned transaction, produce witness bytes per input with `EncodeWitness`, and assemble with `EncodeSignedTransaction`. Condensed:
 
 ```go
 tx, err := c.EncodeTransaction(encodedInputs, encodedOutputs, 0)
@@ -135,7 +135,7 @@ txID, err := c.GetTransactionID(signedTx, true)
 json, err := c.DecodeSignedTransactionToJS(signedTx, mintlayer.Mainnet)
 ```
 
-Broadcast via the indexer (`SubmitTransaction`) or the node (`P2PSubmitTransaction`); see step 8 of the [reference](../sdks/go/transactions.md#step-8-assemble-and-submit).
+Broadcast via the indexer (`SubmitTransaction`) or the node (`P2PSubmitTransaction`); see step 8 of the [reference](../../build/sdks/go/transactions.md#step-8-assemble-and-submit).
 
 Special inputs use dedicated witnesses: `EncodeWitnessNoSignature` (fill-order inputs need no signature), `EncodeWitnessHTLCSpend` and `EncodeWitnessHTLCRefundSingleSig` (HTLC inputs).
 

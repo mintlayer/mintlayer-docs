@@ -161,7 +161,7 @@ const SectionList: SectionCard[] = [
   {
     title: 'Guides',
     description: 'Step-by-step tutorials: issue tokens and NFTs, run a staking pool, trade with orders, atomic swaps.',
-    to: '/docs/category/guides',
+    to: "/docs/guides",
     icon: Icons.guides,
   },
   {

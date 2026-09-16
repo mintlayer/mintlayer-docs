@@ -190,4 +190,4 @@ Class-specific highlights:
 
 ## Issuing an MLS-01 token
 
-The on-chain issuance flow (including setting the metadata URI) is covered in [Issue a new token](../../wallet/guides/issue-new-token.md); programmatic issuance via the SDK in [JavaScript SDK: Tokens](../../build/sdks/javascript/tokens.md) and [Go SDK: Tokens](../../build/sdks/go/tokens.md).
+The on-chain issuance flow (including setting the metadata URI) is covered in [Issue a new token](../../guides/cli/issue-new-token.md); programmatic issuance via the SDK in [JavaScript SDK: Tokens](../../build/sdks/javascript/tokens.md) and [Go SDK: Tokens](../../build/sdks/go/tokens.md).

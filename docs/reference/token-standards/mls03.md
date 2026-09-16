@@ -106,4 +106,4 @@ Property and other unique assets: legal ownership records, jurisdiction and regu
 
 ## Issuing an MLS-03 NFT
 
-On-chain issuance (metadata URI, media hash) is covered in [Issue an NFT (SDK)](../../build/guides/issue-nft.md) and the [wallet-cli NFT guide](../../wallet/guides/issuing-and-managing-an-nft.md). Remember: MLS-03 metadata is immutable once issued; plan the document before you mint.
+On-chain issuance (metadata URI, media hash) is covered in [Issue an NFT (SDK)](../../guides/javascript/issue-nft.md) and the [wallet-cli NFT guide](../../guides/cli/issuing-and-managing-an-nft.md). Remember: MLS-03 metadata is immutable once issued; plan the document before you mint.

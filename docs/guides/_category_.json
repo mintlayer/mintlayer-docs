@@ -1,8 +1,8 @@
 {
   "label": "Guides",
-  "position": 6,
+  "position": 3,
   "link": {
     "type": "doc",
-    "id": "build/guides/index"
+    "id": "guides/index"
   }
 }

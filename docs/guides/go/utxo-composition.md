@@ -150,4 +150,4 @@ Exactly which balances must be re-assigned to which outputs is enforced by conse
 
 :::
 
-For the order model itself (give/ask, conclude key, freeze semantics), see [Trading with Orders (SDK)](trading-with-orders.md) and the [wallet-cli orders guide](../../wallet/guides/trading-with-orders.md).
+For the order model itself (give/ask, conclude key, freeze semantics), see [Trading with Orders](trading-with-orders.md) and the wallet-cli guide [Trading with orders](../cli/trading-with-orders.md).

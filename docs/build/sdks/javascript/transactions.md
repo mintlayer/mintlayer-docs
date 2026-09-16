@@ -123,7 +123,7 @@ The fee of a built transaction is available on the `Transaction` object as `tx.g
 
 ## HTLCs (hash time-locked contracts)
 
-The SDK covers the full HTLC lifecycle used by e.g. the [atomic swap guide](../../guides/atomic-swap.md):
+The SDK covers the full HTLC lifecycle used by e.g. the [atomic swap guide](../../../guides/javascript/atomic-swap.md):
 
 | Method | Purpose |
 | ------ | ------- |

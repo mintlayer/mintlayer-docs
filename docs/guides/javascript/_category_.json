@@ -1,0 +1,8 @@
+{
+  "label": "JavaScript guides",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "guides/javascript/index"
+  }
+}

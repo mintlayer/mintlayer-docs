@@ -6,7 +6,7 @@ sidebar_position: 8
 
 # Forging Custom Transactions (Advanced)
 
-A Mintlayer transaction is just **inputs + outputs + witnesses**. The wallet daemon assembles standard shapes for you; the WASM runtime lets you forge any valid combination yourself. This is the advanced guide; the basic eight-step flow is documented in [Building Transactions](../sdks/go/transactions.md). Here we focus on what you can *combine*.
+A Mintlayer transaction is just **inputs + outputs + witnesses**. The wallet daemon assembles standard shapes for you; the WASM runtime lets you forge any valid combination yourself. This is the advanced guide; the basic eight-step flow is documented in [Building Transactions](../../build/sdks/go/transactions.md). Here we focus on what you can *combine*.
 
 ```go
 import (
@@ -154,6 +154,6 @@ This is the building block for co-signers and policy engines that must approve t
 ## Sanity checks before broadcasting
 
 - Every input witness present, in input order (see [Wallet & Signing](wallet-wasm.md#signing-a-transaction)).
-- `TxAdditionalInfo` populated for any pool or order input, signing fails or produces an invalid sighash otherwise (see [the reference](../sdks/go/wasm.md#additional-info-for-signing)).
+- `TxAdditionalInfo` populated for any pool or order input, signing fails or produces an invalid sighash otherwise (see [the reference](../../build/sdks/go/wasm.md#additional-info-for-signing)).
 - Protocol fees included as outputs; nonce values fresh from the indexer.
 - Dry-run the result: `GetTransactionID` and `DecodeSignedTransactionToJS` before `SubmitTransaction`.

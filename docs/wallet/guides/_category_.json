@@ -1,9 +1,0 @@
-{
-  "label": "Guides",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "title": "Guides (Wallet CLI)",
-    "description": "Step-by-step guides using wallet-cli: issue tokens and NFTs, run a staking pool, trade with orders, manage multisig, and atomic swaps with Bitcoin. SDK equivalents for developers live in the Build section."
-  }
-}

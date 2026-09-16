@@ -271,7 +271,7 @@ To transfer an NFT, use `token_send` with `amount: { decimal: '1' }`.
 
 ## Related Pages
 
-- [Guide: Issuing and Managing a Token](../../wallet/guides/issue-new-token.md)
-- [Guide: Issuing and Managing an NFT](../../wallet/guides/issuing-and-managing-an-nft.md)
+- [Guide: Issuing and Managing a Token](../../guides/cli/issue-new-token.md)
+- [Guide: Issuing and Managing an NFT](../../guides/cli/issuing-and-managing-an-nft.md)
 - [Wallet RPC: Transactions](transactions.md)
 - [Wallet RPC: Overview](overview.md)

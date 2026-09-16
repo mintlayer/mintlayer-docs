@@ -11,7 +11,7 @@ Mintlayer is a Bitcoin sidechain with a built-in PoS consensus, native token iss
 
 - **Run a node**, [install](getting-started/index.md) from source, binaries, or Docker, then follow the [upgrade guide](node/upgrading/index.md) to stay current.
 - **Use the wallet**, the [Wallet CLI reference](wallet/cli/commands.md) documents every command; for automation use the [Wallet RPC API](wallet/rpc/overview.md).
-- **Issue a token**, the [token guide](wallet/guides/issue-new-token.md) walks through issuing, minting, and sending MLS-01 tokens; there is a separate guide for [NFTs](wallet/guides/issuing-and-managing-an-nft.md).
+- **Issue a token**, the [token guide](guides/cli/issue-new-token.md) walks through issuing, minting, and sending MLS-01 tokens; there is a separate guide for [NFTs](guides/cli/issuing-and-managing-an-nft.md).
 - **Use the Mojito Wallet**, the non-custodial mobile and browser-extension wallet: see [Mojito Wallet](wallet/mojito-wallet.md).
 - **Build dApps**, integrate wallets with the [JavaScript SDK](build/sdks/javascript/index.md) or [Mojito Inject](build/mojito-inject.md), and query chain data via the [API](api/index.md).
 
@@ -20,7 +20,7 @@ Mintlayer is a Bitcoin sidechain with a built-in PoS consensus, native token iss
 | Section | Contents |
 | ------- | -------- |
 | [Getting Started](getting-started/index.md) | Node vs. wallet, installation methods |
-| [Guides](wallet/guides/managing-a-staking-pool.md) | Staking pools, tokens, NFTs, multisig, orders, atomic swaps (wallet-cli) |
+| [Guides](guides/cli/managing-a-staking-pool.md) | Staking pools, tokens, NFTs, multisig, orders, atomic swaps (wallet-cli) |
 | [Node](node/index.md) | Running, upgrading, firewall, node commands |
 | [Wallet](wallet/mojito-wallet.md) | Mojito Wallet, addresses, Wallet CLI, Wallet RPC, Trezor |
 | [API](api/index.md) | Indexer REST API: endpoints, conventions |

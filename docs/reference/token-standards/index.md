@@ -23,7 +23,7 @@ Metadata is not validated by consensus. The chain enforces what is on-chain (tic
 
 | Token kind | Set at issuance | Changeable |
 | ---------- | --------------- | ---------- |
-| MLS-01 fungible | `metadata_uri` field of the issuance transaction | Yes, via the token authority; see [Update the metadata URI](../../wallet/guides/issue-new-token.md#update-the-metadata-uri) |
+| MLS-01 fungible | `metadata_uri` field of the issuance transaction | Yes, via the token authority; see [Update the metadata URI](../../guides/cli/issue-new-token.md#update-the-metadata-uri) |
 | MLS-03 NFT | `metadata_uri` / additional metadata URI at issuance | **No**: NFT metadata is immutable once issued |
 
 ## Common top-level fields
