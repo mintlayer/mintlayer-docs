@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "Frequently asked questions about Mintlayer: testnet tokens, fees, finality, staking requirements, and where to get help."
+description: "Frequently asked questions about Mintlayer: testnet tokens, fees, finality, staking requirements, unstaking, explorer lookups, and where to get help."
 sidebar_position: 10
 ---
 
@@ -50,6 +50,33 @@ To participate as a block signer you must stake at least 0.01% of the total toke
 ## How do staking rounds and lock-ups work?
 
 Rounds last about one week (1008 Bitcoin blocks). Tokens staked for a round are locked across three rounds: the auction round (when you apply), the active round (when you participate), and a lock-in round afterwards. Plan liquidity accordingly; verify round timing against the network you operate on, as parameters can change between releases. See the [whitepaper chapter 6](whitepaper/7-token-and-public-sale.md) for the full timeline.
+
+## How long is the waiting period when I unstake?
+
+Unstaking means withdrawing coins from a delegation (`delegation-withdraw` in `wallet-cli`, `delegation_withdraw` over the [Wallet RPC](wallet/rpc/staking.md), or `delegationWithdraw` in the SDKs). The withdrawal itself goes through immediately, but the coins arrive in a time-locked output and only become **spendable after a lock period** defined by consensus rules.
+
+There is no fixed wall-clock duration to quote: the unlock condition (a block height or timestamp) is part of your withdrawal transaction. Read it directly by inspecting the transaction (`transaction-inspect` in `wallet-cli`, or the [transaction endpoint](api/endpoints/transaction.md)) and looking at its `LockThenTransfer` output; the explorer will also show when the funds unlock.
+
+Related timelines:
+
+- **Pool operators**: decommissioning a pool returns the pledge after a maturity period; delegators must withdraw their funds separately.
+- **Round-based staking**: tokens staked for a round stay locked across the auction, active, and lock-in rounds (about one week each); see [How do staking rounds and lock-ups work?](#how-do-staking-rounds-and-lock-ups-work).
+
+As with all consensus parameters, verify against the network you run, as values can change between releases.
+
+## Why does the explorer say "not found" when I paste my address?
+
+Most likely nothing is wrong. Mintlayer is a UTXO system, and wallets generate a **new receiving address for every payment** to preserve privacy. A freshly generated address has never been part of any transaction, so there is no on-chain history to show: no transaction involving that address is recorded yet, and the explorer reports it as not found.
+
+In other words, "not found" means "this address has no on-chain history", not "this address is invalid or not yours".
+
+What to do:
+
+- **Expect it for new addresses**: the address becomes searchable as soon as it appears in a confirmed transaction, for example after it receives coins once.
+- **Check balances in the wallet**: your balance lives in the wallet, which tracks all of your addresses together; no single address page shows your total.
+- **Look up what has history**: transaction IDs and addresses that have been used before resolve normally.
+
+This is by design: reusing one address for every payment would link all of your activity together. See [address format](wallet/addresses/address-format.md) for how Mintlayer addresses work.
 
 ## How do I move tokens between Mintlayer and Ethereum?
 
