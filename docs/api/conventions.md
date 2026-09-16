@@ -38,7 +38,7 @@ All amounts are returned as an object with two representations:
 {"atoms": "148200000000", "decimal": "1.482"}
 ```
 
-- `atoms` is the smallest unit (1 MLT = 10^11 atoms), as a decimal string.
+- `atoms` is the smallest unit (1 ML = 10^11 atoms), as a decimal string.
 - `decimal` is the human-readable amount, as a string.
 
 Both are strings to avoid losing precision in JSON number parsing. Always do arithmetic on `atoms`.

@@ -8,7 +8,7 @@ sidebar_position: 7
 
 ## GET /statistics/coin
 
-Returns MLT supply statistics:
+Returns ML supply statistics:
 
 ```bash
 curl https://api-server.mintlayer.org/api/v2/statistics/coin

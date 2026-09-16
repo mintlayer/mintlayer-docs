@@ -25,7 +25,7 @@ Mintlayer has no protocol-mandated fee. Senders choose the fee, and block produc
 - **Size-based**: fees scale with the serialized size of the transaction (roughly atoms per kilobyte).
 - **Estimates**: the indexer exposes a fee-rate estimate per kilobyte, based on the highest-paying transactions currently in the mempool. See the [fee rate endpoint](api/endpoints/feerate.md).
 - **Wallets compute it for you**: `wallet-cli` and the wallet RPC calculate and attach an appropriate fee automatically when creating transactions.
-- **Fee token**: fees are paid to the block producer, who may accept any token transferred on Mintlayer, including MLT.
+- **Fee token**: fees are paid to the block producer, who may accept any token transferred on Mintlayer, including ML.
 
 For exchanges and services: query the [fee rate endpoint](api/endpoints/feerate.md) for a current estimate, or rely on the wallet's automatic fee calculation. There is no fixed minimum, but transactions paying well below the estimate may stay in the mempool longer.
 
@@ -43,7 +43,7 @@ Practical guidance:
 
 See the [whitepaper chapter on architecture](whitepaper/1-blockchain-architecture.md) and Pulsar section 5.4 ("Finality") for the protocol details.
 
-## How much MLT do I need to stake?
+## How much ML do I need to stake?
 
 To participate as a block signer you must stake at least 0.01% of the total token supply, which was 40,000 ML at mainnet launch (40,000 TML on testnet). A single staker can be rewarded with more than one slot per round. See [participation in the network](whitepaper/1-blockchain-architecture.md) and the [staking pool guide](wallet/guides/managing-a-staking-pool.md).
 

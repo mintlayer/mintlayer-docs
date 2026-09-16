@@ -18,7 +18,7 @@ curl https://api-server.mintlayer.org/api/v2/feerate
 "100000000000"
 ```
 
-The result is a JSON string: atoms per kilobyte (here 1000 MLT per kB). There is no required fee for block inclusion in Mintlayer, but transactions paying below the current estimate may take longer to be picked up by block producers.
+The result is a JSON string: atoms per kilobyte (here 1000 ML per kB). There is no required fee for block inclusion in Mintlayer, but transactions paying below the current estimate may take longer to be picked up by block producers.
 
 ### Query parameters
 
