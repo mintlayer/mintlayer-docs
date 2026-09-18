@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Command-line Guides
 
-These guides walk through Mintlayer's main workflows with `wallet-cli`, the interactive command-line wallet. They are the reference versions of the workflows: the [Go](../go/index.md) and [JavaScript](../javascript/index.md) guides implement the same flows in code.
+These guides walk through Mintlayer's main workflows with `wallet-cli`, the interactive command-line wallet. They are the reference versions of the workflows: the [Go](../go/index.md), [JavaScript](../javascript/index.md), and [Rust](../rust/index.md) guides implement the same flows in code.
 
 Prerequisites for all of them: a running, synced `node-daemon`, `wallet-cli` connected to the node (see [installation](../../getting-started/install/index.md)), and a small amount of ML for transaction fees. Examples use **testnet** values (TML); on mainnet the commands are identical apart from the network.
 

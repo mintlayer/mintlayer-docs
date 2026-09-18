@@ -20,6 +20,7 @@ For ports, RPC authentication, WebSocket subscriptions, regtest, and the WASM wr
 ## Use a full SDK
 
 - **[Go SDK](sdks/go/index.md)**, full coverage of the node, indexer, and wallet RPCs plus the embedded WASM cryptography runtime (no CGO). Recommended for services, exchanges, and backends.
+- **[Rust SDK](sdks/rust/index.md)**, async sub-clients for the node, indexer, and wallet RPCs plus native cryptography and transaction building backed by mintlayer-core (opt-in `crypto` feature).
 
 ## Accept addresses from users
 

@@ -1,0 +1,8 @@
+{
+  "label": "Rust SDK",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "build/sdks/rust/index"
+  }
+}

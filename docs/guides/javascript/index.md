@@ -8,7 +8,7 @@ sidebar_position: 1
 
 These guides implement Mintlayer's main workflows with the [JavaScript SDK](../../build/sdks/javascript/index.md) (`npm install @mintlayer/sdk`). In the browser the `Client` talks to the [Mojito wallet](../../wallet/mojito-wallet.md) extension; in Node.js use the standalone [account providers](../../build/sdks/javascript/account-providers.md). Start with the [SDK Client](../../build/sdks/javascript/getting-started.md) page for creation options.
 
-The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the Go versions in the [Go guides](../go/index.md).
+The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the Go versions in the [Go guides](../go/index.md), and the Rust versions in the [Rust guides](../rust/index.md).
 
 | Guide | Contents |
 | ----- | -------- |
