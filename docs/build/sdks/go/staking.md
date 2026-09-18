@@ -1,7 +1,7 @@
 ---
 title: "Staking"
 description: "Staking reference for the Mintlayer Go SDK."
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Staking

@@ -8,7 +8,7 @@ sidebar_position: 2
 
 This guide covers the full MLS-01 token lifecycle in JavaScript: issuing, minting, transferring, and managing supply and authority with `@mintlayer/sdk`. The same workflow in Go lives in the [Go guides](../go/issue-token.md); the wallet-cli version, which explains the underlying concepts (token id, authority address, reserve vs circulating supply), is [Issue a new token](../cli/issue-new-token.md).
 
-Prerequisites: `npm install @mintlayer/sdk` and a connected client; see the [SDK Client](../../build/sdks/javascript/getting-started.md) and [account providers](../../build/sdks/javascript/account-providers.md) pages for running outside a browser.
+Prerequisites: `npm install @mintlayer/sdk` and a connected client; see [Getting Started](../../build/sdks/javascript/getting-started.md) and [account providers](../../build/sdks/javascript/account-providers.md) pages for running outside a browser.
 
 ```mermaid
 flowchart LR

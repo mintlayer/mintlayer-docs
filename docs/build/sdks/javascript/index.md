@@ -75,7 +75,8 @@ const signedTx = await client.transfer({ to: 'tmt1q...', amount: 10 });
 
 | Guide | Contents |
 | ----- | -------- |
-| [SDK Client](getting-started.md) | Client creation, connection lifecycle, network, events, queries |
+| [Getting Started](getting-started.md) | Installation, first call, networks, amounts, error handling, testing |
+| [SDK Client](client.md) | Client creation, connection lifecycle, network, events, queries |
 | [Account providers](account-providers.md) | Mojito, private-key, mnemonic, and custom providers |
 | [Transactions](transactions.md) | Build, sign, broadcast; fees; HTLCs; message signing |
 | [Tokens](tokens.md) | Fungible tokens and NFTs: issuance, minting, freezing |

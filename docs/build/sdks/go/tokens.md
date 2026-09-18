@@ -1,7 +1,7 @@
 ---
 title: "Tokens"
 description: "Tokens reference for the Mintlayer Go SDK."
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Tokens

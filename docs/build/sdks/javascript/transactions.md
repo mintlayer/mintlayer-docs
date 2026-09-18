@@ -1,7 +1,7 @@
 ---
 title: "Transactions"
 description: "Building, signing, and broadcasting Mintlayer transactions with the JavaScript SDK: one-call methods, manual building, fees, HTLCs, and message signing."
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Transactions

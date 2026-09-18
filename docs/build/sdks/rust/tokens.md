@@ -1,7 +1,7 @@
 ---
 title: "Tokens and NFTs"
 description: "Tokens reference for the Mintlayer Rust SDK: fungible token and NFT lifecycle, orders, and manual encoders."
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Tokens and NFTs

@@ -1,7 +1,7 @@
 ---
 title: "Orders"
 description: "On-chain trading with the Mintlayer JavaScript SDK: creating, filling, and concluding decentralized orders."
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Orders

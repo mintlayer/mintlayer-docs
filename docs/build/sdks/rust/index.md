@@ -87,6 +87,7 @@ const MNEMONIC: &str = "abandon abandon abandon abandon abandon abandon abandon 
 
 | Guide | Contents |
 | ----- | -------- |
+| [Getting Started](getting-started.md) | Installation, features, first call, networks, amounts, errors, testing |
 | [Node client](node.md) | Chainstate, mempool, P2P, block submission, trust policy |
 | [Indexer client](indexer.md) | Chain, blocks, transactions, addresses, pools, tokens, orders, statistics |
 | [Wallet client](wallet.md) | Wallet lifecycle, accounts, balances, transactions, tokens, orders |

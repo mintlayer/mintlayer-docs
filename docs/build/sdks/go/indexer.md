@@ -1,7 +1,7 @@
 ---
 title: "Indexer Client"
 description: "Indexer Client reference for the Mintlayer Go SDK."
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Indexer Client

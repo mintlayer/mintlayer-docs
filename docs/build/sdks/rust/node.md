@@ -1,7 +1,7 @@
 ---
 title: "Node client"
 description: "Node client reference for the Mintlayer Rust SDK: chainstate, mempool, P2P, block submission, and trust policy."
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Node client

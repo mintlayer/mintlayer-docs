@@ -1,7 +1,7 @@
 ---
 title: "Building Transactions"
 description: "Building Transactions reference for the Mintlayer Go SDK."
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Building Transactions

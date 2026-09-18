@@ -1,7 +1,7 @@
 ---
 title: "Staking"
 description: "Staking reference for the Mintlayer Rust SDK: pools, delegations, withdrawals, and manual encoders."
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Staking and delegations

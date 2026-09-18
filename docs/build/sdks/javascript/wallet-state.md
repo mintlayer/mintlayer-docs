@@ -1,7 +1,7 @@
 ---
 title: "Wallet State"
 description: "WalletState in the Mintlayer JavaScript SDK: derive UTXOs, balances, and transaction history for bots and scanners from any sync source."
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Wallet State

@@ -1,7 +1,7 @@
 ---
 title: "Account Providers"
 description: "Account providers in the Mintlayer JavaScript SDK: Mojito wallet, private keys, mnemonic seeds, and custom implementations."
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Account Providers

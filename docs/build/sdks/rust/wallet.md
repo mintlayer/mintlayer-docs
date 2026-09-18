@@ -1,7 +1,7 @@
 ---
 title: "Wallet client"
 description: "Wallet client reference for the Mintlayer Rust SDK: lifecycle, accounts, balances, transactions, staking, tokens, orders."
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Wallet client

@@ -1,7 +1,7 @@
 ---
 title: "Staking"
 description: "Staking with the Mintlayer JavaScript SDK: creating delegations, staking to pools, withdrawing, and querying delegation state."
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Staking

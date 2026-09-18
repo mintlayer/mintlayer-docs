@@ -1,7 +1,7 @@
 ---
 title: "Cryptography"
 description: "Cryptography reference for the Mintlayer Rust SDK: keys, addresses, inputs, outputs, signing, intents."
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Cryptography (`crypto`)

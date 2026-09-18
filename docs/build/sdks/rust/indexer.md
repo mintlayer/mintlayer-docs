@@ -1,7 +1,7 @@
 ---
 title: "Indexer client"
 description: "Indexer client reference for the Mintlayer Rust SDK: chain, blocks, transactions, addresses, pools, tokens, orders, statistics."
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Indexer client

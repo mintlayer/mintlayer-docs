@@ -1,7 +1,7 @@
 ---
 title: "Tokens"
 description: "Fungible tokens and NFTs with the Mintlayer JavaScript SDK: issuance, minting, unminting, supply locking, freezing, authority and metadata management."
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Tokens

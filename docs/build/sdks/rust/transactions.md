@@ -1,7 +1,7 @@
 ---
 title: "Building transactions"
 description: "Step-by-step transaction building with the Mintlayer Rust SDK: UTXOs, fees, signing, and submission without the wallet daemon."
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Building transactions manually
