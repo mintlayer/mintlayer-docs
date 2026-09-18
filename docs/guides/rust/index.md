@@ -8,7 +8,7 @@ sidebar_position: 1
 
 These guides implement Mintlayer's main workflows with the [Rust SDK](../../build/sdks/rust/index.md) (`mintlayer-sdk`). The `wallet` sub-client talks to a running `wallet-rpc-daemon`, the `indexer` client reads chain state, and the `crypto` module builds and signs transactions natively, with no wallet daemon in the loop. Start with the SDK [overview](../../build/sdks/rust/index.md) for features and the mandatory `parity-scale-codec` patch when using the `crypto` feature.
 
-The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the [Go](../go/index.md) and [JavaScript](../javascript/index.md) versions in their own sections.
+The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the [Go](../go/index.md), [JavaScript](../javascript/index.md), and [Python](../python/index.md) versions in their own sections.
 
 | Guide | Contents |
 | ----- | -------- |

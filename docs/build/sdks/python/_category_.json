@@ -1,0 +1,8 @@
+{
+  "label": "Python SDK",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "build/sdks/python/index"
+  }
+}
