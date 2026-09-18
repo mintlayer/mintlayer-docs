@@ -175,7 +175,7 @@ const config: Config = {
         },
         {
           label: 'Guides',
-          to: '/docs/guides/issue-new-token',
+          to: "/docs/guides",
           position: 'left',
         },
         {
@@ -214,7 +214,7 @@ const config: Config = {
             },
             {
               label: 'Guides',
-              to: '/docs/guides/issue-new-token',
+              to: "/docs/guides",
             },
           ],
         },

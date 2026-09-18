@@ -21,7 +21,7 @@ This guide will walk you through the process of migrating your ML tokens from th
 ## Pre-requisites
 
 1. Access to your ERC20 ML tokens.
-2. `wallet-cli` [installed](../getting-started/install/install-from-binaries.md) on your system.
+2. `wallet-cli` [installed](../../getting-started/install/install-from-binaries.md) on your system.
 
 The migration has three steps:
 

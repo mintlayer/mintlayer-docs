@@ -102,7 +102,7 @@ NFT balances appear alongside fungible token balances in the account balance out
 
 ## Related Pages
 
-- [`token-nft-issue-new`](../wallet/cli/commands/tokens/token-nft-issue-new-command-guide.md)
-- [`token-send`](../wallet/cli/commands/tokens/token-send-command-guide.md)
-- [`address-reveal-public-key-as-hex`](../wallet/cli/commands/accounts-addresses/address-reveal-public-key-as-hex-command-guide.md)
+- [`token-nft-issue-new`](../../wallet/cli/commands/tokens/token-nft-issue-new-command-guide.md)
+- [`token-send`](../../wallet/cli/commands/tokens/token-send-command-guide.md)
+- [`address-reveal-public-key-as-hex`](../../wallet/cli/commands/accounts-addresses/address-reveal-public-key-as-hex-command-guide.md)
 - [Issuing and Managing a Token](issue-new-token.md), fungible token guide

@@ -76,8 +76,8 @@ Full command documentation lives in the [Wallet CLI reference](../wallet/cli/com
 
 ## 4. What next?
 
-- [Issue and manage a token](../guides/issue-new-token.md), create your own MLS-01 token
-- [Manage a staking pool](../guides/managing-a-staking-pool.md), participate in consensus and earn rewards
+- [Issue and manage a token](../guides/cli/issue-new-token.md), create your own MLS-01 token
+- [Manage a staking pool](../guides/cli/managing-a-staking-pool.md), participate in consensus and earn rewards
 - [Wallet RPC](../wallet/rpc/overview.md), automate wallets programmatically
 - [Developer Setup](../build/development.md), RPC ports, authentication, and APIs at a glance
 - [Building on Mintlayer](build/index.md), SDKs, wallet integration, and APIs for developers

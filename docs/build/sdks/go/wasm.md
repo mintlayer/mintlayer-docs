@@ -1,7 +1,7 @@
 ---
 title: "WASM Client"
 description: "WASM Client reference for the Mintlayer Go SDK."
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # WASM Client

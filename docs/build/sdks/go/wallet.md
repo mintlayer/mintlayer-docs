@@ -1,7 +1,7 @@
 ---
 title: "Wallet Client"
 description: "Wallet Client reference for the Mintlayer Go SDK."
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Wallet Client

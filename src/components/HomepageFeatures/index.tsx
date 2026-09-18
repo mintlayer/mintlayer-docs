@@ -161,7 +161,7 @@ const SectionList: SectionCard[] = [
   {
     title: 'Guides',
     description: 'Step-by-step tutorials: issue tokens and NFTs, run a staking pool, trade with orders, atomic swaps.',
-    to: '/docs/guides/issue-new-token',
+    to: "/docs/guides",
     icon: Icons.guides,
   },
   {
@@ -173,7 +173,7 @@ const SectionList: SectionCard[] = [
   {
     title: 'JavaScript SDK',
     description: 'Build dApps on Mintlayer with the official JavaScript SDK.',
-    to: '/docs/build/sdks/javascript/getting-started',
+    to: '/docs/build/sdks/javascript',
     icon: Icons.js,
   },
   {

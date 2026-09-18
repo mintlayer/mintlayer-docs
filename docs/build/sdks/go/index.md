@@ -76,7 +76,8 @@ func main() {
 
 | Guide | Contents |
 | ----- | -------- |
-| [Node client](node.md) | Chainstate, mempool, P2P, block submission |
+| [Getting Started](getting-started.md) | Installation, first call, networks and ports, amounts, errors, testing |
+| [Node Client](node.md) | Chainstate, mempool, P2P, block submission |
 | [Indexer client](indexer.md) | Chain, blocks, transactions, addresses, pools, tokens, orders, statistics |
 | [Wallet client](wallet.md) | Wallet lifecycle, accounts, balances, transactions |
 | [WASM client](wasm.md) | Keys, addresses, inputs, outputs, signing, fees |

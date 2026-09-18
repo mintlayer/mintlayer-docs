@@ -4,6 +4,6 @@
   "collapsed": true,
   "link": {
     "type": "generated-index",
-    "description": "Command-line reference for the Mintlayer binaries: node-daemon, api-web-server, and api-blockchain-scanner-daemon."
+    "description": "Command-line reference for the Mintlayer binaries: node-daemon, api-web-server, api-blockchain-scanner-daemon, chainstate-db-dumper, and dns-server."
   }
 }

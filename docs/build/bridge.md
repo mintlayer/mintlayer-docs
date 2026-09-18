@@ -130,4 +130,4 @@ Example: a 100.00 request with `fixed_fee = "0.5"` and `percentage_fee = "0.1%"`
 
 - [API overview](../api/index.md) for the indexer API your integration may pair with
 - [Token endpoints](../api/endpoints/token.md) for querying bridged tokens
-- [Issue and manage a token](../guides/issue-new-token.md) before bridging an MLS-01 token to Ethereum
+- [Issue and manage a token](../guides/cli/issue-new-token.md) before bridging an MLS-01 token to Ethereum

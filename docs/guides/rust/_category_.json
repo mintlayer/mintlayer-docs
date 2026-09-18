@@ -1,0 +1,8 @@
+{
+  "label": "Rust guides",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "guides/rust/index"
+  }
+}

@@ -10,16 +10,17 @@ Mintlayer gives you the primitives, UTXO-based transactions, native token issuan
 
 ## Local development setup
 
-For ports, RPC authentication, WebSocket subscriptions, regtest, and the WASM wrappers, start with the [Developer Setup](development.md) quick reference.
+For ports, RPC authentication, WebSocket subscriptions, regtest, and the WASM wrappers, start with the [Developer Setup](development.md) quick reference. For guided SDK walkthroughs of the workflows covered by the [wallet-cli guides](/docs/guides/cli) (tokens, NFTs, staking, orders, atomic swaps), see the [Guides for Developers](../guides/index.md).
 
 ## Integrate a wallet into your dApp
 
 - **[Mojito Inject](mojito-inject.md)**, the Mojito browser extension injects a `window.mojito` provider, similar to MetaMask's `window.ethereum`. Request accounts, sign, and send transactions directly from your frontend.
-- **[JavaScript SDK](sdks/javascript/getting-started.md)**, a `Client` class offering a high-level interface to the Mojito wallet extension, on top of the injection API.
+- **[JavaScript SDK](sdks/javascript/index.md)**, a typed `Client` for the Mojito wallet extension, plus standalone key/mnemonic providers and a headless `WalletState` engine for scripts and bots.
 
 ## Use a full SDK
 
 - **[Go SDK](sdks/go/index.md)**, full coverage of the node, indexer, and wallet RPCs plus the embedded WASM cryptography runtime (no CGO). Recommended for services, exchanges, and backends.
+- **[Rust SDK](sdks/rust/index.md)**, async sub-clients for the node, indexer, and wallet RPCs plus native cryptography and transaction building backed by mintlayer-core (opt-in `crypto` feature).
 
 ## Accept addresses from users
 
@@ -32,7 +33,7 @@ Mintlayer addresses are Bech32m, and their checksum can locate up to two mistype
 
 ## Cross-chain
 
-- **[Atomic Swap with Bitcoin](../guides/atomic-swap-with-bitcoin.md)**, trustless BTC ⇄ ML swaps using Hash Time-Locked Contracts, directly on-chain.
+- **[Atomic Swap with Bitcoin](../guides/cli/atomic-swap-with-bitcoin.md)**, trustless BTC ⇄ ML swaps using Hash Time-Locked Contracts, directly on-chain.
 - **[Bridge](bridge.md)**, transfer fungible tokens between Mintlayer and Ethereum.
 
 ## Automate wallets
