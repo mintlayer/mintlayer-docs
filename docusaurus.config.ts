@@ -257,6 +257,10 @@ const config: Config = {
               to: 'https://www.mintlayer.org/blog',
             },
             {
+              label: 'Sitemap',
+              href: 'https://docs.mintlayer.org/sitemap', // generated postbuild (scripts/build-sitemap-page.mjs)
+            },
+            {
               label: 'GitHub',
               href: 'https://github.com/mintlayer',
             },

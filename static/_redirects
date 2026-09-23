@@ -66,8 +66,3 @@
 /docs/build/guides/utxo-composition /docs/guides/go/utxo-composition/ 301
 /docs/build/guides/utxo-composition/ /docs/guides/go/utxo-composition/ 301
 
-# Legacy generated-index category pages (categories are now doc-linked)
-/docs/category/sdks /docs/build/sdks/ 301
-/docs/category/sdks/ /docs/build/sdks/ 301
-/docs/category/whitepaper /docs/whitepaper/blockchain-architecture/ 301
-/docs/category/whitepaper/ /docs/whitepaper/blockchain-architecture/ 301
