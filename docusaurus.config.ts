@@ -60,6 +60,12 @@ const config: Config = {
   // The site is served from the domain root (docs.mintlayer.org).
   baseUrl: '/',
 
+  // Emit canonical URLs, og:url, and sitemap entries WITH trailing slashes so
+  // they match what Cloudflare Workers actually serves (auto-trailing-slash).
+  // Without this, every page exists as /x (sitemap) and /x/ (served) and
+  // Google records the duplicates as "Alternate page with proper canonical".
+  trailingSlash: true,
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mintlayer', // Usually your GitHub org/user name.

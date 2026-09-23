@@ -1,37 +1,73 @@
 # Old Jekyll docs URLs -> new Docusaurus paths
-/whitepaper/1-blockchain-architecture /docs/whitepaper/blockchain-architecture 301
-/whitepaper/2-mintlayer-wallet /docs/whitepaper/mintlayer-wallet 301
-/whitepaper/3-tokenization-standard /docs/whitepaper/tokenization-standard 301
-/whitepaper/4-decentralized-finance-defi /docs/whitepaper/decentralized-finance-defi 301
-/whitepaper/5-decentralized-exchange-dex /docs/whitepaper/decentralized-exchange-dex 301
-/whitepaper/6-bitcoin-mintlayer-atomic-swaps /docs/whitepaper/bitcoin-mintlayer-atomic-swaps 301
-/whitepaper/7-token-and-public-sale /docs/whitepaper/token-and-public-sale 301
-/testnet/node-setup-cli /docs/getting-started/install/install-from-binaries 301
-/testnet/node-setup-docker /docs/getting-started/install/install-from-docker 301
+/whitepaper/1-blockchain-architecture /docs/whitepaper/blockchain-architecture/ 301
+/whitepaper/1-blockchain-architecture/ /docs/whitepaper/blockchain-architecture/ 301
+/whitepaper/2-mintlayer-wallet /docs/whitepaper/mintlayer-wallet/ 301
+/whitepaper/2-mintlayer-wallet/ /docs/whitepaper/mintlayer-wallet/ 301
+/whitepaper/3-tokenization-standard /docs/whitepaper/tokenization-standard/ 301
+/whitepaper/3-tokenization-standard/ /docs/whitepaper/tokenization-standard/ 301
+/whitepaper/4-decentralized-finance-defi /docs/whitepaper/decentralized-finance-defi/ 301
+/whitepaper/4-decentralized-finance-defi/ /docs/whitepaper/decentralized-finance-defi/ 301
+/whitepaper/5-decentralized-exchange-dex /docs/whitepaper/decentralized-exchange-dex/ 301
+/whitepaper/5-decentralized-exchange-dex/ /docs/whitepaper/decentralized-exchange-dex/ 301
+/whitepaper/6-bitcoin-mintlayer-atomic-swaps /docs/whitepaper/bitcoin-mintlayer-atomic-swaps/ 301
+/whitepaper/6-bitcoin-mintlayer-atomic-swaps/ /docs/whitepaper/bitcoin-mintlayer-atomic-swaps/ 301
+/whitepaper/7-token-and-public-sale /docs/whitepaper/token-and-public-sale/ 301
+/whitepaper/7-token-and-public-sale/ /docs/whitepaper/token-and-public-sale/ 301
+/testnet/node-setup-cli /docs/getting-started/install/install-from-binaries/ 301
+/testnet/node-setup-cli/ /docs/getting-started/install/install-from-binaries/ 301
+/testnet/node-setup-docker /docs/getting-started/install/install-from-docker/ 301
+/testnet/node-setup-docker/ /docs/getting-started/install/install-from-docker/ 301
 
 # Legacy consensus paper PDFs -> Pulsar paper on arXiv
-/docs/consensus-paper.pdf https://arxiv.org/abs/2411.14245 301
-/docs/DSA-consensus-paper-draft.pdf https://arxiv.org/abs/2411.14245 301
+/docs/consensus-paper.pdf https://arxiv.org/abs/2411.14245/ 301
+/docs/consensus-paper.pdf/ https://arxiv.org/abs/2411.14245/ 301
+/docs/DSA-consensus-paper-draft.pdf https://arxiv.org/abs/2411.14245/ 301
+/docs/DSA-consensus-paper-draft.pdf/ https://arxiv.org/abs/2411.14245/ 301
 
 # Chainstate DB dumper and DNS server moved under the command-line reference
-/docs/reference/chainstate-db-dumper /docs/reference/cli/chainstate-db-dumper 301
-/docs/reference/dns-server /docs/reference/cli/dns-server 301
+/docs/reference/chainstate-db-dumper /docs/reference/cli/chainstate-db-dumper/ 301
+/docs/reference/chainstate-db-dumper/ /docs/reference/cli/chainstate-db-dumper/ 301
+/docs/reference/dns-server /docs/reference/cli/dns-server/ 301
+/docs/reference/dns-server/ /docs/reference/cli/dns-server/ 301
 
 # Guides restructured: top-level /docs/guides with cli, go, javascript sections
-/docs/category/guides /docs/guides/cli 301
-/docs/wallet/guides/issue-new-token /docs/guides/cli/issue-new-token 301
-/docs/wallet/guides/issuing-and-managing-an-nft /docs/guides/cli/issuing-and-managing-an-nft 301
-/docs/wallet/guides/managing-a-staking-pool /docs/guides/cli/managing-a-staking-pool 301
-/docs/wallet/guides/managing-a-multisig-address /docs/guides/cli/managing-a-multisig-address 301
-/docs/wallet/guides/trading-with-orders /docs/guides/cli/trading-with-orders 301
-/docs/wallet/guides/atomic-swap-with-bitcoin /docs/guides/cli/atomic-swap-with-bitcoin 301
-/docs/wallet/guides/migrate-erc20-token-to-mainnet /docs/guides/cli/migrate-erc20-token-to-mainnet 301
-/docs/build/guides /docs/guides 301
-/docs/build/guides/issue-token /docs/guides 301
-/docs/build/guides/issue-nft /docs/guides 301
-/docs/build/guides/staking /docs/guides 301
-/docs/build/guides/trading-with-orders /docs/guides 301
-/docs/build/guides/atomic-swap /docs/guides 301
-/docs/build/guides/wallet-wasm /docs/guides/go/wallet-wasm 301
-/docs/build/guides/custom-transactions /docs/guides/go/custom-transactions 301
-/docs/build/guides/utxo-composition /docs/guides/go/utxo-composition 301
+/docs/category/guides /docs/guides/cli/ 301
+/docs/category/guides/ /docs/guides/cli/ 301
+/docs/wallet/guides/issue-new-token /docs/guides/cli/issue-new-token/ 301
+/docs/wallet/guides/issue-new-token/ /docs/guides/cli/issue-new-token/ 301
+/docs/wallet/guides/issuing-and-managing-an-nft /docs/guides/cli/issuing-and-managing-an-nft/ 301
+/docs/wallet/guides/issuing-and-managing-an-nft/ /docs/guides/cli/issuing-and-managing-an-nft/ 301
+/docs/wallet/guides/managing-a-staking-pool /docs/guides/cli/managing-a-staking-pool/ 301
+/docs/wallet/guides/managing-a-staking-pool/ /docs/guides/cli/managing-a-staking-pool/ 301
+/docs/wallet/guides/managing-a-multisig-address /docs/guides/cli/managing-a-multisig-address/ 301
+/docs/wallet/guides/managing-a-multisig-address/ /docs/guides/cli/managing-a-multisig-address/ 301
+/docs/wallet/guides/trading-with-orders /docs/guides/cli/trading-with-orders/ 301
+/docs/wallet/guides/trading-with-orders/ /docs/guides/cli/trading-with-orders/ 301
+/docs/wallet/guides/atomic-swap-with-bitcoin /docs/guides/cli/atomic-swap-with-bitcoin/ 301
+/docs/wallet/guides/atomic-swap-with-bitcoin/ /docs/guides/cli/atomic-swap-with-bitcoin/ 301
+/docs/wallet/guides/migrate-erc20-token-to-mainnet /docs/guides/cli/migrate-erc20-token-to-mainnet/ 301
+/docs/wallet/guides/migrate-erc20-token-to-mainnet/ /docs/guides/cli/migrate-erc20-token-to-mainnet/ 301
+/docs/build/guides /docs/guides/ 301
+/docs/build/guides/ /docs/guides/ 301
+/docs/build/guides/issue-token /docs/guides/ 301
+/docs/build/guides/issue-token/ /docs/guides/ 301
+/docs/build/guides/issue-nft /docs/guides/ 301
+/docs/build/guides/issue-nft/ /docs/guides/ 301
+/docs/build/guides/staking /docs/guides/ 301
+/docs/build/guides/staking/ /docs/guides/ 301
+/docs/build/guides/trading-with-orders /docs/guides/ 301
+/docs/build/guides/trading-with-orders/ /docs/guides/ 301
+/docs/build/guides/atomic-swap /docs/guides/ 301
+/docs/build/guides/atomic-swap/ /docs/guides/ 301
+/docs/build/guides/wallet-wasm /docs/guides/go/wallet-wasm/ 301
+/docs/build/guides/wallet-wasm/ /docs/guides/go/wallet-wasm/ 301
+/docs/build/guides/custom-transactions /docs/guides/go/custom-transactions/ 301
+/docs/build/guides/custom-transactions/ /docs/guides/go/custom-transactions/ 301
+/docs/build/guides/utxo-composition /docs/guides/go/utxo-composition/ 301
+/docs/build/guides/utxo-composition/ /docs/guides/go/utxo-composition/ 301
+
+# Legacy generated-index category pages (categories are now doc-linked)
+/docs/category/sdks /docs/build/sdks/ 301
+/docs/category/sdks/ /docs/build/sdks/ 301
+/docs/category/whitepaper /docs/whitepaper/blockchain-architecture/ 301
+/docs/category/whitepaper/ /docs/whitepaper/blockchain-architecture/ 301
