@@ -83,4 +83,4 @@ Concluding returns the unclaimed `give` remainder plus any accumulated `ask` bal
 
 ## Manual flows
 
-With the `wasm` module, `encode_create_order_output` builds the order output and `get_order_id` predicts the id from the inputs; fills use `encode_input_for_fill_order`, whose inputs must **not** be signed (`encode_witness_no_signature`). To **update** an existing order (new price or amounts), compose a transaction that consumes the conclude-order input and re-creates the order: see [Composing UTXOs](utxo-composition.md). See [Tokens and NFTs](../../build/sdks/python/tokens.md) in the SDK reference for the encoders.
+With the `wasm` module, `encode_create_order_output` builds the order output and `get_order_id` predicts the id from the inputs; fills use `encode_input_for_fill_order`, whose inputs must **not** be signed (`encode_witness_no_signature`). See [Tokens and NFTs](../../build/sdks/python/tokens.md) in the SDK reference for the encoders.

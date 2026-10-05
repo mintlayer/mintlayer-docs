@@ -19,4 +19,3 @@ The wallet-cli versions of the same workflows live in the [command-line guides](
 | [Atomic swap](atomic-swap.md) | The Mintlayer side of a BTC ⇄ ML swap with HTLCs |
 | [Wallet & signing (WASM)](wallet-wasm.md) | Generate wallets, derive addresses, sign without a daemon |
 | [Forging custom transactions](custom-transactions.md) | Mixed inputs/outputs, protocol fees, multi-party signing, intents |
-| [Composing UTXOs](utxo-composition.md) | Update an order atomically: conclude input + create output |
