@@ -52,6 +52,56 @@ let active = c.list_all_active_orders(ListOrdersParams {
 
 The indexer provides the same listings read-only: `idx.list_orders(...)`, `idx.list_orders_by_pair(...)`, `idx.order(...)`; the node exposes `order_info` and `orders_info_by_currencies` (the `nonce` field is `Option<u64>`: `None` while the order has no account spending history).
 
+## Reading the order book
+
+The indexer aggregates open orders into an order book per pair: one entry per
+price level, each with the summed remaining balance at that price. Requires
+api-server 1.4.1+ and an SDK release that ships the order book (see the
+[indexer reference](../../build/sdks/rust/indexer.md#cursor-pagination)):
+
+```rust
+use mintlayer_sdk::indexer::OrderBookSide;
+
+let mut book = idx.order_book_pager("ML", "tmltk1...", OrderBookSide::Ask, 50)?;
+while let Some(level) = book.next().await {
+    let level = level?;
+    // price.atoms is the exact "numer/denom" rational (quote atoms per base
+    // atom); price.decimal is that price floored toward zero.
+    println!("price {} ({})  amount {}", level.price.decimal, level.price.atoms, level.amount.decimal);
+}
+```
+
+:::warning[Truncated books are incomplete]
+
+Each book request scans at most 10,000 live orders. When that cap truncates
+the scan, the page's `truncated` field is `true` and `next_cursor` is `None`:
+the levels in hand are an incomplete aggregation and the walk cannot be
+continued — re-issue the request instead of paging on. (The pager maps a
+truncated page to a plain end-of-walk; when the caller must know, call
+`order_pair_book` directly and inspect `truncated`.) Cursors are also
+side-specific: an ask cursor cannot resume a bid walk (`Error::InvalidCursor`).
+The book is computed fresh per request, so a walk is not a consistent snapshot.
+
+:::
+
+## Token holders
+
+The holders listing shows the largest balances of the coin or token you are
+trading — useful for gauging distribution of the ask token before quoting
+prices:
+
+```rust
+let mut holders = idx.token_holders_pager("tmltk1...", 20)?;
+while let Some(holder) = holders.next().await {
+    let holder = holder?;
+    println!("{}  {}", holder.address, holder.amount.decimal);
+}
+```
+
+Entries are ordered by balance, largest first. See
+[Cursor pagination](../../build/sdks/rust/indexer.md#cursor-pagination) for
+the walk rules these pagers follow.
+
 ## Filling an order
 
 The fill amount is denominated in the **ask** currency:

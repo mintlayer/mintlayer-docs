@@ -106,6 +106,12 @@ delegation = idx.get_delegation("mdelg1...")
 print(f"next nonce: {delegation.next_nonce}")
 ```
 
+For deep pool listings the api-server (1.4.1+) also offers a keyset-cursor
+walk over pools, newest creation height first — see
+[Pools](../../api/endpoints/pool.md#get-pool) and
+[Pagination](../../api/conventions.md#pagination). The Python SDK ships the
+cursor methods in a later release; until then, page with `PageOpts` offsets.
+
 ## Manual transaction building
 
 The `wasm` module encodes pool and delegation outputs/inputs for full-custody flows: `encode_output_create_stake_pool` with `encode_stake_pool_data`, `encode_output_delegate_staking`, `encode_input_for_withdraw_from_delegation` (nonce from the indexer), and `get_pool_id` / `get_delegation_id` to predict ids from the inputs. See [Staking](../../build/sdks/python/staking.md) in the SDK reference for the full encoders.

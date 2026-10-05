@@ -95,6 +95,26 @@ delegation, _ := idx.GetDelegation(ctx, "mdelg1...")
 fmt.Printf("pool: %s  balance: %s  nonce: %d\n", delegation.PoolID, delegation.Balance.Decimal, delegation.NextNonce)
 ```
 
+To walk all pools (deep listing, not just the first page), use the cursor-paginated pools pager. It follows the default `by_height` order — the by-pledge sort only exists on the offset-based `ListPools`:
+
+```go
+pools := indexer.PoolsPager(idx, indexer.WithItems(100))
+for {
+    page, err := pools.NextPage(ctx)
+    if err != nil {
+        return err
+    }
+    if page == nil { // nil = last page
+        break
+    }
+    for _, p := range page {
+        fmt.Printf("pool %s  pledge=%s\n", p.PoolID, p.StakerBalance.Decimal)
+    }
+}
+```
+
+Cursor pages are stable only once the indexer's scanner is fully caught up; during catch-up or a reorg a walk may skip or repeat a pool.
+
 To estimate rewards: pool block stats for a time range, the pool's `cost_per_block` and margin from `GetPool`, and your delegation's share of the total pool balance.
 
 ## Manual transaction building
