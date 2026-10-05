@@ -76,7 +76,7 @@ The indexer and wallet clients use their own `Amount` dataclass with `atoms` and
 
 - `mintlayer.node.RPCError`: JSON-RPC error from the node daemon (`code`, `message`); transport failures raise `JSONRPCError`
 - `mintlayer.wallet.RPCError`: JSON-RPC error from the wallet daemon
-- `mintlayer.indexer.HTTPError`: non-2xx response (`status_code`, `body`); transport/decode failures raise `IndexerError`
+- `mintlayer.indexer.HTTPError`: non-2xx response (`status_code`, `body`; the body carries the server's error string, e.g. `Invalid cursor` or `Invalid number of items`); transport/decode failures raise `IndexerError`
 - `mintlayer.wasm.WasmError`: WASM operation failures, with a message prefixed by `mintlayer:`
 
 Error bodies are trimmed and stripped of control characters, and basic-auth credentials are redacted from the clients' `repr`.

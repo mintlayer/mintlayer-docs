@@ -55,6 +55,18 @@ class PageOpts:
 **Zero-omission rule:** zero values are omitted from the query string entirely,
 so the server defaults apply. Only positive values are sent:
 
+:::note[Cursor pagination ships in a later Python SDK release]
+
+api-server 1.4.1 added keyset (cursor) pagination for deep listing walks — the
+pools listing, the global transaction listing, the coin/token holders, and the
+order book — plus holders and order-book endpoints (see
+[Pagination](../../../api/conventions.md#pagination) for the wire contract).
+SDK v0.1.0 does not ship them yet; until the next release, use the offset-based
+listing below as the simple alternative for shallow pages (the server caps
+every page at 100 items and rejects `items=0`).
+
+:::
+
 ```python
 from mintlayer.indexer import PageOpts
 
@@ -158,8 +170,7 @@ Returns a paginated list of confirmed transactions across the entire chain.
 def get_transaction(self, tx_id: str) -> Transaction: ...
 ```
 
-Returns a transaction by ID. The `block_id`, `timestamp`, and `confirmations`
-fields are empty strings for unconfirmed transactions.
+Returns a transaction by ID, including pending (mempool) transactions. Since api-server 1.4.1 the wire sends `null` for `block_id`, `timestamp`, and `confirmations` on pending transactions (decoded as `None` — the dataclass annotations predate this and still say `str`), and the `fee` key is absent until the transaction is confirmed. Older api-servers rendered those fields as empty strings.
 
 ```python
 @dataclass(frozen=True)

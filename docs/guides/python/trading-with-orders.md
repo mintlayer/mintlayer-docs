@@ -45,6 +45,14 @@ active = wc.list_all_active_orders(...)  # optional currency filters
 
 The indexer provides the same listings read-only: `idx.list_orders(...)`, `idx.list_orders_by_pair(...)`, `idx.get_order(...)`; the node exposes `order_info` and `orders_info_by_currencies`.
 
+The indexer also aggregates open orders into an **order book** per pair (one
+price level per entry, ask side ascending, bid side descending) and lists the
+largest **token holders** — both added in api-server 1.4.1 (see
+[Order book](../../api/endpoints/order.md#get-orderpairpairbook) and
+[Holders](../../api/endpoints/statistics.md#get-statisticscoinholders)). The
+Python SDK ships client methods for them in a later release; until then use
+another SDK client or query the indexer REST API directly.
+
 ## Filling an order
 
 The fill amount is denominated in the **ask** currency:

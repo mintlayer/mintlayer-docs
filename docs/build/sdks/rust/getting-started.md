@@ -76,7 +76,7 @@ All amounts are atom counts: **1 ML = 100,000,000,000 atoms** (11 decimal places
 ## Error handling
 
 - `node::Error` / `wallet::Error`: `Rpc { code, message }` for JSON-RPC errors, plus transport/decoding variants.
-- `indexer::Error`: `Http { status_code, body }` for non-2xx responses, plus transport/decoding variants.
+- `indexer::Error`: `Http { status_code, body }` for non-2xx responses, plus typed variants for well-known failures — `InvalidCursor`, `InvalidNumItems`, `BadRequest` (400), `TokenNotFound` (404) — and transport/decoding variants.
 - `crypto::Error`: typed variants (`InvalidMnemonic`, `AddressParse`, `InputSigning`, `Sighash`, `OrdersV1NotActivated`, ...).
 
 Transport hardening is built in: request ids are unique per client, basic-auth credentials are redacted from `Debug` output, and response bodies are capped at 64 MiB.

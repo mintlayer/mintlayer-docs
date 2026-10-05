@@ -103,6 +103,22 @@ let delegation = idx.delegation("mdelg1...").await?;    // by delegation id
 println!("next nonce: {}", delegation.next_nonce);      // string-encoded u64
 ```
 
+To walk all pools (deep listing, not just the first page), use the
+creation-height cursor pager — the `by_pledge` sort only exists on the
+offset-based `list_pools`:
+
+```rust
+let mut pools = idx.pools_pager(100);
+while let Some(page) = pools.next_page().await? {
+    for pool in page.items {
+        println!("pool {}  pledge={}", pool.pool_id, pool.staker_balance.decimal);
+    }
+}
+```
+
+Cursor pages are stable only once the indexer's scanner is fully caught up;
+during catch-up or a reorg a walk may skip or repeat a pool.
+
 ## Manual transaction building
 
 The `crypto` module encodes pool and delegation outputs/inputs for full-custody flows: `encode_output_create_stake_pool` with `encode_stake_pool_data`, `encode_output_delegate_staking`, `encode_input_for_withdraw_from_delegation` (nonce from the indexer), and `get_pool_id` / `get_delegation_id` to predict ids from the inputs. See [Staking](../../build/sdks/rust/staking.md) in the SDK reference for the full encoders.

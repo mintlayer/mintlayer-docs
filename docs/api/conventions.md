@@ -18,7 +18,7 @@ List endpoints support two pagination styles: simple offset-based paging and opa
 | --------- | ---- | ------- | ----------- |
 | `items` | integer | `10` | Page size, capped at `100` |
 
-`items` must be at least 1 (`items=0` returns HTTP 400) and at most 100; non-numeric values are rejected as well. This applies to both pagination styles.
+`items` must be at least 1 (`items=0` → `400 "Invalid number of items"`) and at most 100; non-numeric values are rejected as well. This applies to both pagination styles.
 
 ### Offset pagination
 

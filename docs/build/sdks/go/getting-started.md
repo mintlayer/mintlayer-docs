@@ -77,12 +77,12 @@ All coin and token amounts are atom counts: **1 ML = 100,000,000,000 atoms** (11
 ## Error handling
 
 - The node client returns daemon errors as `*node.RPCError` with a numeric `Code` and `Message`.
-- The indexer client returns non-2xx responses as `*indexer.HTTPError` with a `StatusCode` field.
+- The indexer client returns non-2xx responses as `*indexer.HTTPError` with `StatusCode`, `Message` (the server's error string), and `Kind` (an `ErrorKind` classification). Well-known failures have sentinel errors matched with `errors.Is`: `indexer.ErrInvalidCursor` and `indexer.ErrInvalidNumItems` (400), `indexer.ErrTokenNotFound` (404).
 - The wallet client surfaces daemon JSON-RPC errors analogously; always check the `error` return before using a result.
 
 ## Testing
 
-- The SDK repository ships its own test suite (`go test ./...`) plus runnable programs in [examples/](https://github.com/mintlayer/go-sdk/tree/master/examples) (`send-coins`, `issue-token`) and [testnet-live/](https://github.com/mintlayer/go-sdk/tree/master/testnet-live), which run against the public testnet.
+- The SDK repository ships its own test suite (`go test ./...`) plus runnable programs in [examples/](https://github.com/mintlayer/go-sdk/tree/master/examples) (`send-coins`, `issue-token`, `indexer-paging`) and [testnet-live/](https://github.com/mintlayer/go-sdk/tree/master/testnet-live), which run against the public testnet.
 - For your own code, test against **testnet**: get TML from the [faucet](https://faucet.mintlayer.org) (testnet addresses start with `tmt1`) and point the clients at the testnet ports above.
 - For fully local iteration, run a [regtest node](../../../build/development.md#running-a-node-for-development) and generate blocks on demand, no faucet required.
 
