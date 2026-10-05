@@ -107,7 +107,7 @@ print(f"next nonce: {delegation.next_nonce}")
 ```
 
 For deep pool listings the api-server (1.4.1+) also offers a keyset-cursor
-walk over pools, newest creation height first — see
+walk over pools, newest creation height first; see
 [Pools](../../api/endpoints/pool.md#get-pool) and
 [Pagination](../../api/conventions.md#pagination). The Python SDK ships the
 cursor methods in a later release; until then, page with `PageOpts` offsets.

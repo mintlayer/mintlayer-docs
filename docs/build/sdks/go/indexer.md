@@ -74,7 +74,7 @@ func (c *Client) ListTokenHolders(ctx context.Context, tokenID string, opts ...L
 func (c *Client) GetOrderBook(ctx context.Context, pair string, opts ...ListOption) (*OrderBookPage, error)
 ```
 
-For full walks use the pagers — a `Pager[T]` follows the server cursor automatically, stops on a `nil` cursor, and never re-serves an item. A pager is single-use and not safe for concurrent use; pages are fetched lazily. A failed fetch (transport error, `*HTTPError`) does not advance the walk, so `NextPage` is retryable:
+For full walks use the pagers: a `Pager[T]` follows the server cursor automatically, stops on a `nil` cursor, and never re-serves an item. A pager is single-use and not safe for concurrent use; pages are fetched lazily. A failed fetch (transport error, `*HTTPError`) does not advance the walk, so `NextPage` is retryable:
 
 ```go
 pager := indexer.CoinHoldersPager(c, indexer.WithItems(100))
@@ -101,7 +101,7 @@ err := pager.Walk(ctx, func(h indexer.Holder) bool {
 })
 ```
 
-Pager constructors — each validates its options up front and surfaces construction errors on first use:
+Pager constructors: each validates its options up front and surfaces construction errors on first use:
 
 ```go
 func PoolsPager(c *Client, opts ...ListOption) *Pager[Pool]
@@ -111,13 +111,13 @@ func TokenHoldersPager(c *Client, tokenID string, opts ...ListOption) *Pager[Hol
 func OrderBookPager(c *Client, pair string, side string, opts ...ListOption) *Pager[OrderBookLevel]
 ```
 
-`Pager` also exposes `NextCursor() *string` (persist it to resume an interrupted walk later — only after the current page is fully consumed) and `Truncated() bool` (order book only, see below).
+`Pager` also exposes `NextCursor() *string` (persist it to resume an interrupted walk later, only after the current page is fully consumed) and `Truncated() bool` (order book only, see below).
 
 Per-endpoint rules baked into these methods (enforced server-side, and client-side where stated):
 
-- **Pools**: cursors work only with the default `by_height` sort — `PoolsPager` rejects other sorts client-side; `ListPoolsPage` with a cursor and another sort is a server `400 "Bad request"`. `by_pledge` users keep the offset-based `ListPools`.
+- **Pools**: cursors work only with the default `by_height` sort, `PoolsPager` rejects other sorts client-side; `ListPoolsPage` with a cursor and another sort is a server `400 "Bad request"`. `by_pledge` users keep the offset-based `ListPools`.
 - **Transactions**: a cursor and `offset_mode` are mutually exclusive (server `400 "Bad request"`); see `ListTransactionsPage` below.
-- **Order book**: cursors are side-specific (`book-ask`/`book-bid`) — an ask cursor on a bid walk is a `400 "Invalid cursor"`.
+- **Order book**: cursors are side-specific (`book-ask`/`book-bid`), an ask cursor on a bid walk is a `400 "Invalid cursor"`.
 - A cursor silently overrides the offset page position server-side on pools/holders/order book (`items` still applies).
 - Pages are guaranteed stable only once the indexer's scanner is fully caught up; a walk during catch-up or a reorg may skip or repeat an entry.
 
@@ -168,7 +168,7 @@ if errors.Is(err, indexer.ErrTokenNotFound) {
 }
 ```
 
-`*RequestError` (fields `Option`, `Reason`) reports a request rejected by client-side validation before it was sent — for example `WithItems(0)`, an empty `WithCursor`, or an option the endpoint does not support.
+`*RequestError` (fields `Option`, `Reason`) reports a request rejected by client-side validation before it was sent, for example `WithItems(0)`, an empty `WithCursor`, or an option the endpoint does not support.
 
 ---
 
@@ -253,7 +253,7 @@ func (c *Client) ListTransactions(ctx context.Context, opts PageOpts) ([]Transac
 
 Returns a paginated list of confirmed transactions across the entire chain, newest block first (within a block, in block order).
 
-For keyset (cursor) pagination use the envelope-based methods — needed for deep walks where an offset gets slow or unstable:
+For keyset (cursor) pagination use the envelope-based methods, needed for deep walks where an offset gets slow or unstable:
 
 ```go
 func (c *Client) ListTransactionsPage(ctx context.Context, opts ...ListOption) (*CursorPage[Transaction], error)
@@ -263,10 +263,10 @@ func TransactionsPager(c *Client, opts ...ListOption) *Pager[Transaction]
 `ListTransactionsPage` accepts `WithItems`, `WithOffset`, `WithCursor`, and `WithOffsetMode`:
 
 - `WithOffsetMode(indexer.OffsetModeLegacy)` (default): `WithOffset` is a skip-N offset, counted in the global newest-first listing.
-- `WithOffsetMode(indexer.OffsetModeAbsolute)`: `WithOffset` is a global transaction index — the page holds the transactions with global indexes below it. This position is stable across scanner catch-up, unlike a skip-N offset.
+- `WithOffsetMode(indexer.OffsetModeAbsolute)`: `WithOffset` is a global transaction index, the page holds the transactions with global indexes below it. This position is stable across scanner catch-up, unlike a skip-N offset.
 - A cursor (`WithCursor`) and an offset mode are mutually exclusive: together the server answers `400 "Bad request"`. Sending a cursor without `WithOffsetMode` returns the envelope; without any cursor the method returns the plain array via a `CursorPage` whose `NextCursor` is `nil`.
 
-A `TransactionsPager` rejects `WithOffsetMode` up front — cursors only.
+A `TransactionsPager` rejects `WithOffsetMode` up front; cursors only.
 
 ### `GetTransaction`
 
@@ -274,7 +274,7 @@ A `TransactionsPager` rejects `WithOffsetMode` up front — cursors only.
 func (c *Client) GetTransaction(ctx context.Context, id string) (*Transaction, error)
 ```
 
-Returns a transaction by ID, including pending (mempool) transactions. The struct fields are plain strings; since api-server 1.4.1 the wire sends `null` for `block_id`, `timestamp`, and `confirmations` on pending transactions, which decodes to empty strings in Go, and the `fee` key is absent until the transaction is confirmed. (Older api-servers rendered those fields as empty strings on the wire — the decoded Go values look the same.)
+Returns a transaction by ID, including pending (mempool) transactions. The struct fields are plain strings; since api-server 1.4.1 the wire sends `null` for `block_id`, `timestamp`, and `confirmations` on pending transactions, which decodes to empty strings in Go, and the `fee` key is absent until the transaction is confirmed. (Older api-servers rendered those fields as empty strings on the wire; the decoded Go values look the same.)
 
 ```go
 type Transaction struct {
@@ -398,7 +398,7 @@ type PoolListOpts struct {
 }
 ```
 
-For keyset (cursor) pagination — deep, stable walks over `by_height` — use:
+For keyset (cursor) pagination (deep, stable walks over `by_height`), use:
 
 ```go
 func (c *Client) ListPoolsPage(ctx context.Context, opts ...ListOption) (*CursorPage[Pool], error)
@@ -579,9 +579,9 @@ func (c *Client) GetOrderBook(ctx context.Context, pair string, opts ...ListOpti
 func OrderBookPager(c *Client, pair string, side string, opts ...ListOption) *Pager[OrderBookLevel]
 ```
 
-Returns the aggregated order book for a trading pair, one price level per entry. The pair is `"{base}_{quote}"` — the native coin ticker matches case-insensitively, token IDs are exact bech32m strings. Exactly two non-empty parts are required, both must be a registered token or `"Coin"`, otherwise the server answers `400 "Invalid order trading pair"`.
+Returns the aggregated order book for a trading pair, one price level per entry. The pair is `"{base}_{quote}"`: the native coin ticker matches case-insensitively, token IDs are exact bech32m strings. Exactly two non-empty parts are required, both must be a registered token or `"Coin"`, otherwise the server answers `400 "Invalid order trading pair"`.
 
-`WithSide(indexer.SideAsk)` (default) lists asks — orders giving the quote currency to buy the base — in ascending price order; `WithSide(indexer.SideBid)` lists bids in descending order. `WithItems` sets the page size. Each price is the summed remaining balance across orders at that price, orders partially filled carry their remainder:
+`WithSide(indexer.SideAsk)` (default) lists asks (orders giving the quote currency to buy the base) in ascending price order; `WithSide(indexer.SideBid)` lists bids in descending order. `WithItems` sets the page size. Each price is the summed remaining balance across orders at that price, orders partially filled carry their remainder:
 
 ```go
 type OrderBookPage struct {
@@ -604,7 +604,7 @@ type OrderBookPrice struct {
 Rules specific to the book:
 
 - Cursors are side-specific (`book-ask` / `book-bid`): an ask cursor on a bid walk is a `400 "Invalid cursor"`, and vice versa.
-- Each request scans at most 10,000 live orders (`indexer.OrderBookMaxOrders`). When the scan hits the cap, `Truncated` is `true` and `NextCursor` is `nil`: the levels in hand are an incomplete aggregation and the walk cannot be continued — re-issue the request (for example with a smaller pair or tighter `items`) instead of paging on.
+- Each request scans at most 10,000 live orders (`indexer.OrderBookMaxOrders`). When the scan hits the cap, `Truncated` is `true` and `NextCursor` is `nil`: the levels in hand are an incomplete aggregation and the walk cannot be continued; re-issue the request (for example with a smaller pair or tighter `items`) instead of paging on.
 - The book is computed fresh per request, so a paginated walk is not a consistent snapshot.
 
 ```go
@@ -664,7 +664,7 @@ func CoinHoldersPager(c *Client, opts ...ListOption) *Pager[Holder]
 func TokenHoldersPager(c *Client, tokenID string, opts ...ListOption) *Pager[Holder]
 ```
 
-List the top address balances of the native coin or of a fungible token, largest balance first, ties broken by address in descending byte order. Zero-balance addresses are excluded, and the server ignores offsets here — paginate with cursors:
+List the top address balances of the native coin or of a fungible token, largest balance first, ties broken by address in descending byte order. Zero-balance addresses are excluded, and the server ignores offsets here; paginate with cursors:
 
 ```go
 type Holder struct {

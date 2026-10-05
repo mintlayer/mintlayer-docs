@@ -95,7 +95,7 @@ delegation, _ := idx.GetDelegation(ctx, "mdelg1...")
 fmt.Printf("pool: %s  balance: %s  nonce: %d\n", delegation.PoolID, delegation.Balance.Decimal, delegation.NextNonce)
 ```
 
-To walk all pools (deep listing, not just the first page), use the cursor-paginated pools pager. It follows the default `by_height` order — the by-pledge sort only exists on the offset-based `ListPools`:
+To walk all pools (deep listing, not just the first page), use the cursor-paginated pools pager. It follows the default `by_height` order; the by-pledge sort only exists on the offset-based `ListPools`:
 
 ```go
 pools := indexer.PoolsPager(idx, indexer.WithItems(100))

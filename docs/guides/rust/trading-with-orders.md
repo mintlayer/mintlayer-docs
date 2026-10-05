@@ -76,7 +76,7 @@ while let Some(level) = book.next().await {
 Each book request scans at most 10,000 live orders. When that cap truncates
 the scan, the page's `truncated` field is `true` and `next_cursor` is `None`:
 the levels in hand are an incomplete aggregation and the walk cannot be
-continued — re-issue the request instead of paging on. (The pager maps a
+continued; re-issue the request instead of paging on. (The pager maps a
 truncated page to a plain end-of-walk; when the caller must know, call
 `order_pair_book` directly and inspect `truncated`.) Cursors are also
 side-specific: an ask cursor cannot resume a bid walk (`Error::InvalidCursor`).
@@ -87,7 +87,7 @@ The book is computed fresh per request, so a walk is not a consistent snapshot.
 ## Token holders
 
 The holders listing shows the largest balances of the coin or token you are
-trading — useful for gauging distribution of the ask token before quoting
+trading, useful for gauging distribution of the ask token before quoting
 prices:
 
 ```rust

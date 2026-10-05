@@ -64,7 +64,7 @@ The scanner's PostgreSQL database layout is versioned. On startup, the scanner c
 
 This is automatic, but it has operational consequences:
 
-- Upgrading to a release that bumps the storage version triggers a full resync on first launch — plan the downtime (and disk space) accordingly.
+- Upgrading to a release that bumps the storage version triggers a full resync on first launch: plan the downtime (and disk space) accordingly.
 - Until the re-scan catches up with the chain tip, the API server serves partial data (see [Data freshness](/docs/api/conventions.md#data-freshness)).
 
 ## Related

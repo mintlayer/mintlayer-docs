@@ -170,9 +170,9 @@ nonce in sequence:
 | `encode_input_for_change_token_authority(token_id, new_authority, nonce, network)` | |
 | `encode_input_for_change_token_metadata_uri(token_id, new_metadata_uri, nonce, network)` | |
 
-Protocol fees — `token_supply_change_fee` for mint/unmint,
+Protocol fees (`token_supply_change_fee` for mint/unmint,
 `token_freeze_fee` for freeze/unfreeze, `token_change_authority_fee` for
-authority changes — must be covered by the transaction's coin inputs.
+authority changes) must be covered by the transaction's coin inputs.
 
 ## NFTs
 
@@ -235,7 +235,7 @@ let order_id = crypto::get_order_id(&inputs, network)?;
 ```
 
 Filling an order uses `encode_input_for_fill_order`, whose inputs must
-not be signed — use `crypto::encode_witness_no_signature()` for them.
+not be signed; use `crypto::encode_witness_no_signature()` for them.
 Before the orders V1 fork the `nonce` and `destination` parameters are
 significant; after the fork both are ignored. `encode_input_for_freeze_order`
 requires orders V1 (`crypto::Error::OrdersV1NotActivated` before it).

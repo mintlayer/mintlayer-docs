@@ -80,7 +80,7 @@ Each input requires:
 3. Encode the input (`encode_input_for_utxo`)
 
 **Concatenation semantics:** inputs (and outputs, and witnesses) are plain
-binary blobs — the concatenation of every per-item encoding **is** the
+binary blobs, the concatenation of every per-item encoding **is** the
 transaction field. There is no count prefix or separator; just append with
 `+=`.
 
@@ -166,7 +166,7 @@ for u in utxos:
     all_utxo_bytes += encode_utxo_entry(c, u.output, Network.MAINNET)
 ```
 
-The order of these entries must match the input order exactly — witness `i` is
+The order of these entries must match the input order exactly; witness `i` is
 validated against entry `i`.
 
 ---
@@ -276,7 +276,7 @@ coin inputs) to cover the network fee.
 
 ## Related
 
-- [wasm.md](wasm.md) — full WASM client reference
-- [staking.md](staking.md) — manual delegation/pool transactions
-- [tokens.md](tokens.md) — manual token issuance/minting
-- [wallet.md](wallet.md) — let the wallet daemon do all of this for you
+- [wasm.md](wasm.md): full WASM client reference
+- [staking.md](staking.md): manual delegation/pool transactions
+- [tokens.md](tokens.md): manual token issuance/minting
+- [wallet.md](wallet.md): let the wallet daemon do all of this for you

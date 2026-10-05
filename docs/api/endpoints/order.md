@@ -55,7 +55,7 @@ The pair direction is normalized (matching orders for the pair are returned rega
 
 Returns the aggregated order book for a trading pair: open orders are grouped by price, and each price level's `amount` is the summed available balance across the orders at that price (an order filled partially contributes its remaining balance, which is carried as it fills).
 
-The pair is `{BASE}_{QUOTE}` — exactly two non-empty, `_`-separated sides, each the coin ticker (`ML` on mainnet, case-insensitive) or a token ID. Both sides must be the native coin or a registered token; anything else is a client error (`400 {"error": "Invalid order trading pair"}`). The direction is normalized: requesting the reversed pair works and shows the mirrored side of the same orders.
+The pair is `{BASE}_{QUOTE}`: exactly two non-empty, `_`-separated sides, each the coin ticker (`ML` on mainnet, case-insensitive) or a token ID. Both sides must be the native coin or a registered token; anything else is a client error (`400 {"error": "Invalid order trading pair"}`). The direction is normalized: requesting the reversed pair works and shows the mirrored side of the same orders.
 
 Query parameters:
 
@@ -90,7 +90,7 @@ curl "https://api-server.mintlayer.org/api/v2/order/pair/ML_mmltk18e0xfgmw3sn4s8
 - `amount` is in the base currency of the pair; both amounts follow the [atoms/decimal convention](../conventions.md#amounts).
 - A request scans at most 10,000 open orders. If the scan hit that cap, the response carries an additional `"truncated": true` and **no `next_cursor`**: the levels in hand may be an incomplete view of the book, so re-issue the request (e.g. with different parameters) rather than continuing from a cursor.
 - Otherwise `next_cursor` follows the usual [keyset pagination](../conventions.md#keyset-pagination-cursors) contract, and `null` means the end of the book.
-- The book is computed per request from a live snapshot of open orders. While the scanner is still catching up, a concurrent walk may skip or repeat a level — re-fetch from the start (`cursor=`) when you need a consistent view.
+- The book is computed per request from a live snapshot of open orders. While the scanner is still catching up, a concurrent walk may skip or repeat a level: re-fetch from the start (`cursor=`) when you need a consistent view.
 
 ## Go SDK
 

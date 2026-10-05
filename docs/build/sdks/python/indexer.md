@@ -57,9 +57,9 @@ so the server defaults apply. Only positive values are sent:
 
 :::note[Cursor pagination ships in a later Python SDK release]
 
-api-server 1.4.1 added keyset (cursor) pagination for deep listing walks — the
+api-server 1.4.1 added keyset (cursor) pagination for deep listing walks: the
 pools listing, the global transaction listing, the coin/token holders, and the
-order book — plus holders and order-book endpoints (see
+order book, plus holders and order-book endpoints (see
 [Pagination](../../../api/conventions.md#pagination) for the wire contract).
 SDK v0.1.0 does not ship them yet; until the next release, use the offset-based
 listing below as the simple alternative for shallow pages (the server caps
@@ -170,7 +170,7 @@ Returns a paginated list of confirmed transactions across the entire chain.
 def get_transaction(self, tx_id: str) -> Transaction: ...
 ```
 
-Returns a transaction by ID, including pending (mempool) transactions. Since api-server 1.4.1 the wire sends `null` for `block_id`, `timestamp`, and `confirmations` on pending transactions (decoded as `None` — the dataclass annotations predate this and still say `str`), and the `fee` key is absent until the transaction is confirmed. Older api-servers rendered those fields as empty strings.
+Returns a transaction by ID, including pending (mempool) transactions. Since api-server 1.4.1 the wire sends `null` for `block_id`, `timestamp`, and `confirmations` on pending transactions (decoded as `None`; the dataclass annotations predate this and still say `str`), and the `fee` key is absent until the transaction is confirmed. Older api-servers rendered those fields as empty strings.
 
 ```python
 @dataclass(frozen=True)
@@ -213,7 +213,7 @@ def submit_transaction(self, signed_tx_hex: str) -> str: ...
 
 Submits a hex-encoded signed transaction to the network. Returns the
 transaction ID on success. The hex string is POSTed verbatim as
-`text/plain` — the one non-GET route in the client.
+`text/plain`, the one non-GET route in the client.
 
 **Requires** the indexer to be started with `--enable-post-routes`.
 
@@ -447,8 +447,8 @@ def get_nft(self, token_id: str) -> NFTInfo: ...
 
 Returns information about an NFT: `owner`, `token_id`, and `metadata`
 (`NFTMetadata` with `creator`, `name`, `description`, `ticker`, `icon_uri`,
-`additional_metadata_uri`, `media_uri`, `media_hash` — the URI/creator fields
-are `None` when unset).
+`additional_metadata_uri`, `media_uri`, `media_hash` (the URI/creator fields
+are `None` when unset)).
 
 ---
 
@@ -547,13 +547,13 @@ rate = int(c.get_fee_rate(1))  # atoms per KB, top 1 MB of the mempool
 ## Lenient numeric parsing
 
 The indexer documents several fields as integers but the server sometimes
-serialises them as strings — and `margin_ratio_per_thousand` even arrives as a
+serialises them as strings, and `margin_ratio_per_thousand` even arrives as a
 string with a trailing `%` (e.g. `"10.0%"`). The client parses these
 transparently (`mintlayer.indexer.number`):
 
-- `parse_uint64` — accepts a bare JSON number or a decimal string
+- `parse_uint64`: accepts a bare JSON number or a decimal string
   (`block_height`, `next_nonce`, `number_of_decimals`, …), returns `int`.
-- `parse_per_thousand` — accepts a bare number, a decimal string, or a string
+- `parse_per_thousand`: accepts a bare number, a decimal string, or a string
   with a trailing `%`; returns `float` (used for `Pool.margin_ratio_per_thousand`).
 
 Malformed values raise `IndexerError`; malformed payloads in `from_json` are
@@ -580,7 +580,7 @@ amounts to send to the server, you only need to set `atoms`
 
 ## Related
 
-- [node.md](node.md) — node daemon JSON-RPC client
-- [transactions.md](transactions.md) — building and signing transactions to submit here
-- [staking.md](staking.md) — pools and delegations
-- [tokens.md](tokens.md) — token and NFT lifecycle
+- [node.md](node.md): node daemon JSON-RPC client
+- [transactions.md](transactions.md): building and signing transactions to submit here
+- [staking.md](staking.md): pools and delegations
+- [tokens.md](tokens.md): token and NFT lifecycle

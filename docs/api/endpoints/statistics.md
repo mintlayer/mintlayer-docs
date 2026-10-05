@@ -27,10 +27,10 @@ All amounts follow the [atoms/decimal convention](../conventions.md#amounts).
 
 The counters are maintained by the scanner while it indexes the chain (and rolled back on reorgs), so they are always up to date with the indexed tip:
 
-- `preminted` — the total amount that has entered circulation: for the coin, transfer outputs and pool-creation pledges; for a token, transfer outputs since issuance.
-- `staked` — the amount currently staked in pools (the founder's pledge plus delegated balances).
-- `circulating_supply` — the amount currently in circulation: `preminted` minus everything `burned`. Burns are subtracted during indexing, so this counter already reflects everything counted in `burned`; the total amount ever minted is therefore `circulating_supply + burned`.
-- `burned` — the total amount destroyed: outputs sent to burn destinations, plus the fees of token account commands (minting, freezing, authority changes, ...), which are burned rather than paid to anyone.
+- `preminted`: the total amount that has entered circulation. For the coin, transfer outputs and pool-creation pledges; for a token, transfer outputs since issuance.
+- `staked`: the amount currently staked in pools (the founder's pledge plus delegated balances).
+- `circulating_supply`: the amount currently in circulation, i.e. `preminted` minus everything `burned`. Burns are subtracted during indexing, so this counter already reflects everything counted in `burned`; the total amount ever minted is therefore `circulating_supply + burned`.
+- `burned`: the total amount destroyed. Outputs sent to burn destinations, plus the fees of token account commands (minting, freezing, authority changes, ...), are burned rather than paid to anyone.
 
 Consumers should treat an absent statistic as zero: the endpoint lists the statistics that have been written, and a counter with no recorded activity is omitted from the underlying listing rather than returned as `0`. The endpoints above render such absent counters as zero, as in the token example below.
 

@@ -46,7 +46,7 @@ thousandths, as a **string**: `"100"` = 10%, `"50"` = 5%, `"1000"` = 100%.
 `cost_per_block` is a flat atom amount deducted from rewards before the margin
 split. Delegators receive the remainder proportionally to their stake.
 
-The result is a `SendResult(tx_id, fees, broadcasted)` — the pool ID can be
+The result is a `SendResult(tx_id, fees, broadcasted)`; the pool ID can be
 predicted before broadcasting with `get_pool_id` (see below).
 
 ### Starting and stopping block production
@@ -78,7 +78,7 @@ balance = wc.get_pool_balance(0, "mpool1...")  # Amount
 ```
 
 Quirk: matching the daemon route, the `account` argument is accepted for API
-consistency but **not sent on the wire** — the route only uses `pool_id`.
+consistency but **not sent on the wire**; the route only uses `pool_id`.
 
 ### Decommissioning a pool
 
@@ -317,7 +317,7 @@ proportionally to their stake.
 
 ## Related
 
-- [wallet.md](wallet.md) — wallet client reference
-- [indexer.md](indexer.md) — pool/delegation read queries
-- [wasm.md](wasm.md) — WASM encoding reference
-- [transactions.md](transactions.md) — assembling and signing manual transactions
+- [wallet.md](wallet.md): wallet client reference
+- [indexer.md](indexer.md): pool/delegation read queries
+- [wasm.md](wasm.md): WASM encoding reference
+- [transactions.md](transactions.md): assembling and signing manual transactions

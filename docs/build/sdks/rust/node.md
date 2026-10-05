@@ -29,17 +29,17 @@ from a misconfigured endpoint.
 
 Errors are returned as `node::Error`:
 
-- `Error::Rpc { code, message }` — the daemon answered with a JSON-RPC error.
-- `Error::Http(reqwest::Error)` — transport failure.
-- `Error::Json(serde_json::Error)` — the response could not be decoded.
-- `Error::IdMismatch { expected, actual }` — response id mismatch.
-- `Error::ResponseTooLarge { limit }` — the 64 MiB cap was exceeded.
+- `Error::Rpc { code, message }`, the daemon answered with a JSON-RPC error.
+- `Error::Http(reqwest::Error)`, transport failure.
+- `Error::Json(serde_json::Error)`, the response could not be decoded.
+- `Error::IdMismatch { expected, actual }`, response id mismatch.
+- `Error::ResponseTooLarge { limit }`, the 64 MiB cap was exceeded.
 
 ---
 
 
 > **Transport security:** loopback `http://` is fine. For remote daemons use
-> an `https://` URL (TLS is built in via rustls) or an authenticated tunnel —
+> an `https://` URL (TLS is built in via rustls) or an authenticated tunnel;
 > basic-auth credentials otherwise transit in cleartext with every request.
 
 ## Chain state

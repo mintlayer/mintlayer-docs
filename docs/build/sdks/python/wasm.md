@@ -19,7 +19,7 @@ c.close()  # or use `with Client() as c:`
 ```
 
 Call it once per process and reuse it. The `Client` is **safe for concurrent
-use from multiple threads** — every public method serialises access to the
+use from multiple threads**; every public method serialises access to the
 single WASM instance with a lock.
 
 All errors raise `WasmError` with a message prefixed `mintlayer: `:
@@ -349,7 +349,7 @@ def encode_input_for_fill_order(
 ) -> bytes: ...
 ```
 
-FillOrder inputs are not signed — use `encode_witness_no_signature`.
+FillOrder inputs are not signed; use `encode_witness_no_signature`.
 
 ### `encode_input_for_freeze_order`
 
@@ -620,7 +620,7 @@ def estimate_transaction_size(
 Estimates the byte size of the transaction after signing.
 `input_utxos_dests` must contain one address string per input (the spending
 destination of each UTXO), in input order. Use this to compute fees before
-constructing the final output set — see [transactions.md](transactions.md).
+constructing the final output set; see [transactions.md](transactions.md).
 
 ### `encode_signed_transaction`
 
@@ -868,8 +868,8 @@ info = TxAdditionalInfo(
 - Maps are keyed by the bech32m pool/order ID. Pass an empty `TxAdditionalInfo()`
   for standard coin transfers.
 - `SimpleCurrencyAmount` serialises as the externally tagged
-  `CurrencyAmount` enum — `{"coins":{"atoms":...}}` or
-  `{"tokens":{"amount":{"atoms":...},"token_id":...}}` — built with the
+  `CurrencyAmount` enum (`{"coins":{"atoms":...}}` or
+  `{"tokens":{"amount":{"atoms":...},"token_id":...}}`), built with the
   `.coins(atoms)` / `.tokens(atoms, token_id)` constructors.
 - `OrderBalance` uses the redundant-but-required wire shape
   `{"atoms":...,"amount":{"atoms":...},"token_id":null|"..."}`.
@@ -941,7 +941,7 @@ def token_change_authority_fee(self, current_block_height: int, network: Network
 ```
 
 Add these fees to the transaction outputs when building the relevant
-transaction types manually — see [tokens.md](tokens.md).
+transaction types manually; see [tokens.md](tokens.md).
 
 ---
 
@@ -990,7 +990,7 @@ transaction input).
 
 ## Related
 
-- [transactions.md](transactions.md) — end-to-end manual transaction flow
-- [staking.md](staking.md) — staking via wallet daemon and manual encoding
-- [tokens.md](tokens.md) — token lifecycle via wallet daemon and manual encoding
-- [wallet.md](wallet.md) — the wallet daemon client (does the encoding for you)
+- [transactions.md](transactions.md): end-to-end manual transaction flow
+- [staking.md](staking.md): staking via wallet daemon and manual encoding
+- [tokens.md](tokens.md): token lifecycle via wallet daemon and manual encoding
+- [wallet.md](wallet.md): the wallet daemon client (does the encoding for you)

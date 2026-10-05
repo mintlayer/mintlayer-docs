@@ -45,13 +45,13 @@ Use `absolute` when you need stable pagination (e.g. syncing all transactions); 
 
 ### Keyset pagination (cursors)
 
-Deeper listings — [pools](endpoints/pool.md#get-pool), [transactions](endpoints/transaction.md#get-transaction), [address balance holders](endpoints/statistics.md#get-statisticscoinholders), and the [order book](endpoints/order.md#get-orderpairpairbook) — accept an opaque `cursor` query parameter instead of relying on deep offsets:
+Deeper listings ([pools](endpoints/pool.md#get-pool), [transactions](endpoints/transaction.md#get-transaction), [address balance holders](endpoints/statistics.md#get-statisticscoinholders), and the [order book](endpoints/order.md#get-orderpairpairbook)) accept an opaque `cursor` query parameter instead of relying on deep offsets:
 
 ```bash
 curl "https://api-server.mintlayer.org/api/v2/pool?cursor=<next_cursor>&items=100"
 ```
 
-- The cursor is an **opaque string** (base64-encoded JSON, at most 1 KiB and 16 keys). Treat it as a black box: never construct, decode, modify, or store one beyond the life of the walk — pass back exactly what the server returned. An empty value (`cursor=`) starts the listing from the beginning.
+- The cursor is an **opaque string** (base64-encoded JSON, at most 1 KiB and 16 keys). Treat it as a black box: never construct, decode, modify, or store one beyond the life of the walk, pass back exactly what the server returned. An empty value (`cursor=`) starts the listing from the beginning.
 - When a `cursor` parameter is supplied, the response is an envelope instead of a plain array (the [holders](endpoints/statistics.md#get-statisticscoinholders) and [order book](endpoints/order.md#get-orderpairpairbook) endpoints always return the envelope):
 
 ```json
@@ -61,7 +61,7 @@ curl "https://api-server.mintlayer.org/api/v2/pool?cursor=<next_cursor>&items=10
 }
 ```
 
-- Pass `next_cursor` back as `cursor` to fetch the following page. A `null` `next_cursor` means the listing is exhausted. (For the order book, `null` can also mean the walk was cut short by the server-side scan cap — see [Orders](endpoints/order.md#get-orderpairpairbook).)
+- Pass `next_cursor` back as `cursor` to fetch the following page. A `null` `next_cursor` means the listing is exhausted. (For the order book, `null` can also mean the walk was cut short by the server-side scan cap; see [Orders](endpoints/order.md#get-orderpairpairbook).)
 - Ordering is stable, newest first. Ties are broken by descending byte-order ID, so equal-ranked entries keep a fixed relative order across pages. Transactions additionally order by ascending transaction index within a block, so consecutive pages reconstruct each block's transaction order.
 - If both `cursor` and `offset` are given, the cursor takes precedence.
 - Pages are guaranteed stable only once the scanner has fully caught up with the chain tip. While it is catching up (e.g. after a reorg), a concurrent walk may skip or repeat an entry.

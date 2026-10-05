@@ -43,7 +43,7 @@ except JSONRPCError as e:
     ...  # HTTP failure or malformed response body
 ```
 
-The HTTP status code is never inspected — a JSON-RPC `error` object in the body
+The HTTP status code is never inspected; a JSON-RPC `error` object in the body
 is the error contract. JSON `null` results map to `None` for every
 "not-found"-style method (`block_id_at_height`, `stake_pool_balance`, …).
 
@@ -213,7 +213,7 @@ Returns the amount owned by a specific delegation in a pool.
 
 ## Token and order info
 
-Amounts are decimal atom strings — **1 ML = 100,000,000,000 atoms** (11
+Amounts are decimal atom strings: **1 ML = 100,000,000,000 atoms** (11
 decimal places). `Amount` is a frozen dataclass with a single `atoms: str`
 field.
 
@@ -261,7 +261,7 @@ class OrderInfo:
     is_frozen: bool
 ```
 
-Quirk: `nonce` is `None` for active orders — the daemon sends JSON `null` for
+Quirk: `nonce` is `None` for active orders; the daemon sends JSON `null` for
 the field. This fixes a known Go SDK incompatibility, where the `null` broke
 `uint64` decoding.
 
@@ -515,8 +515,8 @@ def p2p_submit_transaction(self, tx_hex: str, trust_policy: TrustPolicy | str) -
 ```
 
 Submits a transaction to the mempool and broadcasts it to peers. This is the
-normal path for publishing a transaction to the network (the alternative — the
-indexer's `submit_transaction` — requires `--enable-post-routes`, see
+normal path for publishing a transaction to the network (the alternative, the
+indexer's `submit_transaction`, requires `--enable-post-routes`, see
 [indexer.md](indexer.md)).
 
 ---
@@ -543,6 +543,6 @@ Initiates a graceful node shutdown.
 
 ## Related
 
-- [indexer.md](indexer.md) — read-only chain queries and `submit_transaction`
-- [transactions.md](transactions.md) — building and signing transactions
-- [wallet.md](wallet.md) — the wallet daemon client
+- [indexer.md](indexer.md): read-only chain queries and `submit_transaction`
+- [transactions.md](transactions.md): building and signing transactions
+- [wallet.md](wallet.md): the wallet daemon client
