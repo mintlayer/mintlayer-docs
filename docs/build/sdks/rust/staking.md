@@ -13,7 +13,7 @@ wallet daemon manages both flows; the indexer provides read-only access to
 pool and delegation state; the `crypto` module provides the low-level
 encoders for manual transaction flows.
 
-All amounts are atom counts — 1 ML = 100,000,000,000 atoms.
+All amounts are atom counts: 1 ML = 100,000,000,000 atoms.
 
 ---
 

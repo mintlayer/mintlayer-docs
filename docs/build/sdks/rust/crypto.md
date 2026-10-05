@@ -21,7 +21,7 @@ Enable the feature (it pulls in the mintlayer-core dependency graph):
 mintlayer-sdk = { version = "...", features = ["crypto"] }
 ```
 
-**Amounts** are `crypto::Amount`, a `u128` atom count — 1 ML =
+**Amounts** are `crypto::Amount`, a `u128` atom count: 1 ML =
 100,000,000,000 atoms. Build with `Amount::from_atoms(n)` or
 `Amount::ZERO`.
 
@@ -31,7 +31,7 @@ takes `Network` (`Mainnet`, `Testnet`, `Regtest`, `Signet`).
 **Fork sensitivity:** some functions take a `current_block_height`
 parameter because their result depends on whether a hard fork has been
 activated. Pass the height of the block into which the transaction is
-supposed to be included — a wallet that cannot predict it should use the
+supposed to be included; a wallet that cannot predict it should use the
 current tip height plus one and refuse to operate near a fork height.
 
 Errors are returned as `crypto::Error` with typed variants
@@ -94,7 +94,7 @@ always produce the same id.
 | `encode_input_for_unfreeze_token(token_id: &str, nonce: u64, network: Network) -> Result<TxInput, Error>` | |
 | `encode_input_for_change_token_authority(token_id: &str, new_authority: &str, nonce: u64, network: Network) -> Result<TxInput, Error>` | |
 | `encode_input_for_change_token_metadata_uri(token_id: &str, new_metadata_uri: &str, nonce: u64, network: Network) -> Result<TxInput, Error>` | |
-| `encode_input_for_fill_order(order_id: &str, fill_amount: Amount, destination: &str, nonce: u64, current_block_height: u64, network: Network) -> Result<TxInput, Error>` | Must not be signed — see below |
+| `encode_input_for_fill_order(order_id: &str, fill_amount: Amount, destination: &str, nonce: u64, current_block_height: u64, network: Network) -> Result<TxInput, Error>` | Must not be signed; see below |
 | `encode_input_for_freeze_order(order_id: &str, current_block_height: u64, network: Network) -> Result<TxInput, Error>` | Orders V1 only; errors before the fork |
 | `encode_input_for_conclude_order(order_id: &str, nonce: u64, current_block_height: u64, network: Network) -> Result<TxInput, Error>` | Nonce ignored after the orders V1 fork |
 
@@ -102,7 +102,7 @@ Account-command nonces (`nonce: u64`) must be in sequence with the
 authority's other account spendings; fetch the next expected value from
 the indexer (`next_nonce`).
 
-**Quirk:** fill-order inputs must not be signed — use
+**Quirk:** fill-order inputs must not be signed; use
 `encode_witness_no_signature()` for them. Before the orders V1 fork the
 input's `nonce` and `destination` are significant; after the fork both are
 ignored (the destination is derived from the order's outputs).

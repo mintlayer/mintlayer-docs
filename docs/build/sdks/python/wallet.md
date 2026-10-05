@@ -43,7 +43,7 @@ context-manager protocol (`with Client(...) as c: ...`).
 
 > **Security:** the daemon has no transport encryption. If it listens beyond
 > localhost, put it behind an HTTPS reverse proxy or an SSH tunnel; only talk
-> to `https://…` endpoints (or plain `http://127.0.0.1`/localhost) — never to a
+> to `https://…` endpoints (or plain `http://127.0.0.1`/localhost), never to a
 > bare `http://` host over a network. Mnemonic and passphrase values are
 > **redacted from `repr()`**: `CreateWalletParams`, `RecoverWalletParams` and
 > the returned `MnemonicResult` print `<redacted>` instead of the secret, so
@@ -144,7 +144,7 @@ Closes the currently open wallet.
 def get_wallet_info(self) -> WalletInfo: ...
 ```
 
-Returns wallet metadata (`wallet_id`, `account_names`, `extra_info` — a
+Returns wallet metadata (`wallet_id`, `account_names`, `extra_info`, a
 `WalletExtraInfo` carrying the software/hardware wallet type in its `type`
 field).
 
@@ -410,7 +410,7 @@ def submit_transaction(self, tx_hex: str, do_not_store: bool = False) -> SubmitR
 Broadcasts a signed transaction. Set `do_not_store=True` to broadcast without
 saving the transaction in the wallet history.
 
-Quirk: the daemon route hardcodes the trust policy to `"Trusted"` — the client
+Quirk: the daemon route hardcodes the trust policy to `"Trusted"`; the client
 always sends `{"trust_policy": "Trusted"}`.
 
 ### `list_transactions_by_address`
@@ -480,7 +480,7 @@ Setting `broadcast_to_mempool=False` builds and signs the transaction without
 broadcasting it. The transaction hex is still returned in the result.
 
 Unlike the optional params fields, `TxOptions` **always** serialises both keys
-on the wire (`null` when unset) — this matches the Go struct exactly.
+on the wire (`null` when unset); this matches the Go struct exactly.
 
 ---
 
@@ -601,7 +601,7 @@ is_marked_as_concluded_in_wallet)`).
 def list_all_active_orders(self, params: ListOrdersParams) -> list[ActiveOrder]: ...
 ```
 
-Lists all active orders, optionally filtered by currency pair — `None` filters
+Lists all active orders, optionally filtered by currency pair; `None` filters
 match any (`ActiveOrder(order_id, initially_asked, initially_given,
 ask_balance, give_balance, is_own)`).
 
@@ -627,7 +627,7 @@ missing amount).
 
 ## Related
 
-- [transactions.md](transactions.md) — manual transaction building (no daemon)
-- [staking.md](staking.md) — staking pools and delegations
-- [tokens.md](tokens.md) — token and NFT lifecycle
-- [node.md](node.md) — node daemon client
+- [transactions.md](transactions.md): manual transaction building (no daemon)
+- [staking.md](staking.md): staking pools and delegations
+- [tokens.md](tokens.md): token and NFT lifecycle
+- [node.md](node.md): node daemon client

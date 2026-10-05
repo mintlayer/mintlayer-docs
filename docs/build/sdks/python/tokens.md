@@ -119,7 +119,7 @@ lock_result = wc.lock_token_supply(
 )
 ```
 
-Quirk: the field is `account_index`, not `account` — the daemon route expects
+Quirk: the field is `account_index`, not `account`; the daemon route expects
 the wire key `account_index` (every other token method uses `account`).
 
 ### Freezing and unfreezing
@@ -175,7 +175,7 @@ send_result = wc.send_token(
 )
 ```
 
-`send_token` is an alias of `token_send` on the transactions mixin — both call
+`send_token` is an alias of `token_send` on the transactions mixin; both call
 the daemon's `token_send` route.
 
 ---
@@ -377,7 +377,7 @@ from change). The `data_deposit_fee` applies to `DataDeposit` outputs.
 
 ## Related
 
-- [wallet.md](wallet.md) — wallet client reference
-- [indexer.md](indexer.md) — token read queries
-- [wasm.md](wasm.md) — WASM encoding reference
-- [transactions.md](transactions.md) — assembling and signing manual transactions
+- [wallet.md](wallet.md): wallet client reference
+- [indexer.md](indexer.md): token read queries
+- [wasm.md](wasm.md): WASM encoding reference
+- [transactions.md](transactions.md): assembling and signing manual transactions

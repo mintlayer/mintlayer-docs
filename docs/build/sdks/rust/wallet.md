@@ -24,7 +24,7 @@ let c = wallet::Client::builder("http://127.0.0.1:3034")
 
 **Default ports:** 3034 (mainnet), 13034 (testnet).
 
-Errors are returned as `wallet::Error` —
+Errors are returned as `wallet::Error`:
 `Error::Rpc { code, message }` for daemon errors, plus `Http`, `Json`,
 `IdMismatch` and `ResponseTooLarge` transport variants. Basic-auth
 credentials are redacted from `Debug` output; response bodies are capped
@@ -34,7 +34,7 @@ at 64 MiB.
 
 
 > **Transport security:** loopback `http://` is fine. For remote daemons use
-> an `https://` URL or an authenticated tunnel — basic-auth credentials and
+> an `https://` URL or an authenticated tunnel; basic-auth credentials and
 > daemon-generated mnemonics otherwise transit in cleartext.
 
 ## Wallet lifecycle
@@ -54,7 +54,7 @@ at 64 MiB.
 | `lock_private_keys() -> Result<(), Error>` | `wallet_lock_private_keys` | |
 
 `CreateWalletParams { path, store_seed_phrase, mnemonic, passphrase,
-hardware_wallet }` — set `mnemonic: None` to let the daemon generate a
+hardware_wallet }`, set `mnemonic: None` to let the daemon generate a
 phrase. Mnemonic and passphrase fields are redacted from `Debug` output.
 
 ## Accounts, addresses, balances
@@ -134,7 +134,7 @@ See [Tokens and NFTs](tokens.md) for the full guide.
 | `change_token_authority(params: ChangeAuthorityParams) -> Result<SendResult, Error>` | `token_change_authority` | |
 
 **Quirk:** `LockSupplyParams` names its account field `account_index`,
-not `account` — every other wallet params struct uses `account`.
+not `account`; every other wallet params struct uses `account`.
 
 ## Orders
 

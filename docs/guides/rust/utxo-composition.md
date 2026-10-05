@@ -32,14 +32,14 @@ All four effects happen atomically. If the transaction fails, the old order is u
 
 :::note[What consensus allows and forbids]
 
-The pattern above is exactly what consensus permits: **one order operation input** (fill, conclude, or freeze) — a slot shared with token account commands, so you cannot combine an order operation with a mint, an unmint, or any other command input — and **one `CreateOrder` output** per transaction. Concluding and re-creating in the same transaction sits precisely at both limits, which is what makes the atomic update work.
+The pattern above is exactly what consensus permits: **one order operation input** (fill, conclude, or freeze; a slot shared with token account commands, so you cannot combine an order operation with a mint, an unmint, or any other command input) and **one `CreateOrder` output** per transaction. Concluding and re-creating in the same transaction sits precisely at both limits, which is what makes the atomic update work.
 
 Everything past those limits is rejected by the verifier:
 
-- A second command input (order operation or token account command) — `MultipleAccountCommands`.
-- A second `CreateOrder` output — `MultipleOrdersCreated`.
-- Spending a `CreateOrder` output as a UTXO input — orders are not UTXOs; they are consumed only through order operation inputs (`InvalidInputTypeInTx`).
-- Creating an order in a transaction with no UTXO input — the new order's id is derived from the first UTXO outpoint (`NoUtxoInputsForOrderIdCreation`), which is why the fee input below is not optional.
+- A second command input (order operation or token account command): `MultipleAccountCommands`.
+- A second `CreateOrder` output: `MultipleOrdersCreated`.
+- Spending a `CreateOrder` output as a UTXO input: orders are not UTXOs; they are consumed only through order operation inputs (`InvalidInputTypeInTx`).
+- Creating an order in a transaction with no UTXO input: the new order's id is derived from the first UTXO outpoint (`NoUtxoInputsForOrderIdCreation`), which is why the fee input below is not optional.
 
 :::
 
@@ -74,7 +74,7 @@ println!(
 let inclusion_height = tip.block_height.checked_add(1).expect("height overflow");
 ```
 
-Balances come back as `Amount` — an atom count (u128) plus a `decimal` string — always compose with atoms. `initially_asked` / `initially_given` capture what the maker originally promised; the sighash for the conclude input is bound to them, so keep them exactly as returned.
+Balances come back as `Amount`, an atom count (u128) plus a `decimal` string; always compose with atoms. `initially_asked` / `initially_given` capture what the maker originally promised; the sighash for the conclude input is bound to them, so keep them exactly as returned.
 
 ## Build the transaction
 
@@ -185,11 +185,11 @@ let new_order_id = crypto::get_order_id(&inputs, network)?;
 println!("your updated order: {new_order_id}");
 ```
 
-`get_order_id` predicts the id the same way consensus derives it — from the first UTXO outpoint — so you can index the new order immediately.
+`get_order_id` predicts the id the same way consensus derives it (from the first UTXO outpoint), so you can index the new order immediately.
 
 ## Variations
 
-- **Cancel instead of update**: keep the conclude input and the fee input, drop the `CreateOrder` output, and transfer everything back. One order operation input, zero created orders — allowed.
+- **Cancel instead of update**: keep the conclude input and the fee input, drop the `CreateOrder` output, and transfer everything back. One order operation input, zero created orders, allowed.
 - **Self-fill then re-quote**: fill your own order in one transaction (`FillOrder` input + `encode_witness_no_signature` for the witness of the order input) and conclude-and-recreate another; just never combine two order operations in the same transaction.
 - **Chain delegations the same way**: the spend-and-recreate pattern applies to delegation outputs too; see [Building transactions](../../build/sdks/rust/transactions.md) for more signed-composition flows.
 

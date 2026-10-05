@@ -85,13 +85,13 @@ for {
 
 :::warning[Truncated books are incomplete]
 
-Each book request scans at most 10,000 live orders. When that cap truncates the scan, the page's `Truncated` field is `true` and `NextCursor` is `nil`: the levels in hand are an incomplete aggregation and the walk cannot be continued — re-issue the request instead of paging on. Cursors are also side-specific: an ask cursor cannot resume a bid walk (the server answers `400 "Invalid cursor"`). The book is computed fresh per request, so a walk is not a consistent snapshot.
+Each book request scans at most 10,000 live orders. When that cap truncates the scan, the page's `Truncated` field is `true` and `NextCursor` is `nil`: the levels in hand are an incomplete aggregation and the walk cannot be continued; re-issue the request instead of paging on. Cursors are also side-specific: an ask cursor cannot resume a bid walk (the server answers `400 "Invalid cursor"`). The book is computed fresh per request, so a walk is not a consistent snapshot.
 
 :::
 
 ## Token holders
 
-The holders listing shows the largest balances of the coin or token you are trading — useful for gauging distribution of the ask token before quoting prices:
+The holders listing shows the largest balances of the coin or token you are trading, useful for gauging distribution of the ask token before quoting prices:
 
 ```go
 holders := indexer.TokenHoldersPager(idx, "tmltk1...", indexer.WithItems(20))

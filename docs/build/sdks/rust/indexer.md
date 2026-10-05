@@ -28,23 +28,23 @@ The indexer API is unauthenticated; there are no credential options.
 
 Errors are returned as `indexer::Error`:
 
-- `Error::Http { status_code, body }` — any non-2xx response; the body is
+- `Error::Http { status_code, body }`, any non-2xx response; the body is
   trimmed and stripped of control characters.
-- `Error::Transport(reqwest::Error)` — the request failed.
-- `Error::Json(serde_json::Error)` — the response could not be decoded.
-- `Error::InvalidUrl { message }` — a path segment contained characters
+- `Error::Transport(reqwest::Error)`, the request failed.
+- `Error::Json(serde_json::Error)`, the response could not be decoded.
+- `Error::InvalidUrl { message }`, a path segment contained characters
   outside `[A-Za-z0-9_-]` (ids, addresses and tickers are validated before
   being interpolated into the path).
-- `Error::ResponseTooLarge { limit }` — the response exceeded 64 MiB.
-- `Error::InvalidCursor` — the indexer rejected a cursor (`400`, body
+- `Error::ResponseTooLarge { limit }`, the response exceeded 64 MiB.
+- `Error::InvalidCursor`, the indexer rejected a cursor (`400`, body
   `Invalid cursor`): malformed, oversized, from a different listing, or
   minted for the other side of an order book.
-- `Error::InvalidNumItems` — the page size was not in `1..=100` (`400`,
+- `Error::InvalidNumItems`, the page size was not in `1..=100` (`400`,
   body `Invalid number of items`).
-- `Error::BadRequest` — incompatible query parameters (`400`, body
+- `Error::BadRequest`, incompatible query parameters (`400`, body
   `Bad request`), e.g. a cursor together with an `offset_mode`, or a
   cursor with a non-default pools sort.
-- `Error::TokenNotFound` — unknown token id (`404`, body `Token not
+- `Error::TokenNotFound`, unknown token id (`404`, body `Token not
   found`).
 
 :::note[Requires api-server 1.4.1+ and an unreleased SDK]
@@ -120,7 +120,7 @@ order_pair_book(base: &str, quote: &str, side: OrderBookSide,
 ```
 
 `HoldersOpts` and `OrderBookOpts` are `{ offset, items, cursor }`
-triples — the offset is used only on no-cursor requests. For full walks
+triples, the offset is used only on no-cursor requests. For full walks
 use the pagers: `Pager<T>` follows `next_cursor` automatically and stops
 on `None` (including a truncated order book, whose cursor cannot be
 continued). A failed fetch leaves the pager positioned at the same
@@ -148,7 +148,7 @@ order_book_pager(base: &str, quote: &str, side: OrderBookSide, items: u32)
     -> Result<Pager<OrderBookLevel>, Error>
 ```
 
-`Pager` offers two views over the same walk — `next()` yields item by
+`Pager` offers two views over the same walk: `next()` yields item by
 item, `next_page()` page by page (don't mix them); `start_from(cursor)`
 resumes (or rewinds) a walk from a persisted cursor; `cursor()` returns
 the position the next fetch resumes from. `items` are clamped to
@@ -156,13 +156,13 @@ the position the next fetch resumes from. `items` are clamped to
 
 Per-endpoint rules:
 
-- **Pools**: cursors follow the default `by_height` order only —
+- **Pools**: cursors follow the default `by_height` order only;
   `list_pools_paged` sends no sort parameter; for `by_pledge` use the
   offset-based `list_pools`. Ordering is newest creation height first,
   ties broken by pool id in descending byte order.
 - **Transactions**: a cursor and an `offset_mode` are mutually exclusive
   (`Error::BadRequest`); see the transactions section below.
-- **Order book**: cursors are side-specific (`book-ask`/`book-bid`) — an
+- **Order book**: cursors are side-specific (`book-ask`/`book-bid`), an
   ask cursor on a bid walk is `Error::InvalidCursor`.
 - Pages are guaranteed stable only once the indexer's scanner is fully
   caught up; a walk during catch-up or a reorg may skip or repeat an
@@ -183,7 +183,7 @@ let legacy = indexer
         PageOpts { offset: 10_000, items: 50 })
     .await?;
 // offset is a global transaction index: the page holds the transactions
-// with global indexes below it — stable across scanner catch-up
+// with global indexes below it, stable across scanner catch-up
 let absolute = indexer
     .list_transactions_with_offset_mode(OffsetMode::Absolute,
         PageOpts { offset: 10_000, items: 50 })
@@ -275,9 +275,9 @@ strings.
 and token ids as exact bech32 strings; `OrderBookSide::Ask` lists
 ascending prices (orders giving the quote to buy the base),
 `OrderBookSide::Bid` descending. Each `OrderBookLevel` carries
-`price: OrderBookPrice` — `atoms` is the exact price as a reduced
+`price: OrderBookPrice`; `atoms` is the exact price as a reduced
 rational `"numer/denom"` (quote atoms per base atom), `decimal` that
-price floored toward zero — and `amount`, the remaining base-currency
+price floored toward zero, and `amount`, the remaining base-currency
 balance summed across orders at that price.
 
 Book-specific invariants:
@@ -287,7 +287,7 @@ Book-specific invariants:
 - Each request scans at most 10,000 live orders. When the cap truncates
   the scan, `OrderBook::truncated` is `true` and `next_cursor` is `None`:
   the levels in hand are an incomplete aggregation and the walk cannot
-  be continued — re-issue the request instead of paging on.
+  be continued; re-issue the request instead of paging on.
 - The book is computed fresh per request, so a paginated walk is not a
   consistent snapshot.
 - The `order_book_pager` maps a truncated page to a plain end-of-walk;

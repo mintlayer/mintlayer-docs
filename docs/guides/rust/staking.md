@@ -104,7 +104,7 @@ println!("next nonce: {}", delegation.next_nonce);      // string-encoded u64
 ```
 
 To walk all pools (deep listing, not just the first page), use the
-creation-height cursor pager — the `by_pledge` sort only exists on the
+creation-height cursor pager; the `by_pledge` sort only exists on the
 offset-based `list_pools`:
 
 ```rust

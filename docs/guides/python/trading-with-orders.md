@@ -47,7 +47,7 @@ The indexer provides the same listings read-only: `idx.list_orders(...)`, `idx.l
 
 The indexer also aggregates open orders into an **order book** per pair (one
 price level per entry, ask side ascending, bid side descending) and lists the
-largest **token holders** — both added in api-server 1.4.1 (see
+largest **token holders**, both added in api-server 1.4.1 (see
 [Order book](../../api/endpoints/order.md#get-orderpairpairbook) and
 [Holders](../../api/endpoints/statistics.md#get-statisticscoinholders)). The
 Python SDK ships client methods for them in a later release; until then use

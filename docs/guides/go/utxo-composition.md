@@ -30,14 +30,14 @@ Two consequences worth internalizing:
 
 :::note[What consensus allows and forbids]
 
-The pattern above is exactly what consensus permits: **one order operation input** (fill, conclude, or freeze) — a slot shared with token account commands, so you cannot combine an order operation with a mint, an unmint, or any other command input — and **one `CreateOrder` output** per transaction. Concluding and re-creating in the same transaction sits precisely at both limits, which is what makes the atomic update work.
+The pattern above is exactly what consensus permits: **one order operation input** (fill, conclude, or freeze; a slot shared with token account commands, so you cannot combine an order operation with a mint, an unmint, or any other command input) and **one `CreateOrder` output** per transaction. Concluding and re-creating in the same transaction sits precisely at both limits, which is what makes the atomic update work.
 
 Everything past those limits is rejected by the verifier:
 
-- A second command input (order operation or token account command) — `MultipleAccountCommands`.
-- A second `CreateOrder` output — `MultipleOrdersCreated`.
-- Spending a `CreateOrder` output as a UTXO input — orders are not UTXOs; they are consumed only through order operation inputs (`InvalidInputTypeInTx`).
-- Creating an order in a transaction with no UTXO input — the new order's id is derived from the first UTXO outpoint (`NoUtxoInputsForOrderIdCreation`), which is why the fee input below is not optional.
+- A second command input (order operation or token account command): `MultipleAccountCommands`.
+- A second `CreateOrder` output: `MultipleOrdersCreated`.
+- Spending a `CreateOrder` output as a UTXO input: orders are not UTXOs; they are consumed only through order operation inputs (`InvalidInputTypeInTx`).
+- Creating an order in a transaction with no UTXO input: the new order's id is derived from the first UTXO outpoint (`NoUtxoInputsForOrderIdCreation`), which is why the fee input below is not optional.
 
 :::
 
