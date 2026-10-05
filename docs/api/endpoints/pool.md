@@ -30,6 +30,7 @@ curl "https://api-server.mintlayer.org/api/v2/pool?items=1"
 
 - `margin_ratio_per_thousand` is the pool's commission in per-mille (e.g. `100%` means 10%... represented as per-thousand of the reward).
 - `staker_balance` is the pool founder's pledge; `delegations_balance` is the total delegated by other users.
+- The listing is ordered by creation height, newest first. Besides `offset`/`items`, it accepts [keyset pagination](../conventions.md#keyset-pagination-cursors) via `cursor`: with a `cursor` parameter the response is the `{items, next_cursor}` envelope instead of a plain array, and `cursor` takes precedence over `offset`. Pass `next_cursor` back as `cursor` to walk the full list without deep offsets; a `null` `next_cursor` ends the walk.
 
 ## GET /pool/\{id\}
 

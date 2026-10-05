@@ -62,7 +62,7 @@ After starting the new version:
 
 - Check the reported version: `node_version` over [RPC](../node-rpc.md), or `version` inside wallet-cli.
 - Confirm the node is syncing (or already at the chain tip): `chainstate_info` over RPC, or watch the logs.
-- If you run an API server, verify it serves data (`GET /api/v2/chain/tip`); note that some releases bump the indexer storage version, which triggers an automatic full resync on first launch.
+- If you run an API server, verify it serves data (`GET /api/v2/chain/tip`); note that some releases bump the indexer storage version, which triggers an automatic full resync on first launch (the scanner drops and re-initializes its database from scratch — see the [scanner reference](../../reference/cli/api-blockchain-scanner-daemon.md#storage-version-and-resyncs)).
 
 ## Version-specific guides
 
