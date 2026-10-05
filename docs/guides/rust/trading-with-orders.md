@@ -138,6 +138,6 @@ c.freeze_order(FreezeOrderParams {
 
 Concluding returns the unclaimed `give` remainder plus any accumulated `ask` balance to the order's conclude destination. Only the maker can freeze or conclude.
 
-## Manual flows
+To **update** an existing order (new price or amounts), compose a transaction that consumes the conclude-order input and re-creates the order: see [Composing UTXOs](utxo-composition.md).
 
 With the `crypto` feature, `encode_create_order_output` builds the order output and `get_order_id` predicts the id from the inputs; fills use `encode_input_for_fill_order`, whose inputs must **not** be signed (`encode_witness_no_signature`). Before the orders V1 fork the fill's `nonce` and `destination` parameters are significant; after the fork both are ignored, and `encode_input_for_freeze_order` requires orders V1 (`crypto::Error::OrdersV1NotActivated` before it). See [Tokens and NFTs](../../build/sdks/rust/tokens.md#dex-orders) in the SDK reference.

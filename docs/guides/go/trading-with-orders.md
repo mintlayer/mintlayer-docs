@@ -130,3 +130,5 @@ freezeInput, err := c.EncodeInputForFreezeOrder(orderID, currentBlockHeight, min
 ```
 
 Concluding returns the unclaimed `give` remainder plus any accumulated `ask` balance to the order's conclude destination. Only the maker can freeze or conclude.
+
+To **update** an existing order (new price or amounts), compose a transaction that consumes the conclude-order input and re-creates the order: see [Composing UTXOs](utxo-composition.md).

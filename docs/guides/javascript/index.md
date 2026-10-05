@@ -16,4 +16,5 @@ The wallet-cli versions of the same workflows live in the [command-line guides](
 | [Issue an NFT](issue-nft.md) | MLS-03 issuance and transfers |
 | [Staking and delegation](staking.md) | Create a delegation, stake, withdraw |
 | [Trading with orders](trading-with-orders.md) | On-chain orders: create, discover, fill, conclude |
+| [Composing UTXOs](utxo-composition.md) | Update an order atomically: conclude input + create output |
 | [Atomic swap](atomic-swap.md) | The Mintlayer side of a BTC ⇄ ML swap with HTLCs |

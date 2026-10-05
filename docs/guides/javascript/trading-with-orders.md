@@ -59,6 +59,8 @@ The order creator can close an order and reclaim the remaining balance:
 const signedTx = await client.concludeOrder('ord1...');
 ```
 
+To **update** an existing order (new price or amounts), compose a transaction that consumes the conclude-order input and re-creates the order: see [Composing UTXOs](utxo-composition.md).
+
 ## Example: market-maker loop
 
 ```ts

@@ -119,4 +119,4 @@ To estimate rewards: pool block stats for a time range, the pool's `cost_per_blo
 
 ## Manual transaction building
 
-The `wasm` package encodes delegation transactions without the wallet daemon: `EncodeOutputCreateDelegation`, `EncodeOutputDelegateStaking`, `EncodeInputForWithdrawFromDelegation` (nonce from the indexer's `NextNonce`). See [Go SDK: Staking](../../build/sdks/go/staking.md) for the full low-level flow.
+The `wasm` package encodes delegation transactions without the wallet daemon: `EncodeOutputCreateDelegation`, `EncodeOutputDelegateStaking`, `EncodeInputForWithdrawFromDelegation` (nonce from the indexer's `NextNonce`). See [Go SDK: Staking](../../build/sdks/go/staking.md) for the full low-level flow, and [Composing UTXOs](utxo-composition.md) for the spend-and-recreate composition pattern.
