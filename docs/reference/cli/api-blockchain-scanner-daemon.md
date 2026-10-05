@@ -58,6 +58,15 @@ api-blockchain-scanner-daemon [OPTIONS]
   - Env: `ML_API_SCANNER_DAEMON_POSTGRES_MAX_CONNECTIONS`
   - Default: `10`
 
+## Storage version and resyncs
+
+The scanner's PostgreSQL database layout is versioned. On startup, the scanner compares the storage version recorded in the database against the version it was built with (version `27` in current releases). On a mismatch it drops and re-initializes the database from scratch and performs a full re-scan from genesis.
+
+This is automatic, but it has operational consequences:
+
+- Upgrading to a release that bumps the storage version triggers a full resync on first launch — plan the downtime (and disk space) accordingly.
+- Until the re-scan catches up with the chain tip, the API server serves partial data (see [Data freshness](/docs/api/conventions.md#data-freshness)).
+
 ## Related
 
 - [API Web Server](api-web-server.md), serves HTTP API requests using the data indexed by this scanner.

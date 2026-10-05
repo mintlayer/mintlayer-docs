@@ -49,7 +49,7 @@ curl https://api-server.mintlayer.org/
 
 - **No authentication** for reads. The API is read-only by default and suitable for public frontends (CORS is open).
 - **Writes are gated.** Submitting transactions via `POST /transaction` is disabled unless the server is started with `--enable-post-routes` (the production API does not expose it).
-- **Pagination** on list endpoints via `offset` and `items` query parameters (default 10 items, max 100). See [Conventions](conventions.md).
+- **Pagination** on list endpoints via `offset` and `items` query parameters (default 10 items, max 100), and via opaque keyset `cursor`s for walking deep listings (pools, transactions, holders, order book). See [Conventions](conventions.md).
 - **Amounts** are returned as `{atoms, decimal}` pairs. See [Conventions](conventions.md).
 
 ## Documentation map
@@ -63,9 +63,9 @@ curl https://api-server.mintlayer.org/
 | [Addresses](endpoints/address.md) | Balances, UTXOs, delegations, token authority |
 | [Pools](endpoints/pool.md) | Staking pools, block stats, delegations |
 | [Delegations](endpoints/delegation.md) | Delegation lookup |
-| [Statistics](endpoints/statistics.md) | Coin and token supply statistics |
+| [Statistics](endpoints/statistics.md) | Coin and token supply statistics, address balance holders |
 | [Tokens](endpoints/token.md) | Fungible tokens, ticker lookup |
 | [NFTs](endpoints/nft.md) | NFT issuance data |
-| [Orders](endpoints/order.md) | On-chain order book |
+| [Orders](endpoints/order.md) | On-chain order book, price-level aggregation |
 | [Fee rate](endpoints/feerate.md) | Mempool fee estimates |
 | [Transaction submission](endpoints/transaction-submission.md) | POST /transaction (gated) |

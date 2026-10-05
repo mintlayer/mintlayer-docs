@@ -13,18 +13,18 @@ Mintlayer is a Bitcoin sidechain with a built-in PoS consensus, native token iss
 - **Use the wallet**, the [Wallet CLI reference](wallet/cli/commands.md) documents every command; for automation use the [Wallet RPC API](wallet/rpc/overview.md).
 - **Issue a token**, the [token guide](guides/cli/issue-new-token.md) walks through issuing, minting, and sending MLS-01 tokens; there is a separate guide for [NFTs](guides/cli/issuing-and-managing-an-nft.md).
 - **Use the Mojito Wallet**, the non-custodial mobile and browser-extension wallet: see [Mojito Wallet](wallet/mojito-wallet.md).
-- **Build dApps**, integrate wallets with the [JavaScript SDK](build/sdks/javascript/index.md), [Rust SDK](build/sdks/rust/index.md), or [Mojito Inject](build/mojito-inject.md), and query chain data via the [API](api/index.md).
+- **Build dApps**, integrate wallets with the [JavaScript SDK](build/sdks/javascript/index.md), [Rust](build/sdks/rust/index.md) or [Python](build/sdks/python/index.md) SDKs, or [Mojito Inject](build/mojito-inject.md), and query chain data via the [API](api/index.md).
 
 ## Documentation map
 
 | Section | Contents |
 | ------- | -------- |
 | [Getting Started](getting-started/index.md) | Node vs. wallet, installation methods |
-| [Guides](guides/cli/managing-a-staking-pool.md) | Staking pools, tokens, NFTs, multisig, orders, atomic swaps (wallet-cli) |
 | [Node](node/index.md) | Running, upgrading, firewall, node commands |
 | [Wallet](wallet/mojito-wallet.md) | Mojito Wallet, addresses, Wallet CLI, Wallet RPC, Trezor |
 | [API](api/index.md) | Indexer REST API: endpoints, conventions |
-| [Build](build/index.md) | SDKs (Go, JavaScript, Rust), developer guides, Mojito Inject, MCP, Bridge |
+| [Guides](guides/index.md) | Tokens, NFTs, staking, orders, atomic swaps: wallet-cli, Go, JavaScript, Rust, Python |
+| [Build](build/index.md) | SDKs (JavaScript, Go, Rust, Python), developer guides, Mojito Inject, MCP, Bridge |
 | [Whitepaper](whitepaper/1-blockchain-architecture.md) | Protocol concepts and design |
 | [Reference](reference/block-and-transaction-serialization.md) | Serialization, CLI reference, advanced tools |
 | [FAQ](faq.md) | Testnet tokens, fees, finality, staking requirements |

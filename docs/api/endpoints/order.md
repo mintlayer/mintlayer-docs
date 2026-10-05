@@ -51,6 +51,47 @@ curl "https://api-server.mintlayer.org/api/v2/order/pair/ML_mmltk18e0xfgmw3sn4s8
 
 The pair direction is normalized (matching orders for the pair are returned regardless of give/ask orientation).
 
+## GET /order/pair/\{pair\}/book
+
+Returns the aggregated order book for a trading pair: open orders are grouped by price, and each price level's `amount` is the summed available balance across the orders at that price (an order filled partially contributes its remaining balance, which is carried as it fills).
+
+The pair is `{BASE}_{QUOTE}` — exactly two non-empty, `_`-separated sides, each the coin ticker (`ML` on mainnet, case-insensitive) or a token ID. Both sides must be the native coin or a registered token; anything else is a client error (`400 {"error": "Invalid order trading pair"}`). The direction is normalized: requesting the reversed pair works and shows the mirrored side of the same orders.
+
+Query parameters:
+
+| Parameter | Description |
+| --------- | ----------- |
+| `side` | Required. `ask` lists the orders asking for the base currency (first in the pair) while giving the quote; `bid` lists the reverse (asking for quote, giving base) |
+| `items` | Page size, capped at `100`. See [Conventions](../conventions.md#pagination) |
+| `cursor` | [Keyset pagination](../conventions.md#keyset-pagination-cursors) cursor from `next_cursor`. Cursors are side-specific: a cursor from the ask book is rejected (HTTP 400) on the bid walk, and vice versa |
+
+Ask levels are ordered by ascending price, bid levels by descending price (best price first). Each level's `price` is quote-per-base in two forms: `atoms` is the exact rational in atoms as a `numer/denom` string (quote atoms per base atom), and `decimal` is a display string floored from the exact value.
+
+```bash
+curl "https://api-server.mintlayer.org/api/v2/order/pair/ML_mmltk18e0xfgmw3sn4s8vqu0ypjsnlv2fhnm6ye4zcazwqpr9dujrrdf6qjyhh0e/book?side=ask&items=2"
+```
+
+```json
+{
+  "items": [
+    {
+      "price": { "decimal": "1", "atoms": "1/1" },
+      "amount": { "atoms": "10000000000000", "decimal": "100" }
+    },
+    {
+      "price": { "decimal": "3", "atoms": "3/1" },
+      "amount": { "atoms": "98250000000000", "decimal": "982.5" }
+    }
+  ],
+  "next_cursor": null
+}
+```
+
+- `amount` is in the base currency of the pair; both amounts follow the [atoms/decimal convention](../conventions.md#amounts).
+- A request scans at most 10,000 open orders. If the scan hit that cap, the response carries an additional `"truncated": true` and **no `next_cursor`**: the levels in hand may be an incomplete view of the book, so re-issue the request (e.g. with different parameters) rather than continuing from a cursor.
+- Otherwise `next_cursor` follows the usual [keyset pagination](../conventions.md#keyset-pagination-cursors) contract, and `null` means the end of the book.
+- The book is computed per request from a live snapshot of open orders. While the scanner is still catching up, a concurrent walk may skip or repeat a level — re-fetch from the start (`cursor=`) when you need a consistent view.
+
 ## Go SDK
 
 ```go

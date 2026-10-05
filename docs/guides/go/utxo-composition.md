@@ -28,6 +28,12 @@ Two consequences worth internalizing:
 - The **new order gets a new ID** (IDs are derived from inputs, see [predicting IDs](custom-transactions.md#predicting-ids)). Publish the new ID and retire the old one.
 - If the transaction fails or is dropped, nothing changed: the old order is still live and its nonce unspent.
 
+:::note[One order operation per transaction]
+
+Consensus allows at most **one order operation input** (fill, conclude, or freeze) per transaction, and that single slot is shared with token account commands: you cannot combine an order operation with a mint, an unmint, or any other command input. Creating orders is capped the same way — at most one `CreateOrder` output per transaction. A second command input or a second created order makes the transaction invalid (`MultipleAccountCommands` / `MultipleOrdersCreated` in the verifier). The update pattern above sits exactly at both limits: one conclude input, one new order.
+
+:::
+
 ## The ingredients
 
 | Piece | Encoder | Source of truth |

@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ## GET /transaction
 
-Lists transactions, newest first. Supports [pagination](../conventions.md#pagination) with `offset` and `items`.
+Lists transactions, newest first. Supports [pagination](../conventions.md#pagination) with `offset` and `items`, or with an opaque keyset `cursor` for walking the full history.
 
 ```bash
 curl "https://api-server.mintlayer.org/api/v2/transaction?offset=0&items=1"
@@ -54,6 +54,13 @@ Query parameters:
 | --------- | ----------- |
 | `offset`, `items` | Standard [pagination](../conventions.md#pagination) |
 | `offset_mode` | `legacy` (default) or `absolute` for stable pagination over the global index. See [Conventions](../conventions.md#pagination) |
+| `cursor` | [Keyset pagination](../conventions.md#keyset-pagination-cursors) cursor from `next_cursor`; an empty value starts from the beginning. Returns pages in the same, stable newest-first order (transactions within a block in ascending transaction index, so pages reconstruct block order) |
+
+Notes on `cursor`:
+
+- With a `cursor` parameter the response is the `{items, next_cursor}` envelope instead of a plain array; a `null` `next_cursor` ends the walk.
+- `cursor` takes precedence over `offset`. Combining `cursor` with `offset_mode` is a client error.
+- For shallow listing, plain `offset`/`items` remains the simple alternative.
 
 ## GET /transaction/\{id\}
 

@@ -1,0 +1,8 @@
+{
+  "label": "Go SDK",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "build/sdks/go/index"
+  }
+}

@@ -8,7 +8,7 @@ sidebar_position: 1
 
 These guides implement Mintlayer's main workflows with the [Go SDK](../../build/sdks/go/index.md) (`go get github.com/mintlayer/go-sdk`). The `wallet` sub-client talks to a running `wallet-rpc-daemon`, the `indexer` client reads chain state, and the `wasm` package builds and signs transactions standalone, with no wallet daemon (see [Developer Setup](../../build/development.md) for ports and authentication).
 
-The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the JavaScript versions in the [JavaScript guides](../javascript/index.md), and the Rust versions in the [Rust guides](../rust/index.md).
+The wallet-cli versions of the same workflows live in the [command-line guides](../cli/index.md); the JavaScript versions in the [JavaScript guides](../javascript/index.md), the Rust versions in the [Rust guides](../rust/index.md), and the Python versions in the [Python guides](../python/index.md).
 
 | Guide | Contents |
 | ----- | -------- |
