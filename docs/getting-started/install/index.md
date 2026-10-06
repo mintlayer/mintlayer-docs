@@ -13,7 +13,7 @@ Mintlayer offers multiple installation methods, from a one-command Docker stack 
 | Method | What you get | Best for | Notes |
 | ------ | ------------ | -------- | ----- |
 | [One-command installer](install-web-gui.md) | Node + wallet daemon + web GUI in Docker | Non-technical users who want everything running with minimal setup | *(Experimental)* Linux and macOS |
-| [Native packages](install-from-binaries.md#native-linux-packages-debrpm) | `deb` / `rpm` packages with systemd integration | Linux servers and desktops (Debian/Ubuntu, Fedora/RHEL) | From v1.4.1 |
+| [Native packages](install-from-binaries.md#native-linux-packages-debrpmpkgtarzst) | `deb` / `rpm` / Arch `pkg.tar.zst` packages with systemd integration | Linux servers and desktops (Debian/Ubuntu, Fedora/RHEL, Arch/Omarchy) | From v1.4.1 |
 | [Binaries](install-from-binaries.md) | Standalone executables (tar.gz, deb, rpm, dmg, zip, exe) | Any platform, manual control over each service | |
 | [Docker](install-from-docker.md) | Containerized services via `docker compose` | Servers, headless setups, staking in the background | |
 | [From source](install-from-source.md) | Locally built binaries from the latest code | Developers and advanced users | Advanced |
@@ -27,7 +27,7 @@ The quickest way to a full working stack: node, wallet daemon, and web interface
 
 ### 2. [Install from binaries](install-from-binaries.md)
 
-Pre-built executables for Linux, macOS, and Windows, downloaded from the [official download page](https://www.mintlayer.org/download/). On Linux, from version 1.4.1 the `deb` and `rpm` artifacts are proper native packages with systemd units, a `mintlayer` system user, and man pages; see [Native Linux packages](install-from-binaries.md#native-linux-packages-debrpm).
+Pre-built executables for Linux, macOS, and Windows, downloaded from the [official download page](https://www.mintlayer.org/download/). On Linux, from version 1.4.1 the `deb`, `rpm`, and Arch `pkg.tar.zst` artifacts are proper native packages with systemd units, a `mintlayer` system user, and man pages; see [Native Linux packages](install-from-binaries.md#native-linux-packages-debrpmpkgtarzst).
 
 ### 3. [Install from Docker](install-from-docker.md)
 

@@ -1,6 +1,6 @@
 ---
 title: "Install from Binaries"
-description: "Download pre-built Mintlayer binaries for Linux, macOS, and Windows, including native deb/rpm packages with systemd integration (v1.4.1+)."
+description: "Download pre-built Mintlayer binaries for Linux, macOS, and Windows, including native deb/rpm/Arch packages with systemd integration (v1.4.1+)."
 sidebar_position: 3
 ---
 
@@ -10,7 +10,7 @@ Pre-built Mintlayer binaries are available on the official download page:
 
 [https://www.mintlayer.org/download/](https://www.mintlayer.org/download/)
 
-On Linux, from version **1.4.1** the `deb` and `rpm` artifacts are proper native packages with systemd integration; see [Native Linux packages (deb/rpm)](#native-linux-packages-debrpm) below. The `tar.gz` archives remain plain, unstripped binaries for manual installs.
+On Linux, from version **1.4.1** the `deb`, `rpm`, and Arch `pkg.tar.zst` artifacts are proper native packages with systemd integration; see [Native Linux packages (deb/rpm/pkg.tar.zst)](#native-linux-packages-debrpmpkgtarzst) below. The `tar.gz` archives remain plain, unstripped binaries for manual installs.
 
 ## Choosing the right artifact
 
@@ -28,6 +28,7 @@ Before downloading, choose the correct options for your system using the filters
 | **Package type** | TAR.GZ | Archive for manual installs on any Linux distribution |
 | | DEB | Debian package for Debian/Ubuntu and derivatives |
 | | RPM | Red Hat package for Fedora/RHEL/openSUSE and derivatives |
+| | PKG.TAR.ZST | Arch package for Arch, Omarchy, Artix and other Arch derivatives |
 | | DMG | Disk image for macOS |
 | | ZIP | Archive for macOS and Windows |
 | | EXE | Executable installer for Windows |
@@ -69,7 +70,7 @@ Verifying the checksum ensures that the downloaded file is intact and unaltered,
 
 ---
 
-## Native Linux packages (deb/rpm)
+## Native Linux packages (deb/rpm/pkg.tar.zst)
 
 :::note[Version requirement]
 
@@ -77,12 +78,14 @@ Native packages with the layout described here are available **from Mintlayer v1
 
 :::
 
-From v1.4.1, the Linux `deb` and `rpm` artifacts are proper distribution packages. Two packages are produced:
+From v1.4.1, the Linux `deb`, `rpm`, and Arch `pkg.tar.zst` artifacts are proper distribution packages. Two packages are produced:
 
 | Package | Contents |
 | ------- | -------- |
 | `mintlayer-node` | `node-daemon`, `wallet-rpc-daemon`, `api-web-server`, `api-blockchain-scanner-daemon`, `dns-server`, `wallet-cli`, `wallet-address-generator`, plus systemd units, a `mintlayer` system user, Ledger/Trezor udev rules, man pages, and config files under `/etc/mintlayer` |
 | `mintlayer-node-gui` | The GUI binary with hicolor icons, a desktop entry, and a man page |
+
+All three formats (`.deb`, `.rpm`, `.pkg.tar.zst`) carry the same payload; the sections below call out the per-distro install commands and any behavior differences.
 
 ### What gets installed
 
@@ -127,7 +130,7 @@ All units run as the `mintlayer` system user with hardening enabled (`ProtectSys
 
 ### Installing
 
-Download the package for your distribution and architecture (both `x86_64`/amd64 and `aarch64`/arm64 are available for `deb` and `rpm`), then install it with the package manager:
+Download the package for your distribution and architecture (both `x86_64`/amd64 and `aarch64`/arm64 are available for `deb`, `rpm`, and `pkg.tar.zst`), then install it with the package manager:
 
 **Debian / Ubuntu**
 
@@ -140,6 +143,22 @@ sudo apt install ./Mintlayer_Node_linux_<version>_<arch>.deb
 ```bash
 sudo dnf install ./Mintlayer_Node_linux_<version>_<arch>.rpm
 ```
+
+**Arch / Omarchy**
+
+On Arch Linux (and derivatives such as Omarchy or Artix), install the `.pkg.tar.zst` package directly with pacman:
+
+```bash
+sudo pacman -U ./Mintlayer_Node_linux_<version>_<arch>.pkg.tar.zst
+```
+
+Following Arch packaging convention, the install scriptlet only applies the preset policy (`systemctl preset`): the mainnet node unit is **enabled for the next boot but not started**. Start it explicitly the first time:
+
+```bash
+sudo systemctl start mintlayer-node@mainnet.service
+```
+
+Everything else works exactly as described in this section: same binaries, systemd units, `/etc/mintlayer` configuration files, system user, and udev rules. If you later disable the unit, an upgrade will not re-enable it (the preset is applied at install time only).
 
 Installing `mintlayer-node` creates the system user, enables `mintlayer-node@mainnet.service`, and starts the mainnet node. Watch it sync with:
 
@@ -179,13 +198,14 @@ Daemon-specific command-line options go into the corresponding env file under `/
 
 ### Upgrading and removal
 
-Upgrades are handled by the package manager (`sudo apt install ./…` or `sudo dnf install ./…`): configuration under `/etc/mintlayer` is preserved, and the running services are restarted.
+Upgrades are handled by the package manager (`sudo apt install ./…`, `sudo dnf install ./…`, or `sudo pacman -U ./…`): configuration under `/etc/mintlayer` is preserved, and the running services are restarted.
 
 To remove the packages:
 
 ```bash
 sudo apt remove mintlayer-node mintlayer-node-gui   # Debian/Ubuntu
 sudo dnf remove mintlayer-node mintlayer-node-gui   # Fedora/RHEL
+sudo pacman -R mintlayer-node mintlayer-node-gui    # Arch/Omarchy
 ```
 
 Removing the package does not delete chain state; remove `/var/lib/mintlayer` manually if you no longer need it.
