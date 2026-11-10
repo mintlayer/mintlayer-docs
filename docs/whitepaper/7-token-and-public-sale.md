@@ -92,11 +92,7 @@ Specific operations within the network will trigger the burning of ML tokens, ef
 
 The initial unlocked token supply is set to **15,820,000 ML** at the Token Generation Event.
 
-## 7.4. Technical Roadmap
-
-View the roadmap on the [main site](https://www.mintlayer.org/en/roadmap/)
-
-
 ---
+
 
 [Back to home](/)
