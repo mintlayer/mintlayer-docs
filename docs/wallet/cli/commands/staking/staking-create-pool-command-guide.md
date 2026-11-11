@@ -1,7 +1,9 @@
 ---
-title: "staking-create-pool"
+title: "staking create-pool"
 sidebar_position: 78
 ---
+
+> **Legacy spelling:** this command was previously spelled `staking-create-pool`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Create a staking pool. The pool will be capable of creating blocks and gaining rewards, as well as taking delegations from other users.
 
@@ -15,12 +17,12 @@ Two parameters control how delegators receive rewards:
 ## Usage
 
 ```
-staking-create-pool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> <DECOMMISSION_ADDRESS> [STAKER_ADDRESS] [VRF_PUBLIC_KEY]
+staking create-pool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> <DECOMMISSION_ADDRESS> [STAKER_ADDRESS] [VRF_PUBLIC_KEY]
 ```
 
 ## Arguments
 
-- **`<AMOUNT>`**: The amount to pledge to the pool. There is a minimum (40,000 TML). This amount and all staking rewards **cannot be withdrawn without decommissioning the pool**. To earn and withdraw rewards without decommissioning, delegate to your own pool: delegated funds can be withdrawn with `delegation-withdraw`, subject to a lock period before they become spendable.
+- **`<AMOUNT>`**: The amount to pledge to the pool. There is a minimum (40,000 TML). This amount and all staking rewards **cannot be withdrawn without decommissioning the pool**. To earn and withdraw rewards without decommissioning, delegate to your own pool: delegated funds can be withdrawn with `delegation withdraw`, subject to a lock period before they become spendable.
 
 - **`<COST_PER_BLOCK>`**: A fixed amount in coins subtracted from each block reward and handed to the pool operator before applying the margin ratio.
 
@@ -28,7 +30,7 @@ staking-create-pool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> <DECOM
 
 - **`<DECOMMISSION_ADDRESS>`**: The address whose key can decommission the pool. It is recommended to keep this key in cold storage.
 
-- **`[STAKER_ADDRESS]`**: *(Optional)* The public key address of the wallet that will sign new blocks. Only needed if a different wallet will perform the staking. Must be a "public key address" (not a "public key hash address"), use `address-reveal-public-key-as-address` to convert. Leave empty if the current wallet will stake.
+- **`[STAKER_ADDRESS]`**: *(Optional)* The public key address of the wallet that will sign new blocks. Only needed if a different wallet will perform the staking. Must be a "public key address" (not a "public key hash address"), use `address reveal-public-key` to convert. Leave empty if the current wallet will stake.
 
 - **`[VRF_PUBLIC_KEY]`**: *(Optional)* The VRF public key used to produce PoS hashes during staking. Only needed if a different wallet will perform the staking. Leave empty if the current wallet will stake.
 
@@ -36,15 +38,15 @@ staking-create-pool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> <DECOM
 
 ```
 # Create a pool with 40000 TML, 1 TML cost per block, 5% margin, decommission key in cold wallet
-staking-create-pool 40000 1 5% <decommission_address>
+staking create-pool 40000 1 5% <decommission_address>
 
 # Create a pool where staking will be done by a separate wallet
-staking-create-pool 40000 1 5% <decommission_address> <staker_public_key_address> <vrf_public_key>
+staking create-pool 40000 1 5% <decommission_address> <staker_public_key_address> <vrf_public_key>
 ```
 
 ## Related
 
-- [`staking-decommission-pool`](staking-decommission-pool-command-guide.md): Decommission a pool.
-- [`staking-list-pools`](staking-list-pools-command-guide.md): List your pools.
-- [`address-reveal-public-key-as-address`](../accounts-addresses/address-reveal-public-key-as-address-command-guide.md): Convert a public key hash address to a public key address.
-- [`staking-new-vrf-public-key`](staking-new-vrf-public-key-command-guide.md): Generate a VRF public key.
+- [`staking decommission-pool`](staking-decommission-pool-command-guide.md): Decommission a pool.
+- [`staking list-pools`](staking-list-pools-command-guide.md): List your pools.
+- [`address reveal-public-key`](../accounts-addresses/address-reveal-public-key-command-guide.md): Convert a public key hash address to a public key address.
+- [`staking new-vrf-public-key`](staking-new-vrf-public-key-command-guide.md): Generate a VRF public key.

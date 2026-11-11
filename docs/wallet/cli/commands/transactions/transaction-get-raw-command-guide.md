@@ -1,14 +1,16 @@
 ---
-title: "transaction-get-raw"
+title: "transaction get-raw"
 sidebar_position: 113
 ---
+
+> **Legacy spelling:** this command was previously spelled `transaction-get-raw`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Get a transaction from the wallet, if present, as a hex encoded raw transaction.
 
 ## Usage
 
 ```
-transaction-get-raw <TRANSACTION_ID>
+transaction get-raw <TRANSACTION_ID>
 ```
 
 ## Arguments
@@ -17,10 +19,10 @@ transaction-get-raw <TRANSACTION_ID>
 
 ## Notes
 
-The returned hex can be passed to `transaction-inspect` to decode and review it, or to `node-submit-transaction` to rebroadcast it.
+The returned hex can be passed to `transaction inspect` to decode and review it, or to `node submit-transaction` to rebroadcast it.
 
 ## Related
 
-- [`transaction-get`](transaction-get-command-guide.md): Get a transaction in decoded form.
-- [`transaction-get-signed-raw`](transaction-get-signed-raw-command-guide.md): Get the signed version as hex.
-- [`transaction-inspect`](transaction-inspect-command-guide.md): Decode and inspect a raw transaction hex.
+- [`transaction get`](transaction-get-command-guide.md): Get a transaction in decoded form.
+- [`transaction get-signed-raw`](transaction-get-signed-raw-command-guide.md): Get the signed version as hex.
+- [`transaction inspect`](transaction-inspect-command-guide.md): Decode and inspect a raw transaction hex.

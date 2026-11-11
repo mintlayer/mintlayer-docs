@@ -5,7 +5,7 @@ sidebar_position: 37
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`address-new`](address-new-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`address new`](address-new-command-guide.md).
 
 :::
 

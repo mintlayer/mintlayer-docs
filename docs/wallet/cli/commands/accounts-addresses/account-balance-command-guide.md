@@ -1,14 +1,16 @@
 ---
-title: "account-balance"
+title: "account balance"
 sidebar_position: 2
 ---
+
+> **Legacy spelling:** this command was previously spelled `account-balance`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Get the total balance in the selected account in this wallet. See available options to include more categories, like locked coins.
 
 ## Usage
 
 ```
-account-balance [WITH_LOCKED] [UTXO_STATES]...
+account balance [WITH_LOCKED] [UTXO_STATES]...
 ```
 
 ## Arguments
@@ -25,14 +27,14 @@ account-balance [WITH_LOCKED] [UTXO_STATES]...
 
 ```
 # Show confirmed, spendable balance only (default)
-account-balance
+account balance
 
 # Include locked outputs as well
-account-balance any
+account balance any
 
 # Show balance including unconfirmed (mempool) transactions
-account-balance unlocked in-mempool
+account balance unlocked in-mempool
 
 # Show all balance categories
-account-balance any confirmed in-mempool
+account balance any confirmed in-mempool
 ```

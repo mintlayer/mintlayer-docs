@@ -1,7 +1,9 @@
 ---
-title: "staking-decommission-pool"
+title: "staking decommission-pool"
 sidebar_position: 79
 ---
+
+> **Legacy spelling:** this command was previously spelled `staking-decommission-pool`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Decommission a staking pool, given its id. This assumes that the decommission key is owned by the selected account in this wallet.
 
@@ -10,7 +12,7 @@ Decommissioning returns the pledged amount and all accumulated staking rewards t
 ## Usage
 
 ```
-staking-decommission-pool <POOL_ID> <OUTPUT_ADDRESS>
+staking decommission-pool <POOL_ID> <OUTPUT_ADDRESS>
 ```
 
 ## Arguments
@@ -21,10 +23,10 @@ staking-decommission-pool <POOL_ID> <OUTPUT_ADDRESS>
 
 ## Notes
 
-If the decommission key is held in a separate (e.g. cold) wallet, use `staking-decommission-pool-request` instead to create an unsigned decommission transaction, then sign it with the cold wallet.
+If the decommission key is held in a separate (e.g. cold) wallet, use `staking decommission-pool-request` instead to create an unsigned decommission transaction, then sign it with the cold wallet.
 
 ## Related
 
-- [`staking-decommission-pool-request`](staking-decommission-pool-request-command-guide.md): Create a decommission request for signing by another wallet.
-- [`staking-create-pool`](staking-create-pool-command-guide.md): Create a staking pool.
-- [`staking-list-pools`](staking-list-pools-command-guide.md): List your pools.
+- [`staking decommission-pool-request`](staking-decommission-pool-request-command-guide.md): Create a decommission request for signing by another wallet.
+- [`staking create-pool`](staking-create-pool-command-guide.md): Create a staking pool.
+- [`staking list-pools`](staking-list-pools-command-guide.md): List your pools.

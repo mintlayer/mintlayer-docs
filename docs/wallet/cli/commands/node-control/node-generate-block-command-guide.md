@@ -1,7 +1,9 @@
 ---
-title: "node-generate-block"
+title: "node generate-block"
 sidebar_position: 49
 ---
+
+> **Legacy spelling:** this command was previously spelled `node-generate-block`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Generate a block with the given transactions to the specified reward destination.
 
@@ -10,7 +12,7 @@ If no transactions are provided, the block will be generated with available tran
 ## Usage
 
 ```
-node-generate-block [TRANSACTIONS]...
+node generate-block [TRANSACTIONS]...
 ```
 
 ## Arguments
@@ -20,3 +22,5 @@ node-generate-block [TRANSACTIONS]...
 ## Notes
 
 This command is only useful in `regtest` mode. It is not available on mainnet or testnet where block production is handled by the staking process.
+
+Since v1.4.5 the command asks for confirmation before generating. In non-interactive runs (`--exec`, `--commands-file`) pass `--yes` to proceed automatically.

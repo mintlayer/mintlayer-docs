@@ -1,7 +1,9 @@
 ---
-title: "order-create"
+title: "order create"
 sidebar_position: 65
 ---
+
+> **Legacy spelling:** this command was previously spelled `order-create`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Create an order for exchanging an amount of one ("given") currency for a certain amount of another ("asked") currency.
 
@@ -10,7 +12,7 @@ Either currency can be coins or tokens. The ratio between the asked and given am
 ## Usage
 
 ```
-order-create <ASK_CURRENCY> <ASK_AMOUNT> <GIVE_CURRENCY> <GIVE_AMOUNT> <CONCLUDE_ADDRESS>
+order create <ASK_CURRENCY> <ASK_AMOUNT> <GIVE_CURRENCY> <GIVE_AMOUNT> <CONCLUDE_ADDRESS>
 ```
 
 ## Arguments
@@ -29,16 +31,16 @@ order-create <ASK_CURRENCY> <ASK_AMOUNT> <GIVE_CURRENCY> <GIVE_AMOUNT> <CONCLUDE
 
 ```
 # Offer 100 ML coins in exchange for 50 units of a token
-order-create <token_id> 50 coin 100 <conclude_address>
+order create <token_id> 50 coin 100 <conclude_address>
 
 # Offer 1000 units of a token in exchange for 10 ML coins
-order-create coin 10 <token_id> 1000 <conclude_address>
+order create coin 10 <token_id> 1000 <conclude_address>
 ```
 
 ## Related
 
-- [`order-fill`](order-fill-command-guide.md): Fill this order (partially or fully).
-- [`order-freeze`](order-freeze-command-guide.md): Freeze the order to stop new fills.
-- [`order-conclude`](order-conclude-command-guide.md): Withdraw accumulated funds and close the order.
-- [`order-list-own`](order-list-own-command-guide.md): List orders you can conclude.
-- [`order-list-all-active`](order-list-all-active-command-guide.md): List all active orders.
+- [`order fill`](order-fill-command-guide.md): Fill this order (partially or fully).
+- [`order freeze`](order-freeze-command-guide.md): Freeze the order to stop new fills.
+- [`order conclude`](order-conclude-command-guide.md): Withdraw accumulated funds and close the order.
+- [`order list-own`](order-list-own-command-guide.md): List orders you can conclude.
+- [`order list-all-active`](order-list-all-active-command-guide.md): List all active orders.

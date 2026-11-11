@@ -1,18 +1,20 @@
 ---
-title: "transaction-inspect"
+title: "transaction inspect"
 sidebar_position: 115
 ---
 
+> **Legacy spelling:** this command was previously spelled `transaction-inspect`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
+
 Print the summary of a transaction.
 
-The main purpose of this command is to inspect the result of `transaction-compose` or `account-sign-raw-transaction` before broadcasting to the network.
+The main purpose of this command is to inspect the result of `transaction compose` or `transaction sign` before broadcasting to the network.
 
 Note: this only works for transactions whose inputs have not been spent yet (i.e. it will not work if the transaction has already been included in a block). It also does not support certain input types such as account-based inputs.
 
 ## Usage
 
 ```
-transaction-inspect <TRANSACTION>
+transaction inspect <TRANSACTION>
 ```
 
 ## Arguments
@@ -41,6 +43,6 @@ Missing signatures: 1
 
 ## Related
 
-- [`transaction-compose`](transaction-compose-command-guide.md): Compose a transaction to inspect.
-- [`account-sign-raw-transaction`](../accounts-addresses/account-sign-raw-transaction-command-guide.md): Sign a transaction before inspecting.
-- [`node-submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Broadcast after verifying.
+- [`transaction compose`](transaction-compose-command-guide.md): Compose a transaction to inspect.
+- [`transaction sign`](transaction-sign-command-guide.md): Sign a transaction before inspecting.
+- [`node submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Broadcast after verifying.

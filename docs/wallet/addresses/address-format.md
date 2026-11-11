@@ -97,8 +97,8 @@ wallet-address-generator --network testnet -n 5
 Inside `wallet-cli`, use:
 
 ```
-address-new          # generate a new receiving address
-address-show         # list all existing receiving addresses
+address new          # generate a new receiving address
+address list         # list all existing receiving addresses
 ```
 
 ---
@@ -107,7 +107,7 @@ address-show         # list all existing receiving addresses
 
 The Bech32m checksum is a 30-bit BCH code. Beyond detecting corruption, it can **locate up to two character errors** in an address, which makes automatic typo recovery possible: when a pasted address fails its checksum, you can compute where the error is (or the two errors are), fix it, and show the corrected address to the user for confirmation.
 
-This is implemented in the bridge frontend ([`src/bridge-sdk/addressCorrection.ts`](https://github.com/mintlayer/bridge-frontend), ported from the node web-gui). It never mutates input silently and is never applied automatically: the corrected address is shown as a suggestion, and the user must explicitly accept it, after which it goes through normal validation again.
+This is implemented in the bridge frontend ([`src/bridge-sdk/addressCorrection.ts`](https://github.com/mintlayer/bridge-frontend/blob/master/src/bridge-sdk/addressCorrection.ts), ported from the node web-gui). It never mutates input silently and is never applied automatically: the corrected address is shown as a suggestion, and the user must explicitly accept it, after which it goes through normal validation again.
 
 ### How it works
 

@@ -57,7 +57,7 @@ After a successful subscription the node pushes a message for every matching eve
 
 ## Inspecting the node from wallet-cli
 
-The wallet CLI embeds a full set of node inspection commands (they forward to the node RPC over your wallet connection): `node-chainstate-info`, `node-best-block-id`, `node-get-block`, `node-peer-count`, `node-connect-to-peer`, `node-submit-transaction`, and more. See the Node Control group in the [Wallet CLI command reference](../wallet/cli/commands.md).
+The wallet CLI embeds a full set of node inspection commands (they forward to the node RPC over your wallet connection): `node chainstate-info`, `node best-block --id`, `node block`, `peer count`, `peer connect`, `node submit-transaction`, and more. See the Node and Peer groups in the [Wallet CLI command reference](../wallet/cli/commands.md).
 
 ## Regtest helpers
 

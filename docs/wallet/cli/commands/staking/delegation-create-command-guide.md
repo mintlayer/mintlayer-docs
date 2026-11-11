@@ -1,7 +1,9 @@
 ---
-title: "delegation-create"
+title: "delegation create"
 sidebar_position: 25
 ---
+
+> **Legacy spelling:** this command was previously spelled `delegation-create`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Create a delegation to a given pool id and the owner address/destination.
 
@@ -10,7 +12,7 @@ The owner of a delegation is the key authorized to withdraw from the delegation.
 ## Usage
 
 ```
-delegation-create <OWNER> <POOL_ID>
+delegation create <OWNER> <POOL_ID>
 ```
 
 ## Arguments
@@ -21,10 +23,10 @@ delegation-create <OWNER> <POOL_ID>
 
 ## Notes
 
-After creating a delegation, use `delegation-stake` to send coins to the delegation id to begin staking. Use `delegation-list-ids` to view your delegation ids and their balances.
+After creating a delegation, use `delegation stake` to send coins to the delegation id to begin staking. Use `delegation list` to view your delegation ids and their balances.
 
 ## Related
 
-- [`delegation-stake`](delegation-stake-command-guide.md): Send coins to a delegation to begin staking.
-- [`delegation-list-ids`](delegation-list-ids-command-guide.md): List your delegation ids.
-- [`delegation-withdraw`](delegation-withdraw-command-guide.md): Withdraw coins from a delegation.
+- [`delegation stake`](delegation-stake-command-guide.md): Send coins to a delegation to begin staking.
+- [`delegation list`](delegation-list-command-guide.md): List your delegation ids.
+- [`delegation withdraw`](delegation-withdraw-command-guide.md): Withdraw coins from a delegation.

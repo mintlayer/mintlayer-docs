@@ -26,8 +26,8 @@ This endpoint is **disabled by default**. The server returns `403 Forbidden` unl
 
 The request body size is capped (currently 1 MB). The production API operated by Mintlayer does **not** enable this route; to submit transactions over this path, run your own api-web-server. Alternatives:
 
-- Submit via the node's RPC: the [`node-submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md) wallet-cli command
-- Submit via the wallet: [`address-send`](../../wallet/cli/commands/accounts-addresses/address-send-command-guide.md) and related wallet commands
+- Submit via the node's RPC: the [`node submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md) wallet-cli command
+- Submit via the wallet: [`send`](../../wallet/cli/commands/accounts-addresses/send-command-guide.md) and related wallet commands
 
 ## Go SDK
 

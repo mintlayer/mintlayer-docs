@@ -25,7 +25,7 @@ flowchart LR
 | Service | Default port | Protocol | Auth |
 | ------- | ------------ | -------- | ---- |
 | `node-daemon` RPC | **3030** mainnet, **13030** testnet | JSON-RPC 2.0 over HTTP **and** WebSocket (same port) | `.cookie` file or username/password |
-| `wallet-rpc-daemon` RPC | **3034** mainnet, **13034** testnet | JSON-RPC 2.0 over HTTP and WebSocket | username/password |
+| `wallet-rpc-daemon` RPC | **3034** mainnet, **13034** testnet | JSON-RPC 2.0 over HTTP and WebSocket | cookie file, username/password, or `--rpc-no-authentication` |
 | `api-web-server` (indexer REST) | **3000** | REST | none |
 | PostgreSQL (indexer storage) | **5432** | n/a | database user/password |
 | Node P2P (not an API) | 3031 mainnet, 13031 testnet | Mintlayer P2P | n/a |
@@ -44,7 +44,7 @@ For local testing without syncing a public network, run the node on **regtest**:
 node-daemon regtest
 ```
 
-Regtest enables developer-only RPC functions (see the [test functions reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC_DEV.md)), such as generating blocks on demand and setting mock time via `node_set_mock_time`, useful for deterministic test environments. Related wallet-cli commands: `node-generate-block`, `node-generate-blocks`, `node-submit-block`.
+Regtest enables developer-only RPC functions (see the [test functions reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC_DEV.md)), such as generating blocks on demand and setting mock time via `node_set_mock_time`, useful for deterministic test environments. Related wallet-cli commands: `node generate-block`, `node-generate-blocks`, `node submit-block`. Note that `node generate-block` asks for confirmation before generating; pass `--yes` in scripted runs.
 
 ## Connecting to the node RPC
 
@@ -68,7 +68,7 @@ Over WebSocket, method calls work the same way, plus you can **subscribe to even
 {"jsonrpc": "2.0", "method": "chainstate_subscribe_to_events", "params": [], "id": 1}
 ```
 
-The full method list (~60 methods across the `node`, `chainstate`, `mempool`, `p2p`, and `blockprod` modules) is in the [node RPC reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC.md), with per-command guides under [Node Commands](../wallet/cli/commands.md) (the wallet-cli `node-*` commands).
+The full method list (~60 methods across the `node`, `chainstate`, `mempool`, `p2p`, and `blockprod` modules) is in the [node RPC reference](https://github.com/mintlayer/mintlayer-core/blob/master/node-daemon/docs/RPC.md), with per-command guides under [Node Commands](../wallet/cli/commands.md) (the wallet-cli `node` and `peer` commands).
 
 ## Connecting to the wallet RPC
 

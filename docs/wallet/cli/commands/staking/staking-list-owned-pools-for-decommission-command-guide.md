@@ -1,19 +1,21 @@
 ---
-title: "staking-list-owned-pools-for-decommission"
+title: "staking list-owned-pools-for-decommission"
 sidebar_position: 82
 ---
 
+> **Legacy spelling:** this command was previously spelled `staking-list-owned-pools-for-decommission`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
+
 List pools that can be decommissioned by the selected account in this wallet.
 
-These are pools whose decommission key is owned by this account, which may differ from the pools listed by `staking-list-pools` (which lists pools whose staking key is owned by this account).
+These are pools whose decommission key is owned by this account, which may differ from the pools listed by `staking list-pools` (which lists pools whose staking key is owned by this account).
 
 ## Usage
 
 ```
-staking-list-owned-pools-for-decommission
+staking list-owned-pools-for-decommission
 ```
 
 ## Related
 
-- [`staking-list-pools`](staking-list-pools-command-guide.md): List pools controlled (staking key) by this account.
-- [`staking-decommission-pool`](staking-decommission-pool-command-guide.md): Decommission a pool.
+- [`staking list-pools`](staking-list-pools-command-guide.md): List pools controlled (staking key) by this account.
+- [`staking decommission-pool`](staking-decommission-pool-command-guide.md): Decommission a pool.

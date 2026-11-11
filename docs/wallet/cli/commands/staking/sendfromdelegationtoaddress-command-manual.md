@@ -5,7 +5,7 @@ sidebar_position: 75
 ---
 :::danger[Removed command]
 
-This command is no longer available in current wallet-cli versions. use [`delegation-withdraw`](delegation-withdraw-command-guide.md) instead.
+This command is no longer available in current wallet-cli versions. use [`delegation withdraw`](delegation-withdraw-command-guide.md) instead.
 
 :::
 

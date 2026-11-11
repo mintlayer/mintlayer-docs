@@ -5,7 +5,7 @@ sidebar_position: 23
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`staking-create-pool`](staking-create-pool-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`staking create-pool`](staking-create-pool-command-guide.md).
 
 :::
 
@@ -13,13 +13,13 @@ This page documents a legacy command name. In current wallet versions the comman
 
 This command is used to create a new stake pool.
 
-Usage
+## Usage
 ```
-createstakepool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND>
+createstakepool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND> [DECOMMISSION_KEY]
 ```
 
 ## Arguments
-1. `[AMOUNT]`:
+1. `<AMOUNT>`:
     - **Description**: The total amount of funds you want to allocate for the stake pool.
     - **Type**: Amount (numeric value)
 2. `<COST_PER_BLOCK>`:
@@ -35,7 +35,7 @@ createstakepool <AMOUNT> <COST_PER_BLOCK> <MARGIN_RATIO_PER_THOUSAND>
 `-h, --help`: Displays help information for the `createstakepool` command.
 
 ## Examples
-Create a pool with 40.000 ML tokens as pledge, 10 ML tokens as cost per block and 5% commission, the rest is sent to delegators.
+Create a pool with 40,000 ML tokens as pledge, 10 ML tokens as cost per block and 5% commission, the rest is sent to delegators.
 ```
 Wallet> createstakepool 40000 10 0.05
 The transaction was submitted successfully

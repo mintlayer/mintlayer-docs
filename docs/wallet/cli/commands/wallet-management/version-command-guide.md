@@ -13,4 +13,4 @@ version
 
 ## Related
 
-- [`node-version`](../node-control/node-version-command-guide.md): Get the version of the connected node.
+- [`node version`](../node-control/node-version-command-guide.md): Get the version of the connected node.

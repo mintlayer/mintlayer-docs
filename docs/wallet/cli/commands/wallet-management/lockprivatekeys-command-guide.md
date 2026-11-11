@@ -5,7 +5,7 @@ sidebar_position: 36
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`wallet-lock-private-keys`](wallet-lock-private-keys-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`wallet lock`](wallet-lock-command-guide.md).
 
 :::
 

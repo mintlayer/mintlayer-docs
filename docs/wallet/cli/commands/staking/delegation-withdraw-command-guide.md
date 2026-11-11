@@ -1,7 +1,9 @@
 ---
-title: "delegation-withdraw"
+title: "delegation withdraw"
 sidebar_position: 28
 ---
+
+> **Legacy spelling:** this command was previously spelled `delegation-withdraw`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Send coins from a delegation id (that you own) to stop staking them.
 
@@ -10,7 +12,7 @@ Note that withdrawing from a delegation requires a lock period before the coins 
 ## Usage
 
 ```
-delegation-withdraw <ADDRESS> <AMOUNT> <DELEGATION_ID>
+delegation withdraw <ADDRESS> <AMOUNT> <DELEGATION_ID>
 ```
 
 ## Arguments
@@ -23,6 +25,6 @@ delegation-withdraw <ADDRESS> <AMOUNT> <DELEGATION_ID>
 
 ## Related
 
-- [`delegation-create`](delegation-create-command-guide.md): Create a delegation.
-- [`delegation-stake`](delegation-stake-command-guide.md): Send coins to a delegation.
-- [`delegation-list-ids`](delegation-list-ids-command-guide.md): List your delegation ids and balances.
+- [`delegation create`](delegation-create-command-guide.md): Create a delegation.
+- [`delegation stake`](delegation-stake-command-guide.md): Send coins to a delegation.
+- [`delegation list`](delegation-list-command-guide.md): List your delegation ids and balances.

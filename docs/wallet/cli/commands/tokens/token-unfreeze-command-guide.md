@@ -1,7 +1,9 @@
 ---
-title: "token-unfreeze"
+title: "token unfreeze"
 sidebar_position: 107
 ---
+
+> **Legacy spelling:** this command was previously spelled `token-unfreeze`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Unfreeze the token, making all operations available for it again.
 
@@ -12,7 +14,7 @@ The selected account must own the token's authority key to unfreeze it.
 ## Usage
 
 ```
-token-unfreeze <TOKEN_ID>
+token unfreeze <TOKEN_ID>
 ```
 
 ## Arguments
@@ -21,5 +23,5 @@ token-unfreeze <TOKEN_ID>
 
 ## Related
 
-- [`token-freeze`](token-freeze-command-guide.md): Freeze a token.
-- [`token-issue-new`](token-issue-new-command-guide.md): Issue a token with freezability configured.
+- [`token freeze`](token-freeze-command-guide.md): Freeze a token.
+- [`token issue`](token-issue-command-guide.md): Issue a token with freezability configured.

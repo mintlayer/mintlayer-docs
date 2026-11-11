@@ -5,7 +5,7 @@ sidebar_position: 74
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`account-select`](account-select-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`account select`](account-select-command-guide.md).
 
 :::
 

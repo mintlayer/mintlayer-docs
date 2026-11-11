@@ -25,13 +25,13 @@ The token lifecycle, and where each management command fits:
 
 ```mermaid
 flowchart TD
-    ISSUE["token-issue-new<br/>(fixed / mintable / lockable supply)"] --> MINT["token-mint<br/>(reserve into circulation)"]
-    MINT --> SEND["token-send / regular transfers"]
-    MINT --> UNMINT["token-unmint<br/>(circulation back to reserve)"]
+    ISSUE["token issue<br/>(fixed / mintable / lockable supply)"] --> MINT["token mint<br/>(reserve into circulation)"]
+    MINT --> SEND["token send / regular transfers"]
+    MINT --> UNMINT["token unmint<br/>(circulation back to reserve)"]
     UNMINT --> MINT
-    ISSUE -.-> FREEZE["token-freeze / token-unfreeze<br/>(authority only)"]
-    ISSUE -.->|lockable supply| LOCK["token-lock-supply<br/>(irreversible: no more mint/unmint)"]
-    ISSUE -.-> AUTH["token-change-authority /<br/>token-change-metadata-uri"]
+    ISSUE -.-> FREEZE["token freeze / token unfreeze<br/>(authority only)"]
+    ISSUE -.->|lockable supply| LOCK["token lock-supply<br/>(irreversible: no more mint/unmint)"]
+    ISSUE -.-> AUTH["token change-authority /<br/>token change-metadata-uri"]
 ```
 
 ---
@@ -45,26 +45,26 @@ Before issuing, decide how you want supply to work:
 | Supply type | What it means |
 |---|---|
 | `fixed(<amount>)` | Total supply is set at issuance and can never change. No minting or unminting is possible. |
-| `lockable` | Supply starts unlimited but can be permanently locked later with `token-lock-supply`, fixing it at the current circulating amount. |
+| `lockable` | Supply starts unlimited but can be permanently locked later with `token lock-supply`, fixing it at the current circulating amount. |
 | `unlimited` | Supply is always unlimited. Minting and unminting are always available. |
 
 ### Issue the token
 
 ```
-token-issue-new <TOKEN_TICKER> <NUMBER_OF_DECIMALS> <METADATA_URI> <AUTHORITY_ADDRESS> <TOKEN_SUPPLY> <IS_FREEZABLE>
+token issue <TOKEN_TICKER> <NUMBER_OF_DECIMALS> <METADATA_URI> <AUTHORITY_ADDRESS> <TOKEN_SUPPLY> <IS_FREEZABLE>
 ```
 
 Examples:
 
 ```
 # Fixed supply of 1,000,000 tokens with 8 decimal places, not freezable
-token-issue-new MYTKN 8 https://example.com <authority_address> fixed(1000000) not-freezable
+token issue MYTKN 8 https://example.com <authority_address> fixed(1000000) not-freezable
 
 # Lockable supply (start unlimited, lock later), freezable
-token-issue-new MYTKN 8 https://example.com <authority_address> lockable freezable
+token issue MYTKN 8 https://example.com <authority_address> lockable freezable
 
 # Unlimited supply, not freezable
-token-issue-new MYTKN 8 https://example.com <authority_address> unlimited not-freezable
+token issue MYTKN 8 https://example.com <authority_address> unlimited not-freezable
 ```
 
 After the transaction is confirmed, the output will include the **token id**. Record it, you will need it for every subsequent operation.
@@ -82,7 +82,7 @@ For `lockable` and `unlimited` supply tokens, tokens must be minted before they 
 ### Mint tokens into circulation
 
 ```
-token-mint <token_id> <recipient_address> <amount>
+token mint <token_id> <recipient_address> <amount>
 ```
 
 The authority key must be in the selected account. Minted tokens are sent to `<recipient_address>`, this can be any address, including one in the same wallet.
@@ -92,7 +92,7 @@ The authority key must be in the selected account. Minted tokens are sent to `<r
 Unminting reduces the circulating supply and returns the tokens to the issuer's control. The wallet must hold both the tokens being unminted and the authority key.
 
 ```
-token-unmint <token_id> <amount>
+token unmint <token_id> <amount>
 ```
 
 ### Lock the supply permanently
@@ -100,7 +100,7 @@ token-unmint <token_id> <amount>
 If you issued with `lockable` supply and want to make the current circulating amount the permanent total supply:
 
 ```
-token-lock-supply <token_id>
+token lock-supply <token_id>
 ```
 
 **This is irreversible.** After locking, minting and unminting are no longer possible. Use this when you are ready to commit to a fixed supply.
@@ -112,7 +112,7 @@ token-lock-supply <token_id>
 Send tokens to any address:
 
 ```
-token-send <token_id> <destination_address> <amount>
+token send <token_id> <destination_address> <amount>
 ```
 
 Transaction fees are paid in TML, not in the token being sent. The wallet calculates fees automatically.
@@ -124,7 +124,7 @@ Transaction fees are paid in TML, not in the token being sent. The wallet calcul
 ### Update the metadata URI
 
 ```
-token-change-metadata-uri <token_id> <new_uri>
+token change-metadata-uri <token_id> <new_uri>
 ```
 
 Use this to update the URL pointing to your token's website, documentation, or media.
@@ -132,7 +132,7 @@ Use this to update the URL pointing to your token's website, documentation, or m
 ### Transfer authority to another address
 
 ```
-token-change-authority <token_id> <new_authority_address>
+token change-authority <token_id> <new_authority_address>
 ```
 
 After this transaction is confirmed, the old authority key loses all management rights. Make sure the new address is accessible before transferring.
@@ -143,10 +143,10 @@ Freezing blocks all operations on the token for all users. This requires the tok
 
 ```
 # Freeze but allow unfreezing later
-token-freeze <token_id> unfreezable
+token freeze <token_id> unfreezable
 
 # Freeze permanently: cannot be reversed
-token-freeze <token_id> not-unfreezable
+token freeze <token_id> not-unfreezable
 ```
 
 ### Unfreeze the token
@@ -154,7 +154,7 @@ token-freeze <token_id> not-unfreezable
 Only possible if the token was frozen with the `unfreezable` option:
 
 ```
-token-unfreeze <token_id>
+token unfreeze <token_id>
 ```
 
 ---
@@ -175,27 +175,27 @@ token-unfreeze <token_id>
 
 | Task | Command |
 |---|---|
-| Issue a token | `token-issue-new <ticker> <decimals> <uri> <authority> <supply> <freezable>` |
-| Mint tokens | `token-mint <token_id> <address> <amount>` |
-| Unmint tokens | `token-unmint <token_id> <amount>` |
-| Lock supply permanently | `token-lock-supply <token_id>` |
-| Send tokens | `token-send <token_id> <address> <amount>` |
-| Update metadata URI | `token-change-metadata-uri <token_id> <uri>` |
-| Transfer authority | `token-change-authority <token_id> <new_authority>` |
-| Freeze token | `token-freeze <token_id> unfreezable\|not-unfreezable` |
-| Unfreeze token | `token-unfreeze <token_id>` |
+| Issue a token | `token issue <ticker> <decimals> <uri> <authority> <supply> <freezable>` |
+| Mint tokens | `token mint <token_id> <address> <amount>` |
+| Unmint tokens | `token unmint <token_id> <amount>` |
+| Lock supply permanently | `token lock-supply <token_id>` |
+| Send tokens | `token send <token_id> <address> <amount>` |
+| Update metadata URI | `token change-metadata-uri <token_id> <uri>` |
+| Transfer authority | `token change-authority <token_id> <new_authority>` |
+| Freeze token | `token freeze <token_id> unfreezable\|not-unfreezable` |
+| Unfreeze token | `token unfreeze <token_id>` |
 
 ---
 
 ## Related Pages
 
-- [`token-issue-new`](../../wallet/cli/commands/tokens/token-issue-new-command-guide.md)
-- [`token-mint`](../../wallet/cli/commands/tokens/token-mint-command-guide.md)
-- [`token-unmint`](../../wallet/cli/commands/tokens/token-unmint-command-guide.md)
-- [`token-lock-supply`](../../wallet/cli/commands/tokens/token-lock-supply-command-guide.md)
-- [`token-send`](../../wallet/cli/commands/tokens/token-send-command-guide.md)
-- [`token-freeze`](../../wallet/cli/commands/tokens/token-freeze-command-guide.md)
-- [`token-unfreeze`](../../wallet/cli/commands/tokens/token-unfreeze-command-guide.md)
-- [`token-change-authority`](../../wallet/cli/commands/tokens/token-change-authority-command-guide.md)
-- [`token-change-metadata-uri`](../../wallet/cli/commands/tokens/token-change-metadata-uri-command-guide.md)
-- [`token-nft-issue-new`](../../wallet/cli/commands/tokens/token-nft-issue-new-command-guide.md)
+- [`token issue`](../../wallet/cli/commands/tokens/token-issue-command-guide.md)
+- [`token mint`](../../wallet/cli/commands/tokens/token-mint-command-guide.md)
+- [`token unmint`](../../wallet/cli/commands/tokens/token-unmint-command-guide.md)
+- [`token lock-supply`](../../wallet/cli/commands/tokens/token-lock-supply-command-guide.md)
+- [`token send`](../../wallet/cli/commands/tokens/token-send-command-guide.md)
+- [`token freeze`](../../wallet/cli/commands/tokens/token-freeze-command-guide.md)
+- [`token unfreeze`](../../wallet/cli/commands/tokens/token-unfreeze-command-guide.md)
+- [`token change-authority`](../../wallet/cli/commands/tokens/token-change-authority-command-guide.md)
+- [`token change-metadata-uri`](../../wallet/cli/commands/tokens/token-change-metadata-uri-command-guide.md)
+- [`token nft issue`](../../wallet/cli/commands/tokens/token-nft-issue-command-guide.md)

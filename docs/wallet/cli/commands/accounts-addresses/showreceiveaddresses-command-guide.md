@@ -5,7 +5,7 @@ sidebar_position: 76
 ---
 :::danger[Removed command]
 
-This command is no longer available in current wallet-cli versions. use [`address-show`](address-show-command-guide.md) instead.
+This command is no longer available in current wallet-cli versions. Use [`address list`](address-list-command-guide.md) instead.
 
 :::
 
