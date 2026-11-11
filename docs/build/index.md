@@ -44,7 +44,8 @@ Mintlayer addresses are Bech32m, and their checksum can locate up to two mistype
 
 ## Integrate AI agents
 
-- **[MCP](mcp.md)**, hosted MCP endpoint that lets MCP-compatible AI assistants interact with Mintlayer services.
+- **[Set Up an AI Agent](ai-agents.md)**, connect Claude, Codex, Pi, Grok, Cursor, or Hermes to the Mintlayer documentation, chain data, and wallet MCP servers.
+- **[MCP](mcp.md)**, server endpoints, tool tables, and protocol details for all four Mintlayer MCP servers.
 - Agent-facing documentation: fetch [`/llms.txt`](https://docs.mintlayer.org/llms.txt) for a machine-readable index of this whole site.
 
 ## Understand the protocol
