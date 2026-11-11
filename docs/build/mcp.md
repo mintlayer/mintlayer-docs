@@ -6,7 +6,7 @@ sidebar_position: 6
 
 # MCP
 
-Mintlayer exposes four Model Context Protocol servers. Point any MCP-compatible client (Claude Desktop, Cursor, opencode, ...) at them and your assistant can read the documentation, query on-chain data, talk to your own node, or inspect your wallet.
+Mintlayer exposes four Model Context Protocol servers. Point any MCP-compatible client (Claude, Codex, Pi, Grok, Cursor, Hermes, ...) at them and your assistant can read the documentation, query on-chain data, talk to your own node, or inspect your wallet. For step-by-step per-client configuration, see the [AI agent setup guide](ai-agents.md).
 
 | # | Server | Endpoint | Runs | Tools |
 | - | ------ | -------- | ---- | ----- |
@@ -54,9 +54,9 @@ Hosted at `https://mojito-api.mintlayer.org/mcp`. Read-only queries against the 
 
 All tools accept an optional `network` parameter: `mainnet` (default) or `testnet`. The server uses the Streamable HTTP transport and requires session handling, which MCP clients manage automatically; when testing by hand, pass the `mcp-session-id` header returned by the `initialize` call on subsequent requests.
 
-## 3. Self-hosted wallet server (web-gui) {#self-hosted-web-gui}
+## 3. Self-hosted wallet server (Nexus) {#self-hosted-web-gui}
 
-The [Mojito web-gui](https://github.com/mintlayer/web-gui) ships a **stdio** MCP server (`scripts/mcp-server.mjs`) that talks to your own `wallet-rpc-daemon`. Nothing leaves your machine, and the agent only ever sees what your wallet sees.
+The [Nexus wallet](https://github.com/mintlayer/web-gui) (the former web GUI) ships a **stdio** MCP server (`scripts/mcp-server.mjs`) that talks to your own `wallet-rpc-daemon`. Nothing leaves your machine, and the agent only ever sees what your wallet sees.
 
 ### Enable it
 
