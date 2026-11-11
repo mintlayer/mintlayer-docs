@@ -1,7 +1,9 @@
 ---
-title: "transaction-abandon"
+title: "transaction abandon"
 sidebar_position: 109
 ---
+
+> **Legacy spelling:** this command was previously spelled `transaction-abandon`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Abandon an unconfirmed transaction in the wallet database, and make the consumed inputs available to be used again.
 
@@ -10,7 +12,7 @@ Note that this doesn't necessarily mean the network will agree. This assumes the
 ## Usage
 
 ```
-transaction-abandon <TRANSACTION_ID>
+transaction abandon <TRANSACTION_ID>
 ```
 
 ## Arguments
@@ -19,5 +21,5 @@ transaction-abandon <TRANSACTION_ID>
 
 ## Related
 
-- [`transaction-list-pending`](transaction-list-pending-command-guide.md): List pending transactions that can be abandoned.
-- [`node-submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Resubmit a transaction to the network.
+- [`transaction list-pending`](transaction-list-pending-command-guide.md): List pending transactions that can be abandoned.
+- [`node submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Resubmit a transaction to the network.

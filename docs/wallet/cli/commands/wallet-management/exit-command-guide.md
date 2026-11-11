@@ -18,4 +18,4 @@ This command is available in cold wallet mode (`--cold-wallet`). To also shut do
 ## Related
 
 - [`rpc-shutdown-and-exit`](../node-control/rpc-shutdown-and-exit-command-guide.md): Shutdown the RPC interface and exit.
-- [`wallet-close`](wallet-close-command-guide.md): Close the wallet file without exiting the REPL.
+- [`wallet close`](wallet-close-command-guide.md): Close the wallet file without exiting the REPL.

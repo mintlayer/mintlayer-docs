@@ -1,18 +1,20 @@
 ---
-title: "transaction-create-from-cold-input"
+title: "transaction create-from-cold-input"
 sidebar_position: 111
 ---
 
+> **Legacy spelling:** this command was previously spelled `transaction-create-from-cold-input`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
+
 Creates a transaction that spends from a specific address, and returns the change to the same address (unless one is specified), without signature.
 
-This is used for withdrawing amounts from cold storage without changing the ownership address. The resulting unsigned transaction can be signed using `account-sign-raw-transaction` in the cold wallet, then broadcast through any hot wallet.
+This is used for withdrawing amounts from cold storage without changing the ownership address. The resulting unsigned transaction can be signed using `transaction sign` in the cold wallet, then broadcast through any hot wallet.
 
 The transaction has one input and two outputs: the amount sent to the destination, and the change returned to the input's owner.
 
 ## Usage
 
 ```
-transaction-create-from-cold-input [OPTIONS] <ADDRESS> <AMOUNT> <UTXO>
+transaction create-from-cold-input [OPTIONS] <ADDRESS> <AMOUNT> <UTXO>
 ```
 
 ## Arguments
@@ -31,12 +33,12 @@ transaction-create-from-cold-input [OPTIONS] <ADDRESS> <AMOUNT> <UTXO>
 
 ## Workflow
 
-1. Run `transaction-create-from-cold-input` on the hot wallet to produce an unsigned transaction hex.
+1. Run `transaction create-from-cold-input` on the hot wallet to produce an unsigned transaction hex.
 2. Transfer the hex to the cold wallet.
-3. Run `account-sign-raw-transaction <HEX>` in the cold wallet to sign it.
-4. Broadcast the signed transaction with `node-submit-transaction` from the hot wallet.
+3. Run `transaction sign <HEX>` in the cold wallet to sign it.
+4. Broadcast the signed transaction with `node submit-transaction` from the hot wallet.
 
 ## Related
 
-- [`account-sign-raw-transaction`](../accounts-addresses/account-sign-raw-transaction-command-guide.md): Sign the unsigned transaction in the cold wallet.
-- [`node-submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Broadcast the signed transaction.
+- [`transaction sign`](transaction-sign-command-guide.md): Sign the unsigned transaction in the cold wallet.
+- [`node submit-transaction`](../node-control/node-submit-transaction-command-guide.md): Broadcast the signed transaction.

@@ -5,6 +5,8 @@ sidebar_position: 1
 
 The `wallet-cli` command provides an interactive wallet interface. It uses a subcommand to select the network, followed by wallet options.
 
+For non-interactive use (one-shot commands, JSON output, confirmation flags), interactive wizards, and shell completions, see [One-shot Commands, Wizards, and Completions](exec-and-wizards.md).
+
 ## Usage
 
 ```bash
@@ -21,13 +23,13 @@ wallet-cli <COMMAND> [OPTIONS]
 | `regtest` | Connect to / operate on regtest |
 | `signet`  | Connect to / operate on signet  |
 
+Options are given after the network subcommand, where they use that network's environment prefix (e.g. `ML_MAINNET_WALLET_*`, `ML_TESTNET_WALLET_*`). Options given without a network subcommand default to mainnet and use the `ML_WALLET_*` prefix. The two forms cannot be mixed in one invocation.
+
 Example:
 ```bash
 wallet-cli mainnet --wallet-file ~/my-wallet.dat
 wallet-cli testnet --cold-wallet
 ```
-
-Options can be placed before or after the network subcommand. When placed before, they apply globally; when after, they apply to the specific network. The environment variable prefix changes by network (e.g. `ML_MAINNET_WALLET_*`, `ML_TESTNET_WALLET_*`).
 
 ## Wallet File Options
 
@@ -42,7 +44,7 @@ Options can be placed before or after the network subcommand. When placed before
 
 - **`--hardware-wallet <HARDWARE_WALLET>`**: Specify that the wallet file is associated with a hardware wallet.
   - Env: `ML_WALLET_HARDWARE_WALLET`
-  - Possible values: `trezor`
+  - Possible values: `trezor`, `ledger`
 
 ## Staking
 
@@ -114,6 +116,16 @@ Instead of managing a wallet directly, the CLI can act as a thin interface to a 
 
 ## REPL Behavior
 
+- **`--exec <COMMAND>`**: Run a single wallet command and exit, without opening the interactive session. The command is spelled exactly as in the interactive wallet, e.g. `--exec "account create name"`. Exit status is 0 on success, 1 on failure. Conflicts with `--commands-file`.
+  - Env: `ML_WALLET_EXEC`
+
+- **`--output <OUTPUT>`**: Output format for `--exec` runs: `text` (default) or `json`. With `json`, a single JSON object is printed on standard output and startup reports go to standard error, so stdout stays machine-parseable.
+  - Env: `ML_WALLET_OUTPUT`
+  - Possible values: `text`, `json`
+
+- **`--yes`**: Answer "yes" to every confirmation prompt. State-changing commands ask for confirmation; in non-interactive runs (`--exec`, `--commands-file`) they abort unless this flag is passed.
+  - Env: `ML_WALLET_YES`
+
 - **`--commands-file <COMMANDS_FILE>`**: Read and execute commands from a file instead of opening an interactive session.
   - Env: `ML_WALLET_COMMANDS_FILE`
 
@@ -127,8 +139,8 @@ Instead of managing a wallet directly, the CLI can act as a thin interface to a 
 - **`--vi-mode`**: Enable vi key bindings in the interactive REPL.
   - Env: `ML_WALLET_VI_MODE`
 
-- **`--no-qr`**: Disable QR code output for wallet commands.
-  - Env: `ML_WALLET_NO_QR`
+- **`--qr`**: Print QR codes for addresses and transaction payloads (off by default).
+  - Env: `ML_WALLET_QR`
 
 ## Transaction Fee
 

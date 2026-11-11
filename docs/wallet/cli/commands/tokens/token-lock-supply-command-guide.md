@@ -1,7 +1,9 @@
 ---
-title: "token-lock-supply"
+title: "token lock-supply"
 sidebar_position: 103
 ---
+
+> **Legacy spelling:** this command was previously spelled `token-lock-supply`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Lock the circulating supply for the token. **THIS IS IRREVERSIBLE.**
 
@@ -10,7 +12,7 @@ Once locked, tokens lose the ability to be minted or unminted. The current circu
 ## Usage
 
 ```
-token-lock-supply <TOKEN_ID>
+token lock-supply <TOKEN_ID>
 ```
 
 ## Arguments
@@ -23,6 +25,6 @@ This operation is only available for tokens issued with `lockable` supply. It ca
 
 ## Related
 
-- [`token-issue-new`](token-issue-new-command-guide.md): Issue a token (supply type is set at issuance).
-- [`token-mint`](token-mint-command-guide.md): Mint tokens before locking supply.
-- [`token-unmint`](token-unmint-command-guide.md): Unmint tokens before locking supply.
+- [`token issue`](token-issue-command-guide.md): Issue a token (supply type is set at issuance).
+- [`token mint`](token-mint-command-guide.md): Mint tokens before locking supply.
+- [`token unmint`](token-unmint-command-guide.md): Unmint tokens before locking supply.

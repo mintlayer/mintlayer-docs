@@ -5,7 +5,7 @@ sidebar_position: 38
 ---
 :::danger[Removed command]
 
-This command is no longer available in current wallet-cli versions. see the [Accounts & Addresses commands](/docs/wallet/cli/commands) for current key and address commands.
+This command is no longer available in current wallet-cli versions. See the [Accounts & Addresses commands](/docs/wallet/cli/commands) for current key and address commands.
 
 :::
 

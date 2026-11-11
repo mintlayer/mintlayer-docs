@@ -1,14 +1,16 @@
 ---
-title: "wallet-close"
+title: "wallet close"
 sidebar_position: 121
 ---
+
+> **Legacy spelling:** this command was previously spelled `wallet-close`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Close the currently opened wallet file.
 
 ## Usage
 
 ```
-wallet-close
+wallet close
 ```
 
 ## Notes
@@ -17,5 +19,5 @@ This command is available in cold wallet mode (`--cold-wallet`). Closing the wal
 
 ## Related
 
-- [`wallet-open`](wallet-open-command-guide.md): Open an existing wallet file.
+- [`wallet open`](wallet-open-command-guide.md): Open an existing wallet file.
 - [`exit`](exit-command-guide.md): Exit the wallet application.

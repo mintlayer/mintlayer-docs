@@ -1,7 +1,9 @@
 ---
-title: "token-unmint"
+title: "token unmint"
 sidebar_position: 108
 ---
+
+> **Legacy spelling:** this command was previously spelled `token-unmint`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Unmint existing tokens and reduce the circulating supply.
 
@@ -10,7 +12,7 @@ Unminting reduces the circulating supply and puts the unminted tokens back under
 ## Usage
 
 ```
-token-unmint <TOKEN_ID> <AMOUNT>
+token unmint <TOKEN_ID> <AMOUNT>
 ```
 
 ## Arguments
@@ -21,9 +23,9 @@ token-unmint <TOKEN_ID> <AMOUNT>
 
 ## Notes
 
-The selected account must own both the tokens being unminted and the token's authority key. Unminting is not possible if the supply has been locked with `token-lock-supply`.
+The selected account must own both the tokens being unminted and the token's authority key. Unminting is not possible if the supply has been locked with `token lock-supply`.
 
 ## Related
 
-- [`token-mint`](token-mint-command-guide.md): Mint tokens and increase the circulating supply.
-- [`token-lock-supply`](token-lock-supply-command-guide.md): Permanently lock the supply.
+- [`token mint`](token-mint-command-guide.md): Mint tokens and increase the circulating supply.
+- [`token lock-supply`](token-lock-supply-command-guide.md): Permanently lock the supply.

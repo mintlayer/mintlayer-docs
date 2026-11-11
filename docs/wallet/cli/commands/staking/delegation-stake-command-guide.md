@@ -1,14 +1,16 @@
 ---
-title: "delegation-stake"
+title: "delegation stake"
 sidebar_position: 27
 ---
+
+> **Legacy spelling:** this command was previously spelled `delegation-stake`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Send coins to a delegation id to be staked.
 
 ## Usage
 
 ```
-delegation-stake <AMOUNT> <DELEGATION_ID>
+delegation stake <AMOUNT> <DELEGATION_ID>
 ```
 
 ## Arguments
@@ -19,10 +21,10 @@ delegation-stake <AMOUNT> <DELEGATION_ID>
 
 ## Notes
 
-The delegation must have been created first with `delegation-create`. The pool associated with the delegation will stake the coins on your behalf. You retain full ownership and can withdraw at any time with `delegation-withdraw`, subject to a lock period.
+The delegation must have been created first with `delegation create`. The pool associated with the delegation will stake the coins on your behalf. You retain full ownership and can withdraw at any time with `delegation withdraw`, subject to a lock period.
 
 ## Related
 
-- [`delegation-create`](delegation-create-command-guide.md): Create a delegation.
-- [`delegation-withdraw`](delegation-withdraw-command-guide.md): Withdraw coins from a delegation.
-- [`delegation-list-ids`](delegation-list-ids-command-guide.md): List your delegation ids and balances.
+- [`delegation create`](delegation-create-command-guide.md): Create a delegation.
+- [`delegation withdraw`](delegation-withdraw-command-guide.md): Withdraw coins from a delegation.
+- [`delegation list`](delegation-list-command-guide.md): List your delegation ids and balances.

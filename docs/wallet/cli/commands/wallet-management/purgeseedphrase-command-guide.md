@@ -5,7 +5,7 @@ sidebar_position: 70
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`wallet-purge-seed-phrase`](wallet-purge-seed-phrase-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`wallet purge-seed-phrase`](wallet-purge-seed-phrase-command-guide.md).
 
 :::
 

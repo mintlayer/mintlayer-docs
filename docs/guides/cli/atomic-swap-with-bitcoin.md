@@ -60,8 +60,8 @@ sequenceDiagram
     participant B as Bob (Bitcoin)
     participant BTC as Bitcoin HTLC
 
-    A->>A: htlc-generate-secret
-    A->>ML: htlc-create-transaction (secret hash, 48h timelock)
+    A->>A: htlc generate-secret
+    A->>ML: htlc create (secret hash, 48h timelock)
     B->>B: verify the secret hash on-chain
     B->>BTC: lock BTC (24h timelock)
     A->>BTC: claim with secret (reveals it on-chain)
@@ -79,7 +79,7 @@ Bob's Bitcoin timelock (24 hours) must be **shorter** than Alice's Mintlayer tim
 Alice generates a random secret:
 
 ```
-htlc-generate-secret
+htlc generate-secret
 ```
 
 Example output:
@@ -90,7 +90,7 @@ a3f1c2...9d4e  (64-char hex string)
 Alice computes its hash:
 
 ```
-htlc-calc-secret-hash <secret_hex>
+htlc calc-secret-hash <secret_hex>
 ```
 
 Example output:
@@ -107,7 +107,7 @@ Alice shares the **hash** with Bob. She keeps the **secret** private.
 Alice creates the HTLC on Mintlayer, locking her ML coins (or tokens):
 
 ```
-htlc-create-transaction coin <ml_amount> <secret_hash> <bob_ml_address> seconds(172800) <alice_ml_address>
+htlc create coin <ml_amount> <secret_hash> <bob_ml_address> seconds(172800) <alice_ml_address>
 ```
 
 Arguments:
@@ -121,7 +121,7 @@ Arguments:
 This returns an unsigned transaction hex. Broadcast it:
 
 ```
-node-submit-transaction <tx_hex>
+node submit-transaction <tx_hex>
 ```
 
 Alice shares the Mintlayer transaction id with Bob so he can verify the HTLC on-chain.
@@ -226,10 +226,10 @@ If Alice never reveals the secret (never claims Bob's BTC), Bob waits for his 24
 
 | Task | Command |
 |---|---|
-| Generate HTLC secret | `htlc-generate-secret` |
-| Compute secret hash | `htlc-calc-secret-hash <secret>` |
-| Create Mintlayer HTLC | `htlc-create-transaction <currency> <amount> <hash> <spend_address> <timelock> <refund_address>` |
-| Broadcast transaction | `node-submit-transaction <tx_hex>` |
+| Generate HTLC secret | `htlc generate-secret` |
+| Compute secret hash | `htlc calc-secret-hash <secret>` |
+| Create Mintlayer HTLC | `htlc create <currency> <amount> <hash> <spend_address> <timelock> <refund_address>` |
+| Broadcast transaction | `node submit-transaction <tx_hex>` |
 | Claim HTLC (spend) | `utxo-spend tx(<txid>,<index>) <address> <secret>` |
 | Refund HTLC (timeout) | `utxo-spend tx(<txid>,<index>) <address>` |
 
@@ -237,8 +237,8 @@ If Alice never reveals the secret (never claims Bob's BTC), Bob waits for his 24
 
 ## Related Pages
 
-- [`htlc-create-transaction`](../../wallet/cli/commands/htlc/htlc-create-transaction-command-guide.md)
-- [`htlc-generate-secret`](../../wallet/cli/commands/htlc/htlc-generate-secret-command-guide.md)
-- [`htlc-calc-secret-hash`](../../wallet/cli/commands/htlc/htlc-calc-secret-hash-command-guide.md)
+- [`htlc create`](../../wallet/cli/commands/htlc/htlc-create-command-guide.md)
+- [`htlc generate-secret`](../../wallet/cli/commands/htlc/htlc-generate-secret-command-guide.md)
+- [`htlc calc-secret-hash`](../../wallet/cli/commands/htlc/htlc-calc-secret-hash-command-guide.md)
 - [`utxo-spend`](../../wallet/cli/commands/transactions/utxo-spend-command-guide.md)
-- [`node-submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)
+- [`node submit-transaction`](../../wallet/cli/commands/node-control/node-submit-transaction-command-guide.md)

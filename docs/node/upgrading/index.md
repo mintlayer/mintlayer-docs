@@ -74,6 +74,9 @@ Some releases include breaking changes or forks that need attention:
 | [Upgrading from v1.0.2 to v1.2.0](upgrading-from-v1.0.2-to-v1.2.0.md) | Mainnet fork at height 517700 (Orders V1, token id generation, input commitments V1), WASM binding changes, full resync |
 | [Upgrading from v1.2.0 to v1.3.1](upgrading-from-v1.2.0-to-v1.3.1.md) | Wallet RPC renames, `--clean-data` option move, bootstrap format, PST format, API server full resync |
 | [Upgrading from v1.3.1 to v1.4.0](upgrading-from-v1.3.1-to-v1.4.0.md) | Soft fork (token metadata URI and zero-amount rules), mempool ordering and cluster limits, Ledger support |
+| [Upgrading from v1.4.0 to v1.4.1](upgrading-from-v1.4.0-to-v1.4.1.md) | PoS seal indexing, standalone command rescan fix |
+| [Upgrading from v1.4.1 to v1.4.4](upgrading-from-v1.4.1-to-v1.4.4.md) | Orphan pool per-peer quotas, `mempool_get_config` fields, dependency patches |
+| [Upgrading from v1.4.4 to v1.4.5](upgrading-from-v1.4.4-to-v1.4.5.md) | Wallet-cli nested command grammar (legacy names still work), confirmation gates, `--exec` one-shot mode, read-only wallet MCP server |
 
 ## Need help?
 

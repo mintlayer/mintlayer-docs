@@ -5,7 +5,7 @@ sidebar_position: 29
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`wallet-encrypt-private-keys`](wallet-encrypt-private-keys-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`wallet encrypt`](wallet-encrypt-command-guide.md).
 
 :::
 

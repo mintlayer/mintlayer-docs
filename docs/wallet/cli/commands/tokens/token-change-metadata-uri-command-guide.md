@@ -1,14 +1,16 @@
 ---
-title: "token-change-metadata-uri"
+title: "token change-metadata-uri"
 sidebar_position: 100
 ---
+
+> **Legacy spelling:** this command was previously spelled `token-change-metadata-uri`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Change the metadata URI of a token.
 
 ## Usage
 
 ```
-token-change-metadata-uri <TOKEN_ID> <METADATA_URI>
+token change-metadata-uri <TOKEN_ID> <METADATA_URI>
 ```
 
 ## Arguments
@@ -23,5 +25,5 @@ The selected account must own the token's authority key to perform this operatio
 
 ## Related
 
-- [`token-change-authority`](token-change-authority-command-guide.md): Change the authority address of a token.
-- [`token-issue-new`](token-issue-new-command-guide.md): Issue a new token.
+- [`token change-authority`](token-change-authority-command-guide.md): Change the authority address of a token.
+- [`token issue`](token-issue-command-guide.md): Issue a new token.

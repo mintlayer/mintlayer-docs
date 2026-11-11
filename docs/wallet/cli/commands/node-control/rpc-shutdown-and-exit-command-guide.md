@@ -18,4 +18,4 @@ Use this instead of `exit` when the wallet CLI is connected to a `wallet-rpc-dae
 ## Related
 
 - [`exit`](../wallet-management/exit-command-guide.md): Exit the wallet without shutting down any RPC interface.
-- [`node-shutdown`](node-shutdown-command-guide.md): Shutdown the connected node.
+- [`node shutdown`](node-shutdown-command-guide.md): Shutdown the connected node.

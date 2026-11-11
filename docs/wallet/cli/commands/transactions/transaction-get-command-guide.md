@@ -1,14 +1,16 @@
 ---
-title: "transaction-get"
+title: "transaction get"
 sidebar_position: 112
 ---
+
+> **Legacy spelling:** this command was previously spelled `transaction-get`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Get a transaction from the wallet, if present.
 
 ## Usage
 
 ```
-transaction-get <TRANSACTION_ID>
+transaction get <TRANSACTION_ID>
 ```
 
 ## Arguments
@@ -17,6 +19,6 @@ transaction-get <TRANSACTION_ID>
 
 ## Related
 
-- [`transaction-get-raw`](transaction-get-raw-command-guide.md): Get the transaction as a hex encoded raw transaction.
-- [`transaction-get-signed-raw`](transaction-get-signed-raw-command-guide.md): Get the signed transaction as hex.
-- [`transaction-list-by-address`](transaction-list-by-address-command-guide.md): List transactions by address.
+- [`transaction get-raw`](transaction-get-raw-command-guide.md): Get the transaction as a hex encoded raw transaction.
+- [`transaction get-signed-raw`](transaction-get-signed-raw-command-guide.md): Get the signed transaction as hex.
+- [`transaction list-by-address`](transaction-list-by-address-command-guide.md): List transactions by address.

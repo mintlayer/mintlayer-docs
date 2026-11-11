@@ -1,14 +1,16 @@
 ---
-title: "account-utxos"
+title: "account utxos"
 sidebar_position: 8
 ---
+
+> **Legacy spelling:** this command was previously spelled `account-utxos`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Lists all the UTXOs owned by this account.
 
 ## Usage
 
 ```
-account-utxos [UTXO_TYPE] [WITH_LOCKED] [UTXO_STATES]...
+account utxos [UTXO_TYPE] [WITH_LOCKED] [UTXO_STATES]...
 ```
 
 ## Arguments
@@ -29,14 +31,14 @@ account-utxos [UTXO_TYPE] [WITH_LOCKED] [UTXO_STATES]...
 
 ```
 # List all confirmed, spendable UTXOs (default)
-account-utxos
+account utxos
 
 # List only transfer-type UTXOs
-account-utxos transfer
+account utxos transfer
 
 # Include locked UTXOs
-account-utxos all any
+account utxos all any
 
 # Include unconfirmed (mempool) UTXOs
-account-utxos all unlocked in-mempool
+account utxos all unlocked in-mempool
 ```

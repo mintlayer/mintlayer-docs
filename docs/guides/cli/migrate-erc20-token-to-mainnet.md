@@ -42,7 +42,7 @@ wallet-cli mainnet
 2. Once inside the wallet REPL, create a new wallet file:
 
 ```
-wallet-create software /path/to/my-wallet.dat store-seed-phrase
+wallet create software /path/to/my-wallet.dat
 ```
 
 3. The wallet will display your seed phrase. **Write it down and keep it safe, this is the only way to recover your funds.**
@@ -50,7 +50,7 @@ wallet-create software /path/to/my-wallet.dat store-seed-phrase
 4. Generate a receive address:
 
 ```
-address-new
+address new
 ```
 
 The output will be your Mintlayer mainnet address. It will look like:

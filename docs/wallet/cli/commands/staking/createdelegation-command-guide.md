@@ -5,7 +5,7 @@ sidebar_position: 21
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`delegation-create`](delegation-create-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`delegation create`](delegation-create-command-guide.md).
 
 :::
 
@@ -33,7 +33,7 @@ createdelegation <ADDRESS> <POOL_ID>
 
 ### Example
 
-Let's say you want to create a delegation with destination address `tmt1q8duxru0ranld7r73c6meezkwndftdma9vmmnzyc` and the staking pool with the ID `tpool12udk7skuzl3u5msdq4zx3n0wyc3ahp5ejnzh7a59ylvzl39elqcs5zpc5e `. You would use the following command:
+Let's say you want to create a delegation with destination address `tmt1q8duxru0ranld7r73c6meezkwndftdma9vmmnzyc` and the staking pool with the ID `tpool12udk7skuzl3u5msdq4zx3n0wyc3ahp5ejnzh7a59ylvzl39elqcs5zpc5e`. You would use the following command:
 
 ```sh
 createdelegation tmt1q8duxru0ranld7r73c6meezkwndftdma9vmmnzyc tpool12udk7skuzl3u5msdq4zx3n0wyc3ahp5ejnzh7a59ylvzl39elqcs5zpc5e

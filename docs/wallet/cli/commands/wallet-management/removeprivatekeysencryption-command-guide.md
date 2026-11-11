@@ -5,7 +5,7 @@ sidebar_position: 71
 ---
 :::danger[Deprecated command name]
 
-This page documents a legacy command name. In current wallet versions the command is called [`wallet-disable-private-keys-encryption`](wallet-disable-private-keys-encryption-command-guide.md).
+This page documents a legacy command name. In current wallet versions the command is called [`wallet decrypt`](wallet-decrypt-command-guide.md).
 
 :::
 

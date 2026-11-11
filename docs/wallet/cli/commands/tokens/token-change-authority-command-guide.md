@@ -1,7 +1,9 @@
 ---
-title: "token-change-authority"
+title: "token change-authority"
 sidebar_position: 99
 ---
+
+> **Legacy spelling:** this command was previously spelled `token-change-authority`. Both spellings work, but only the nested spelling shown here appears in `help` and tab completion (v1.4.5+).
 
 Change the authority address of a token.
 
@@ -10,7 +12,7 @@ The authority address is the address whose key controls token management operati
 ## Usage
 
 ```
-token-change-authority <TOKEN_ID> <ADDRESS>
+token change-authority <TOKEN_ID> <ADDRESS>
 ```
 
 ## Arguments
@@ -21,6 +23,6 @@ token-change-authority <TOKEN_ID> <ADDRESS>
 
 ## Related
 
-- [`token-issue-new`](token-issue-new-command-guide.md): Issue a new token.
-- [`token-mint`](token-mint-command-guide.md): Mint additional token supply.
-- [`token-freeze`](token-freeze-command-guide.md): Freeze a token.
+- [`token issue`](token-issue-command-guide.md): Issue a new token.
+- [`token mint`](token-mint-command-guide.md): Mint additional token supply.
+- [`token freeze`](token-freeze-command-guide.md): Freeze a token.
