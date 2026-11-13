@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "title": "SDKs",
-    "description": "Language SDKs for Mintlayer: full API coverage for building services and dApps."
+    "description": "Language SDKs for Mintlayer: full API coverage for building services and dApps, plus native Kotlin/Swift bindings for mobile apps."
   }
 }

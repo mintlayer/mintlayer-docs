@@ -17,6 +17,12 @@ npm install @mintlayer/sdk
 - Pluggable architecture: swap the wallet extension for private keys or a mnemonic seed without changing application code
 - Source: [github.com/mintlayer/mintlayer-connect-sdk](https://github.com/mintlayer/mintlayer-connect-sdk)
 
+:::note[Mobile apps]
+
+React Native, Expo and fully native apps cannot load the WASM wrappers — use the [Kotlin & Swift SDK](../mobile-bindings/index.md), which mirrors this API with byte-identical outputs (see [Migrating from WASM](../mobile-bindings/wasm-migration.md)).
+
+:::
+
 ## Architecture
 
 The SDK is built around three interfaces. Everything else is an implementation you can replace.

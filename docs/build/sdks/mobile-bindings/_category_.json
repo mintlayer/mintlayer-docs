@@ -1,0 +1,8 @@
+{
+  "label": "Kotlin & Swift SDK",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "build/sdks/mobile-bindings/index"
+  }
+}
